@@ -30,6 +30,8 @@ données publiques : OpenStreetMap, IGN LiDAR HD et RGE ALTI, Météo-France S2M
 | `HYPOTHESES.md` | choix de méthode et hypothèses, avec leur source et les variantes essayées |
 | `VALIDATION.md` | protocole proposé pour valider la méthode sur neige damée |
 
+Site : https://s-geffroy.github.io/txr-methode/ · Pour citer : `CITATION.cff` (bouton « Cite this repository » sur GitHub).
+
 ## Licence
 
 Textes, fiches et figures : **Creative Commons Attribution 4.0 International**

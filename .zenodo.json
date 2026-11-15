@@ -1,0 +1,11 @@
+{
+  "title": "TxR — méthode : classer les pistes de ski en technique (T) et résistance (R)",
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "description": "<p>TxR (<em>Technical × Resistance</em>) est une méthode de classement des pistes de ski en deux notes indépendantes : <strong>T</strong>, la difficulté technique du passage le plus raide (fenêtres de 10 et 30 m sur le MNT LiDAR HD de l'IGN), et <strong>R</strong>, l'exigence physique d'après le dénivelé. Une correction expérimentale estime la pente de la piste damée (couloir, enneigement S2M de Météo-France, trajectoire en zigzag).</p><p>Le dépôt contient la méthode complète, les hypothèses et leurs variantes, un protocole de validation sur neige damée et trois fiches d'une page (grand public, exploitants, technique). Mise au point sur La Foux d'Allos (Val d'Allos, France).</p><p><strong>Statut : recherche, provisoire.</strong> Seuils expérimentaux, hypothèses non vérifiées sur le terrain ; les classes sont des bornes inférieures et ne remplacent pas le balisage des stations.</p>",
+  "creators": [{"name": "Geffroy, Sylvain"}],
+  "license": "cc-by-4.0",
+  "language": "fre",
+  "keywords": ["ski", "pistes de ski", "classement des pistes", "pente", "LiDAR HD", "OpenStreetMap", "MNT", "neige", "S2M", "La Foux d'Allos"],
+  "notes": "Données d'origine : © contributeurs OpenStreetMap (ODbL 1.0) ; IGN (LiDAR HD, RGE ALTI) et Météo-France (réanalyse S2M), Licence Ouverte Etalab 2.0."
+}

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Pour citer cette méthode, merci d'utiliser les métadonnées ci-dessous."
+title: "TxR — méthode : classer les pistes de ski en technique (T) et résistance (R)"
+type: dataset
+authors:
+  - family-names: Geffroy
+    given-names: Sylvain
+version: 0.4.0
+date-released: 2026-11-15
+license: CC-BY-4.0
+repository-code: "https://github.com/s-geffroy/txr-methode"
+url: "https://s-geffroy.github.io/txr-methode/"
+keywords:
+  - ski
+  - classement des pistes
+  - pente
+  - LiDAR HD
+  - OpenStreetMap
+abstract: >-
+  Méthode de classement des pistes de ski en deux notes indépendantes : T, la
+  difficulté technique du passage le plus raide, et R, l'exigence physique.
+  Recherche, résultats provisoires.

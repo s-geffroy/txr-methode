@@ -1,3 +1,7 @@
+---
+title: Méthode de calcul TxR (v0.4.0)
+---
+
 > Ce document décrit la méthode telle qu'elle est implémentée dans TxR v0.4.0 (code non publié à ce stade). Les noms de fonctions et de fichiers renvoient à cette implémentation.
 
 # Méthode de calcul TxR (v0.4.0)
@@ -144,11 +148,11 @@ Le relevé à fournir est la **hauteur totale** de neige en bas et en haut de st
 
 ## Contrôle par les couleurs du plan (v0.4.0)
 
-Ce n'est **pas une validation**. Les corrections réduisent toutes la pente et, sur sol nu, aucune piste n'est « plus facile » que sa couleur : la conformité augmente donc mécaniquement avec l'ampleur de la correction (θ, largeur). Les hypothèses V3-1 à V3-6 (`DECISIONS.md`) ont été fixées pendant l'analyse.
+Ce n'est **pas une validation**. Les corrections réduisent toutes la pente et, sur sol nu, aucune piste n'est « plus facile » que sa couleur : la conformité augmente donc mécaniquement avec l'ampleur de la correction (θ, largeur). Les hypothèses V3-1 à V3-6 ([hypothèses](HYPOTHESES.html)) ont été fixées pendant l'analyse.
 
 - Unité : la **piste** (classe la plus haute de ses composantes) ; variantes sans couleur exclues ; classes attendues verte T0–1, bleue T1–2, rouge T3–4, noire T4–6 (les noires sont conformes par construction dès T4).
 - Publié dans `validation.json` (`pistes`, `scenarios`) et au §8 bis du rapport :
   - conformité observée et **attendue au hasard** (même répartition des classes, indépendante de la couleur), accord corrigé du hasard, intervalle bootstrap à 95 % ;
   - **τ-b de Kendall** entre le rang des couleurs et la classe : concordance d'ordre, indépendante du niveau absolu des seuils ;
   - conformité pour chaque scénario de sensibilité, dans les deux conventions.
-- Validation à faire : mesures de pente sur neige damée (GNSS RTK ou inclinomètre), 100 à 120 fenêtres stratifiées par couleur et par T prédit, accord par Bland-Altman et κ pondéré, θ estimé sur des traces GPS de skieurs, paramètres figés avant la mesure (voir `docs/revue-2026-11-15.md`).
+- Validation à faire : mesures de pente sur neige damée (GNSS RTK ou inclinomètre), 100 à 120 fenêtres stratifiées par couleur et par T prédit, accord par Bland-Altman et κ pondéré, θ estimé sur des traces GPS de skieurs, paramètres figés avant la mesure (voir le [protocole de validation](VALIDATION.html)).

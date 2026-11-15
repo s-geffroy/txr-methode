@@ -1,3 +1,7 @@
+---
+title: Protocole de validation proposé
+---
+
 # Protocole de validation proposé
 
 Le contrôle par les couleurs du plan n'est **pas** une validation : toutes les

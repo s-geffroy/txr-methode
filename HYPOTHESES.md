@@ -1,3 +1,7 @@
+---
+title: Choix de méthode et hypothèses
+---
+
 # Choix de méthode et hypothèses
 
 Ce document liste les choix de conception (F1–F7) et les hypothèses de la correction expérimentale (V3, V4), avec leur source et les variantes essayées. Les hypothèses V3 ont été fixées pendant l'analyse, sans préenregistrement : elles doivent être confirmées par des mesures sur neige damée.
