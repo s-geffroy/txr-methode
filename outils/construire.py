@@ -18,6 +18,7 @@ import numpy as np
 RACINE = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent)
 VERSION = "0.5.1"
 AUTEUR = "Sylvain Geffroy"
+DOI = "10.5281/zenodo.24280550"           # DOI concept Zenodo : toutes les versions
 ENCRE, ACCENT, NEIGE, SOL = "#1d2733", "#b4470b", "#7fb3e6", "#e9e2d6"
 
 # --- La méthode, en chiffres (les mêmes que dans METHODE.md) -----------------
@@ -445,7 +446,7 @@ def panneau(chemin):
     c.drawString(m, 15.6 * mm, "Notes de recherche, provisoires : les seuils n'ont pas encore été vérifiés sur le terrain.")
     c.drawString(m, 11.9 * mm, "Sur les pistes, le balisage et les consignes de la station font foi.")
     c.setFillColor(HexColor("#666666")); c.setFont("DejaVu", 6.6)
-    c.drawString(m, 6 * mm, f"TxR, méthode v{VERSION} · {AUTEUR} · CC BY 4.0 · https://s-geffroy.github.io/txr-methode/")
+    c.drawString(m, 6 * mm, f"TxR, méthode v{VERSION} · {AUTEUR} · CC BY 4.0 · https://doi.org/{DOI}")
     c.showPage(); c.save()
 
 
@@ -475,12 +476,12 @@ def construire():
             def pied(c, doc, titre=titre):
                 c.saveState(); c.setFont("DejaVu", 6.5); c.setFillColorRGB(0.4, 0.4, 0.4)
                 c.drawString(1.8 * cm, 0.8 * cm, f"TxR, méthode v{VERSION} · {AUTEUR} · CC BY 4.0 · "
-                             "https://s-geffroy.github.io/txr-methode/")
+                             f"https://doi.org/{DOI} · https://s-geffroy.github.io/txr-methode/")
                 c.drawRightString(A4[0] - 1.8 * cm, 0.8 * cm, f"{doc.page}")
                 c.restoreState()
             doc = SimpleDocTemplate(buf, pagesize=A4, leftMargin=1.8 * cm, rightMargin=1.8 * cm, topMargin=1.4 * cm,
                                     bottomMargin=1.4 * cm, title=titre, author=AUTEUR, subject="Méthode TxR",
-                                    keywords="CC BY 4.0", invariant=1)
+                                    keywords=f"CC BY 4.0; DOI {DOI}", invariant=1)
             doc.build(_histoire(md, taille, images), onFirstPage=pied, onLaterPages=pied)
             if doc.page <= pages:
                 break
