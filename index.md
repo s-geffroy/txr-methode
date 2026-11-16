@@ -4,6 +4,8 @@ title: Accueil
 
 # TxR, noter une piste de ski avec deux chiffres
 
+[![DOI 10.5281/zenodo.24280550](https://zenodo.org/badge/DOI/10.5281/zenodo.24280550.svg)](https://doi.org/10.5281/zenodo.24280550)
+
 Une couleur de piste mélange deux choses : la difficulté du passage le plus raide et la longueur de la descente. TxR les sépare. La note **T**, de T0 à T6, dit à quel point le passage le plus raide est technique. La note **R**, de R0 à R5, dit l'effort que demande la descente, d'après son dénivelé. Une piste courte avec un mur peut ainsi valoir T5·R1, et une longue piste facile T1·R4. Un long tronçon facile ne rattrape pas un mur, et un mur ne rend pas une piste longue.
 
 TxR est un travail de recherche. Ses seuils n'ont pas encore été vérifiés sur le terrain et ses notes ne remplacent pas le classement d'une station : sur les pistes, seul le balisage fait foi.
