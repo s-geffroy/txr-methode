@@ -14,6 +14,7 @@ Sur la neige, la piste est plus douce que le sol nu. On estime cette différence
 La station relève chaque matin la hauteur de neige en bas et en haut du domaine. On en déduit la neige sur chaque piste selon son altitude et son orientation, puis on recalcule la note. La neige change surtout les murs courts ; sur un passage de 30 m, elle modifie rarement la note.
 
 ## À savoir
+- Une piste balisée mais non damée est notée sans l'effet de la dameuse et porte la mention « non damée » : attendez-vous à des bosses et à une neige non travaillée.
 - Les seuils viennent de repères habituels pour les pistes damées et n'ont pas encore été vérifiés sur le terrain. Le calcul peut sous-estimer un passage court et très raide : sur place, ce peut être un peu plus dur.
 - TxR ne tient pas compte de la glace, de la neige dure, des bosses, de la visibilité ni de l'affluence.
 - Le premier essai, sur une station des Alpes du Sud, range les pistes dans un ordre proche de celui de leurs couleurs. Le niveau exact des notes reste à confirmer par des mesures sur neige damée.

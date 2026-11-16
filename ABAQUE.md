@@ -39,6 +39,8 @@ L et h sont en mètres.
 
 Sans neige, L vaut déjà 5 m : c'est l'effet de la dameuse. Avec 1 m de neige, L = 10 m ; avec 2 m, L = 15 m.
 
+Sur une piste non damée, il n'y a pas de dameuse : L = 5 h. Avec 1 m de neige, L = 5 m. On fait le calcul avec les deux longueurs et on garde la pente la plus forte.
+
 ## Étape 3. Le coefficient de lissage
 
 La note du mur court regarde la pente sur 10 m. Après lissage, elle vaut :

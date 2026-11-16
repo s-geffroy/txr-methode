@@ -73,6 +73,12 @@ $$L = L_0 + k\,h$$
 
 où h est la hauteur de neige en mètres, L<sub>0</sub> = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
 
+**Les pistes non damées.** Certaines pistes sont balisées et sécurisées sans être damées. Sans dameuse, seule la neige naturelle adoucit le relief : on lisse alors sur
+
+$$L = k\,h$$
+
+au lieu de L<sub>0</sub> + k h. Ce lissage plus court ne rend pas toujours la piste plus raide, à cause des bords et des centiles. Par prudence, chaque pente retenue est donc la plus forte des deux calculs, avec et sans dameuse : une piste non damée ne sort jamais plus facile que si elle était damée. Les bosses ne se voient pas dans le relief et ne sont pas chiffrées. La note s'affiche avec la mention « non damée : bosses et neige non travaillée possibles », et ces pistes ne comptent pas dans l'accord avec les couleurs.
+
 Ces corrections ne valent pas toutes autant. Sur 30 m, la neige change peu la pente, car L reste plus court que le passage. Sur 10 m, elle peut faire baisser un mur d'une classe : c'est donc surtout par la règle du mur court que l'enneigement change la note.
 
 ## Deux façons de lire la pente
@@ -129,4 +135,4 @@ Chaque calcul écrit dans un dossier neuf, avec ses paramètres et l'empreinte d
 - Les seuils de T et de R, l'angle θ, L0 et k ne sont pas calibrés.
 - La largeur réelle damée, le dévers, les obstacles, la glace et les bosses ne sont pas pris en compte.
 - Les types de virages et le lien avec le rayon des skis reposent sur des rayons et des largeurs balayées supposés.
-- La neige de culture et le damage réel ne sont pas représentés.
+- La neige de culture et le damage réel ne sont pas représentés. Une piste non damée n'est traitée à part que si le plan ou la station la déclare ; les bosses n'y sont pas chiffrées.

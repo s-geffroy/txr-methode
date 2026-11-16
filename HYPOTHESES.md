@@ -34,6 +34,7 @@ Le nom TxR vient de *Technical × Resistance* : la technique et la résistance 
 | H9 | L'accord avec les couleurs se compte par piste, comparé au hasard | Révision méthodologique | comptage par morceau de tracé (abandonné) |
 | H10 | Pas de zigzag sur une piste de moins de 10 m de large | Revue de la méthode | zigzag partout (abandonné) |
 | H11 | Les virages sont des arcs de cercle : godille (4 m), courts (8 m), moyens (15 m), grands (25 m), avec une largeur balayée limitée par la piste | Demande de l'auteur ; rayons supposés, sans mesure | aucune |
+| H13 | Une piste non damée est lissée par la neige seule, sur L = k h ; chaque pente retenue est la plus forte des calculs avec et sans dameuse | Demande de l'auteur : la note sert au skieur qui hésite à s'engager, elle ne doit pas promettre une piste plus douce que damée. Les bosses ne sont pas chiffrées, faute de source | une classe de plus d'office pour les bosses (écartée, sans source) |
 | H12 | Un virage coupé a un rayon égal au rayon de cotes du ski multiplié par le cosinus de l'angle de carre, pris à 45° | Relation géométrique du ski taillé, flexion et dérapage négligés | 30° et 60° à calculer |
 
 ## Ce qui reste ouvert

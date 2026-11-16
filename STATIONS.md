@@ -47,6 +47,12 @@ Avant de calculer, on contrôle que la station est bien dessinée dans OpenStree
 
 Quand un contrôle échoue, on corrige d'abord les données dans OpenStreetMap, ce qui profite à tout le monde. Les pistes saisies sous forme de relations, fréquentes dans certains pays, sont lues comme les autres : leurs lignes reprennent les étiquettes de la relation. Les surfaces de piste saisies en plusieurs morceaux (multipolygones) servent aussi à mesurer la largeur, toujours sur la surface de la piste concernée et non sur l'ensemble des surfaces voisines.
 
+## Les pistes non damées
+
+Une piste balisée et sécurisée mais non damée se déclare de deux façons : d'après le plan officiel, quand sa légende la distingue (à Tignes – Val d'Isère, les pistes « Naturide »), ou par une liste de pistes dans les paramètres de la station. Toute la piste est alors traitée comme non damée, variantes comprises, sauf si une variante est déclarée à part. Une piste non damée sur une partie seulement de son tracé n'est pas prévue.
+
+OpenStreetMap indique parfois qu'une piste n'est pas damée (étiquette `piste:grooming`). Cette information, souvent posée sur un seul tronçon, est seulement signalée comme à vérifier : elle ne change pas la note.
+
 ## La neige
 
 En France, la réanalyse S2M de Météo-France couvre les Alpes, les Pyrénées et la Corse, à notre connaissance. Ailleurs, et dans les massifs qu'elle ne couvre pas (Vosges, Jura, Massif central), on peut utiliser une autre climatologie de la neige par altitude et orientation, ou, à défaut, faire le calcul sans facteur d'orientation (f = 1). La climatologie doit couvrir toutes les altitudes du domaine. Un domaine sur plusieurs versants ou plusieurs massifs utilise une climatologie et un couple de points de relevé par secteur.

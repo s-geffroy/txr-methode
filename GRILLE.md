@@ -19,7 +19,7 @@ Ces descriptions sont des repères provisoires, écrits à partir des seuils. El
 
 ## Comment lire les pentes
 
-Les pourcentages sont ceux du passage de 30 m le plus raide de la piste damée estimée. Un mur court de 10 m peut faire monter la note : à partir de 40 % sur 10 m, la piste est au moins T3, et au moins T6 à partir de 75 % (voir [la méthode](METHODE.md)). En degrés, 10 % font environ 6°, 20 % 11°, 25 % 14°, 35 % 19°, 45 % 24° et 60 % 31°.
+Les pourcentages sont ceux du passage de 30 m le plus raide de la piste damée estimée. Un mur court de 10 m peut faire monter la note : à partir de 40 % sur 10 m, la piste est au moins T3, et au moins T6 à partir de 75 % (voir [la méthode](METHODE.md)). Une piste non damée garde la même échelle, calculée sans l'effet de la dameuse ; sa note porte la mention « non damée ». En degrés, 10 % font environ 6°, 20 % 11°, 25 % 14°, 35 % 19°, 45 % 24° et 60 % 31°.
 
 ## Et les couleurs ?
 

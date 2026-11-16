@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 RACINE = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent)
-VERSION = "0.5.2"
+VERSION = "0.6.0"
 AUTEUR = "Sylvain Geffroy"
 DOI = "10.5281/zenodo.24280550"           # DOI concept Zenodo : toutes les versions
 ENCRE, ACCENT, NEIGE, SOL = "#1d2733", "#b4470b", "#7fb3e6", "#e9e2d6"

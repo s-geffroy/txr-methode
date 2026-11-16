@@ -46,7 +46,7 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 
 ## Citer, réutiliser
 
-Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.2. Zenodo. [https://doi.org/10.5281/zenodo.24280550](https://doi.org/10.5281/zenodo.24280550)
+Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.6.0. Zenodo. [https://doi.org/10.5281/zenodo.24280550](https://doi.org/10.5281/zenodo.24280550)
 
 Archive et DOI : [Zenodo](https://doi.org/10.5281/zenodo.24280550) (toutes versions) · [version 0.5.2](https://doi.org/10.5281/zenodo.24280769) · [version 0.5.1](https://doi.org/10.5281/zenodo.24280551).
 

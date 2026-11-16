@@ -4,6 +4,11 @@ title: Versions
 
 # Versions
 
+## 0.6.0 (16/11/2026)
+
+- Pistes non damées : lissage par la neige seule (L = k h), pente la plus forte des calculs avec et sans dameuse, mention « non damée » (hypothèse H13). Déclaration par le plan ou par la station ; l'étiquette OpenStreetMap est seulement signalée.
+- Résultats par station : Pra-Loup, Grand Tourmalet, Val d'Isère–Tignes.
+
 ## 0.5.2 (16/11/2026)
 
 - DOI Zenodo dans le pied de page de chaque fiche, du panneau de bord de piste et dans les métadonnées des PDF.

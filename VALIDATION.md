@@ -21,6 +21,8 @@ T est un maximum sur toute la piste. Mesurer seulement le passage prédit comme 
 
 On estime aussi θ sur des traces GPS de skieurs de plusieurs niveaux, plutôt que de le supposer.
 
+Sur une piste non damée, les mêmes levés de surface montrent ce que la neige naturelle laisse du relief, et la taille des bosses. C'est la seule façon de savoir si la note calculée sans dameuse est juste, et s'il faut un jour une règle pour les bosses.
+
 ## Échantillon
 
 - Plusieurs stations, et pas seulement la station pilote : 8 à 12 au total, de pays, d'altitudes et d'enneigements différents, pour pouvoir estimer l'écart entre stations.
