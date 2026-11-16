@@ -13,6 +13,25 @@ La méthode a été mise au point sur La Foux d'Allos, le site le plus haut du d
 - Neige : réanalyse S2M de Météo-France, massif Haut-Var/Haut-Verdon, saisons 1996 à 2026.
 - Largeur : mesurée sur les surfaces de piste OpenStreetMap pour 16 tracés sur 72 (les seuls bien couverts par une surface dessinée) ; pour les autres, la médiane mesurée (34 m). Les résultats ci-dessous viennent du calcul 0.5 (relief interpolé, largeur mesurée surface par surface) ; ils diffèrent de moins d'une piste de ceux du calcul 0.4.
 
+## Couleurs, pentes et notes
+
+Le tableau rassemble, couleur par couleur, les principales caractéristiques des pistes et les notes que leur donne TxR. Pour chaque grandeur, il donne la médiane des pistes, avec entre parenthèses la plus petite et la plus grande valeur. Les pentes maximales sont celles du passage le plus raide de chaque piste. Le sol nu est le relief sans neige ni correction ; la piste estimée tient compte de la largeur et de la neige, sans zigzag.
+
+| | Verte | Bleue | Rouge | Noire |
+|---|---|---|---|---|
+| Pistes | 2 | 17 | 19 | 4 |
+| Dénivelé | 55 m (41–70) | 131 m (18–364) | 244 m (83–626) | 438 m (421–528) |
+| Pente moyenne | 8 % (6–9) | 20 % (4–30) | 29 % (11–45) | 34 % (29–37) |
+| Pente maximale sur 30 m, sol nu | 29 % (16–42) | 39 % (24–53) | 56 % (43–68) | 71 % (64–78) |
+| Pente maximale sur 30 m, piste estimée | 19 % (15–24) | 37 % (17–48) | 52 % (40–62) | 65 % (61–74) |
+| Pente maximale sur 10 m, piste estimée | 21 % | 37 % | 54 % | 67 % |
+| Note T affichée (sans zigzag) | T1 : 1, T2 : 1 | T1 : 3, T3 : 5, T4 : 5, T5 : 4 | T4 : 2, T5 : 16, T6 : 1 | T6 : 4 |
+| Note T avec zigzag à 30° | T1 : 2 | T1 : 3, T2 : 3, T3 : 5, T4 : 6 | T3 : 1, T4 : 6, T5 : 12 | T5 : 3, T6 : 1 |
+| Note R | R0 : 2 | R0 : 4, R1 : 7, R2 : 6 | R1 : 8, R2 : 6, R3 : 5 | R3 : 4 |
+| Classe T attendue pour la couleur | T0–T1 | T1–T2 | T3–T4 | T4–T6 |
+
+« T3 : 5 » se lit « cinq pistes notées T3 ». Toutes les grandeurs montent avec la couleur, mais les plages se recouvrent largement : des bleues sont plus raides que certaines rouges, sur sol nu comme sur la piste estimée. Les notes T sortent le plus souvent au-dessus de la classe attendue pour la couleur, surtout sans zigzag. Les pentes du plus raide passage des bleues (37 % en médiane) dépassent nettement les repères habituels des bleues damées : c'est soit le signe que la correction vers la piste damée reste trop faible, soit que les couleurs tiennent compte d'autres critères que le passage le plus raide. Seules des mesures sur neige damée permettront de trancher.
+
 ## Accord avec les couleurs
 
 Pour chaque piste, on regarde si sa note T tombe dans la plage attendue pour sa couleur : verte T0–T1, bleue T1–T2, rouge T3–T4, noire T4 et au-delà. Les plages se chevauchent, et une noire est conforme dès T4 : ce contrôle est donc indulgent par construction.
