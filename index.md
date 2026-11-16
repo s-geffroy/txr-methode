@@ -40,13 +40,13 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 | Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) · [Panneau de bord de piste (PDF, demi-page A4)](fiches/panneau.pdf) |
 | Spécialistes | [Fiche technique (PDF)](fiches/technique.pdf) · [Méthode complète](METHODE.md) · [Hypothèses](HYPOTHESES.md) |
 | Autres stations | [Appliquer TxR à une station](STATIONS.md) |
-| Tous | [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) |
+| Tous | [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) · [Versions](CHANGELOG.md) |
 
 ## Citer, réutiliser
 
-Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.1. Zenodo. [https://doi.org/10.5281/zenodo.24280550](https://doi.org/10.5281/zenodo.24280550)
+Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.2. Zenodo. [https://doi.org/10.5281/zenodo.24280550](https://doi.org/10.5281/zenodo.24280550)
 
-Archive et DOI : [Zenodo](https://doi.org/10.5281/zenodo.24280550) (toutes versions) · [version 0.5.1](https://doi.org/10.5281/zenodo.24280551).
+Archive et DOI : [Zenodo](https://doi.org/10.5281/zenodo.24280550) (toutes versions) · [version 0.5.1](https://doi.org/10.5281/zenodo.24280551).
 
 Les chiffres de l'essai sont des résultats agrégés, calculés à partir de données © contributeurs [OpenStreetMap](https://www.openstreetmap.org/copyright) (ODbL 1.0), de l'IGN et de Météo-France (Licence Ouverte Etalab 2.0). Aucune base de données n'est diffusée ici. Ce travail est indépendant des exploitants des stations citées.
 

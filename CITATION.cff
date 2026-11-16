@@ -5,7 +5,7 @@ type: dataset
 authors:
   - family-names: Geffroy
     given-names: Sylvain
-version: 0.5.1
+version: 0.5.2
 date-released: 2026-11-16
 license: CC-BY-4.0
 repository-code: "https://github.com/s-geffroy/txr-methode"
@@ -35,7 +35,7 @@ preferred-citation:
     - family-names: Geffroy
       given-names: Sylvain
   year: 2026
-  version: 0.5.1
+  version: 0.5.2
   doi: 10.5281/zenodo.24280550
   publisher:
     name: Zenodo
