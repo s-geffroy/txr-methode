@@ -19,6 +19,7 @@ Site : https://s-geffroy.github.io/txr-methode/
 | [VIRAGES.md](VIRAGES.md) | types de virages et rayon des skis |
 | [STATIONS.md](STATIONS.md) | appliquer TxR à une station : paramètres, données, contrôles |
 | [HYPOTHESES.md](HYPOTHESES.md) | principes et hypothèses, avec les variantes essayées |
+| [RESULTATS.md](RESULTATS.md) | résultats par station, chiffres agrégés par couleur |
 | [PILOTE.md](PILOTE.md) | l'essai à La Foux d'Allos, chiffres agrégés |
 | [VALIDATION.md](VALIDATION.md) | le protocole de validation proposé |
 | [CHANGELOG.md](CHANGELOG.md) | historique des versions |
@@ -30,7 +31,7 @@ Site : https://s-geffroy.github.io/txr-methode/
 
 Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.2. Zenodo. https://doi.org/10.5281/zenodo.24280550
 
-Le DOI 10.5281/zenodo.24280550 désigne toujours la dernière version ; chaque version a aussi le sien : 0.5.2, 10.5281/zenodo.24280769 ; 0.5.1, 10.5281/zenodo.24280551.
+Le DOI 10.5281/zenodo.24280550 désigne toujours la dernière version ; chaque version a aussi le sien : 0.5.2, 10.5281/zenodo.24280769 ; 0.5.1, 10.5281/zenodo.24280551.
 
 Le fichier [CITATION.cff](CITATION.cff) donne les mêmes informations sous forme lisible par les logiciels (bouton « Cite this repository » sur GitHub).
 

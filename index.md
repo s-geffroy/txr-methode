@@ -32,7 +32,7 @@ La hauteur de neige change un peu la note, surtout sur les murs courts. Avec deu
 
 ## Où en est-on
 
-La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y sortent dans un ordre proche de celui de leurs couleurs. C'est encourageant, mais la pente moyenne seule donne déjà un ordre assez proche, et le niveau des notes dépend de nos hypothèses : selon l'angle de zigzag supposé, de 10 à 32 pistes tombent dans la classe de leur couleur. Le [compte rendu de l'essai](PILOTE.md) donne le détail, et le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
+La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y sortent dans un ordre proche de celui de leurs couleurs. C'est encourageant, mais la pente moyenne seule donne déjà un ordre assez proche, et le niveau des notes dépend de nos hypothèses : selon l'angle de zigzag supposé, de 10 à 32 pistes tombent dans la classe de leur couleur. Le [compte rendu de l'essai](PILOTE.md) donne le détail. La même méthode, sans aucun réglage nouveau, a ensuite été appliquée à Pra-Loup, avec des résultats proches ([résultats par station](RESULTATS.md)). Le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
 
 ## Documents
 
@@ -42,7 +42,7 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 | Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) · [Panneau de bord de piste (PDF, demi-page A4)](fiches/panneau.pdf) |
 | Spécialistes | [Fiche technique (PDF)](fiches/technique.pdf) · [Méthode complète](METHODE.md) · [Hypothèses](HYPOTHESES.md) |
 | Autres stations | [Appliquer TxR à une station](STATIONS.md) |
-| Tous | [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) · [Versions](CHANGELOG.md) |
+| Tous | [Résultats par station](RESULTATS.md) · [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) · [Versions](CHANGELOG.md) |
 
 ## Citer, réutiliser
 
