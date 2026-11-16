@@ -1,45 +1,46 @@
 ---
-title: Protocole de validation proposé
+title: Protocole de validation
 ---
 
 # Protocole de validation proposé
 
-Le contrôle par les couleurs du plan n'est **pas** une validation : toutes les
-corrections réduisent la pente et, sur sol nu, aucune piste n'est « plus
-facile » que sa couleur, donc la conformité augmente mécaniquement avec
-l'ampleur de la correction (angle de zigzag θ, largeur). À La Foux d'Allos,
-42 pistes : 10, 20 puis 32 pistes conformes pour θ = 0°, 30° et 45°. Le
-résultat robuste est la concordance de **rang** entre couleur et classe
-(τ-b de Kendall ≈ 0,74), pas le niveau absolu des classes.
+L'accord avec les couleurs du plan ne valide pas TxR. Les corrections réduisent toutes la pente, si bien que l'accord augmente avec leur ampleur, et les couleurs elles-mêmes ont été données en grande partie d'après la pente (voir [l'essai à La Foux d'Allos](PILOTE.md)). Pour savoir si les notes sont justes, il faut mesurer la pente là où l'on skie : sur la neige damée.
 
-## Référence
+## Deux questions distinctes
 
-Mesurer la pente **sur neige damée**, pas sur les couleurs.
+1. La pente est-elle bien estimée ? On compare la pente prédite à la pente mesurée sur neige damée.
+2. La note rend-elle compte de la difficulté ressentie ? On compare T au jugement de skieurs experts.
 
-- Unité : la fenêtre de 30 m (et de 10 m pour les murs courts), regroupée par piste.
-- Instruments : GNSS RTK le long de la ligne de pente et de trajectoires
-  réelles, ou inclinomètre étalonné.
-- θ empirique : estimer l'angle de zigzag sur des traces GPS de skieurs de
-  différents niveaux, plutôt que le supposer.
+La première question se règle par des mesures, la seconde par un jury. On les analyse séparément.
 
-## Échantillonnage
+## Ce qu'on mesure
 
-- Stratifié par couleur et par classe T prédite, en surreprésentant les vertes
-  et les noires (peu nombreuses).
-- Environ 100 à 120 fenêtres : 2 à 3 par piste, dont la fenêtre critique
-  prédite et une fenêtre tirée au hasard.
-- Analyse par modèle mixte (effet aléatoire par piste).
+Avant toute mesure, il faut fixer quelle pente sert de référence : la ligne de pente de la piste, ou la trajectoire d'un skieur. θ dépend sans doute du niveau ; si la trajectoire est retenue, on la décrit pour un niveau donné.
 
-## Métriques
+T est un maximum sur toute la piste. Mesurer seulement le passage prédit comme le plus raide ne permet pas de voir que le modèle s'est trompé d'endroit. Le mieux est donc de relever des profils complets de la surface damée : par les systèmes de mesure de hauteur de neige embarqués sur les dameuses (GNSS), ou par des levés de drone (photogrammétrie ou LiDAR). Ces levés donnent en même temps la pente, l'épaisseur réelle de neige et la largeur damée. Un levé GNSS à pied le long de lignes choisies vient en complément. Un inclinomètre ne mesure la pente que sur un mètre environ, et ne convient pas seul.
 
-- Pente : Bland-Altman (biais et limites d'accord) entre pente prédite et
-  pente mesurée ; objectif |biais| < 2 points.
-- Classe : kappa pondéré quadratique entre T prédit et T mesuré ; avec
-  ~110 fenêtres, demi-largeur de l'intervalle ≈ 0,1.
-- Appréciation : jury d'au moins trois moniteurs, notation en aveugle, accord
-  mesuré par l'α de Krippendorff.
+On estime aussi θ sur des traces GPS de skieurs de plusieurs niveaux, plutôt que de le supposer.
 
-## Préenregistrement
+## Échantillon
 
-Figer θ, L0, k, la largeur par défaut et les seuils **avant** la mesure, puis
-valider sur une seconde station.
+- Plusieurs stations, et pas seulement la station pilote : 8 à 12 au total, de pays, d'altitudes et d'enneigements différents, pour pouvoir estimer l'écart entre stations.
+- Dans chaque station, des pistes choisies par couleur et par note prédite, en ajoutant des vertes et des noires, rares dans une station donnée.
+- Des mesures répétées dans la saison, pour plusieurs niveaux d'enneigement : c'est aussi ce qui permet de vérifier l'abaque d'enneigement.
+
+## Analyse
+
+- Pour la pente, on compare pente prédite et pente mesurée par la méthode de Bland et Altman adaptée aux mesures répétées : biais moyen et limites d'accord. Objectifs proposés : biais de moins de 2 points de pente (en %), limites d'accord à moins de 5 points. C'est la dispersion, plus que le biais, qui fait changer de classe.
+- Pour la note, on croise T prédit et T mesuré dans un tableau complet, puis on estime l'accord avec un kappa pondéré et un modèle ordinal (logit cumulatif) avec un effet aléatoire par piste et par station. Pour une station, avec une centaine de passages répartis sur une quarantaine de pistes, l'intervalle du kappa aura une demi-largeur d'environ 0,13 à 0,15.
+- Le jury réunit au moins cinq moniteurs extérieurs aux stations étudiées, qui notent sur une échelle décrite à l'avance, sur place ou sur vidéo. Accord entre eux mesuré par l'α de Krippendorff ordinal.
+- Pour l'abaque, on tient un journal des notes du jour prédites et de ce qui a été observé sur place.
+
+## Enregistrer avant de mesurer
+
+Avant la campagne, on fige et on dépose publiquement (par exemple sur OSF) :
+
+- θ, L0, k, la largeur par défaut et les seuils ;
+- la pente de référence et le niveau de skieur retenus ;
+- les critères de réussite, par exemple : borne basse de l'intervalle du kappa au-dessus de 0,6, intervalle du biais compris entre −2 et +2 points de pente, limites d'accord à moins de 5 points ;
+- ce qu'on fera si ces critères ne sont pas atteints.
+
+Les stations qui ont servi à régler la méthode ne servent pas à la valider : la confirmation se fait sur des stations nouvelles.

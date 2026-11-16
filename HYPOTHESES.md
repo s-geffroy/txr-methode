@@ -1,38 +1,40 @@
 ---
-title: Choix de méthode et hypothèses
+title: Hypothèses
 ---
 
-# Choix de méthode et hypothèses
+# Principes et hypothèses
 
-Ce document liste les choix de conception (F1–F7) et les hypothèses de la correction expérimentale (V3, V4), avec leur source et les variantes essayées. Les hypothèses V3 ont été fixées pendant l'analyse, sans préenregistrement : elles doivent être confirmées par des mesures sur neige damée.
+Cette page liste les principes de départ de TxR, puis les hypothèses de la correction vers la piste damée, avec la façon dont chacune a été fixée et les variantes essayées. La plupart de ces hypothèses ont été arrêtées pendant l'analyse de la station pilote, sans enregistrement préalable, et parfois après avoir vu l'accord avec les couleurs. Elles devront être confirmées sur des données nouvelles.
 
-## Choix explicites du fil d'origine (numérotation D non confirmée)
+## Principes de départ
 
-| Réf. | Choix dans le fil | Prise en compte |
+| | Principe | Ce qu'il implique |
 |---|---|---|
-| F1 | Classement **universel**, comparable entre stations (réponse à la question 1) | Méthode de mesure imposée et versionnée ; aucun seuil propre à La Foux. |
-| F2 | Code **T×R** plutôt que 4 couleurs (question 2) | T et R séparés. La couleur officielle est conservée à part, jamais dérivée. |
-| F3 | Le standard de mesure doit être imposé (axe, pas de 5 m, fenêtre de 30 m, Gmax30, G95) | Repris et étendu par D14-B (10/30/100 m). Écarts documentés : fenêtre glissante avant, pas de fenêtre centrée (mêmes valeurs, décalées de 15 m) ; distance horizontale (D14-B), pas « au sol » ; Ḡ = Δz/L, pas la moyenne des g30. G95 exporté en `p95_*`. |
-| F4 | Seuils T0–T6 sur Gmax30, règle « G95 ≥ 40 % ⇒ T ≥ T4 », R sur le dénivelé V | **Non validés** (prompt : pas de seuils non validés en configuration réelle). Isolés dans `regles/proposition-fil.json`, marqués expérimentaux. Ne produisent que des bornes provisoires. |
-| F5 | Largeur minimale et damage en **tags**, hors TxR | Balises OSM `width`, `piste:width`, `piste:grooming` reprises dans `txr.tags_osm`. Largeur utile consignée comme manque. |
-| F6 | MNT maîtrisé : RGE ALTI ≥ 5 m, idéalement LiDAR HD | RGE ALTI 1 m échantillonné à 5 m, plus LiDAR HD 0,5 m échantillonné à 5/2/1 m. |
-| F7 | Nom : TxR = *Technical × Resistance* (précisé le 14/11/2026 ; le fil disait « Technical–Range ») | R = exigence physique (résistance), conformément au prompt. |
+| P1 | Un classement comparable d'une station à l'autre | La mesure est imposée et versionnée. Aucun seuil ni réglage n'est propre à une station ; seules les données d'entrée changent (voir [Appliquer TxR à une station](STATIONS.md)). |
+| P2 | Deux notes, technique et résistance, plutôt qu'une couleur | T et R sont calculées séparément et ne se compensent pas. La couleur officielle est conservée à part, jamais déduite des notes. |
+| P3 | Une mesure de la pente définie une fois pour toutes | Distances à plat ; passages de 10, 30 et 100 m glissés le long du tracé ; pente moyenne = dénivelé / longueur. |
+| P4 | Pas de seuil présenté comme validé tant qu'il ne l'est pas | Les seuils sont des conventions de travail. Les notes sont des bornes provisoires. |
+| P5 | Largeur et damage restent des informations à part | Ils servent à estimer la piste, mais ne forment pas une note. |
+| P6 | Un relief mesuré finement, de sol nu | MNT d'un mètre ou mieux pour les murs courts (LiDAR). |
 
-## Hypothèses de la correction expérimentale (v0.3 et v0.4)
+Le nom TxR vient de *Technical × Resistance* : la technique et la résistance physique, c'est-à-dire l'endurance.
 
-Ces choix ont été fixés **pendant l'analyse, sans préenregistrement** : les
-conformités aux couleurs étaient déjà visibles quand certains ont été arrêtés.
-Ils sont donc à confirmer par des mesures sur neige damée avant toute
-validation. Les variantes essayées sont toutes listées.
+## Hypothèses de la correction vers la piste damée
 
-| Réf. | Choix | Source et contexte | Variantes essayées |
+| | Hypothèse | Comment elle a été fixée | Variantes essayées |
 |---|---|---|---|
-| V3-1 | Couloir de la largeur de piste, parallèles tous les 2 m, ligne la moins raide par fenêtre | Utilisateur, 14/11 (« lissage + couloir ») | axe seul ; couloir de 20 m et de 40 m (sensibilité) |
-| V3-2 | Largeur : polygones OSM si ≥ 5 mesures et 30 % couverts, sinon médiane des largeurs mesurées (35 m, 16 traces) | Choix technique, sans source externe | — |
-| V3-3 | Lissage neige L = L0 + k·h, L0 = 5 m, k = 5 ; h de l'abaque S2M (février P50) ou du relevé | Hypothèse de travail, sans source externe | L0 = k = 0 ; L0 = k = 10 ; décembre P20 ; mars P80 |
-| V3-4 | Descente en biais θ = 30° (zigzag symétrique, sans gain latéral) | Choisi parmi 0/30/45° proposés à l'utilisateur, qui a demandé les trois en scénarios ; 30° retenu en référence **après** avoir vu les conformités | θ = 0° et 45° (scénarios). Une première version qui laissait finir la fenêtre plus haut sur le côté (dévers exploité) a été **abandonnée** après avoir vu des pentes nulles ou négatives (vertes à 1,9 %). |
-| V3-5 | Deux conventions publiées : trajectoire skiée (θ = 30°) et ligne de pente de la piste (θ = 0) | Utilisateur, 14/11 (« fais les deux ») | — |
-| V3-6 | Règle « mur court » : Gmax10 ≥ 40/50/60/75 % ⇒ T ≥ 3/4/5/6 (seuils de Gmax30 + 15 points) | Utilisateur, 14/11 (accord pour une règle expérimentale) ; valeurs proposées sans calibration | — |
-| V3-7 | Relevé de neige en bas (1 800 m) et en haut (2 600 m) de station | Altitudes confirmées par l'utilisateur, 14/11 | — |
-| V4-1 | Parallèles prises en face de l'axe (projection locale) ; fenêtre = W m le long de chaque ligne | Correction d'un défaut géométrique relevé par la revue du 15/11 | rapport de longueur global (v0.3, abandonné) |
-| V4-2 | Contrôle par les couleurs au niveau des pistes, comparé au hasard, avec τ-b de rang ; présenté comme contrôle | Revue du 15/11 (validité statistique) | comptage par traces (v0.3) |
+| H1 | On peut choisir son passage dans la largeur : parallèles tous les 2 m, on retient la moins raide pour chaque passage | Choix de l'auteur. La parallèle retenue peut changer d'un passage à l'autre, ce qui suppose un skieur qui change de ligne librement | axe seul ; largeur de 20 m et de 40 m |
+| H2 | Largeur : surfaces OpenStreetMap si au moins 5 mesures couvrent 30 % du tracé, sinon médiane de la station | Choix technique, sans source externe | aucune |
+| H3 | La neige lisse le profil sur L = 5 m + 5 × h | Hypothèse de travail, sans mesure | pas de lissage ; L = 10 m + 10 × h ; neige de décembre faible et de mars forte |
+| H4 | Zigzag symétrique à θ = 30° de l'axe | Choisi parmi 0°, 30° et 45°, après avoir vu l'accord avec les couleurs. θ joue le rôle d'un réglage des seuils | θ = 0° et 45°. Une première version, où le skieur finissait chaque passage plus haut sur le côté, donnait des pentes nulles ou négatives sur les vertes : abandonnée |
+| H5 | Deux conventions publiées : trajectoire et ligne de pente | Choix de l'auteur, pour ne pas trancher avant les mesures | aucune |
+| H6 | Mur court : 40, 50, 60 et 75 % sur 10 m donnent au moins T3, T4, T5 et T6 | Seuils sur 30 m relevés de 15 points, sans calibration | aucune |
+| H7 | La neige du jour se répartit en ligne droite entre deux relevés, en bas et en haut du domaine, modulée par l'orientation | Choix de l'auteur ; le facteur d'orientation vient de la climatologie | aucune |
+| H8 | Les parallèles sont prises en face du tracé, point par point | Correction d'un défaut : une version antérieure les faisait dériver dans les virages | rapport de longueur global (abandonné) |
+| H9 | L'accord avec les couleurs se compte par piste, comparé au hasard | Révision méthodologique | comptage par morceau de tracé (abandonné) |
+
+## Ce qui reste ouvert
+
+- Les seuils de T et de R n'ont pas de source publiée. Ils reprennent des repères d'usage pour les pistes damées. À notre connaissance, aucune norme française ne fixe de pente pour chaque couleur, et les normes de certains pays voisins ne se mesurent pas de la même façon. Une revue des normes et de la littérature reste à faire.
+- R ne tient compte que du dénivelé : ni la longueur, ni les replats, ni l'altitude.
+- L'angle θ dépend sans doute du niveau du skieur. Il faudra décider si T décrit la pente de la piste ou celle d'un skieur type.

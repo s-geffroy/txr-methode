@@ -1,11 +1,13 @@
 {
-  "title": "TxR — méthode : classer les pistes de ski en technique (T) et résistance (R)",
+  "title": "TxR, méthode de classement des pistes de ski en technique et résistance",
+  "version": "0.4.1",
   "upload_type": "publication",
   "publication_type": "workingpaper",
-  "description": "<p>TxR (<em>Technical × Resistance</em>) est une méthode de classement des pistes de ski en deux notes indépendantes : <strong>T</strong>, la difficulté technique du passage le plus raide (fenêtres de 10 et 30 m sur le MNT LiDAR HD de l'IGN), et <strong>R</strong>, l'exigence physique d'après le dénivelé. Une correction expérimentale estime la pente de la piste damée (couloir, enneigement S2M de Météo-France, trajectoire en zigzag).</p><p>Le dépôt contient la méthode complète, les hypothèses et leurs variantes, un protocole de validation sur neige damée et trois fiches d'une page (grand public, exploitants, technique). Mise au point sur La Foux d'Allos (Val d'Allos, France).</p><p><strong>Statut : recherche, provisoire.</strong> Seuils expérimentaux, hypothèses non vérifiées sur le terrain ; les classes sont des bornes inférieures et ne remplacent pas le balisage des stations.</p>",
+  "description": "<p>TxR note une piste de ski avec deux chiffres plutôt qu'une couleur : <strong>T</strong>, de T0 à T6, pour la difficulté technique du passage le plus raide (pente sur 30 m et murs courts sur 10 m, mesurée sur un modèle de terrain LiDAR de sol nu), et <strong>R</strong>, de R0 à R5, pour l'effort que demande le dénivelé. Une correction expérimentale estime la pente de la piste damée (largeur skiable, trajectoire en zigzag, lissage par la neige).</p><p>Le dépôt contient la méthode complète, une grille T × R décrivant chaque combinaison, un abaque pour ajuster la note à l'enneigement relevé par la station, la marche à suivre pour appliquer la méthode à une station, les hypothèses et leurs variantes, le compte rendu d'un premier essai (La Foux d'Allos, Alpes-de-Haute-Provence) et un protocole de validation sur neige damée, ainsi que quatre fiches PDF.</p><p>Travail de recherche : seuils et corrections non vérifiés sur le terrain. Les notes ne remplacent pas le classement ni le balisage des stations.</p>",
   "creators": [{"name": "Geffroy, Sylvain"}],
   "license": "cc-by-4.0",
-  "language": "fre",
-  "keywords": ["ski", "pistes de ski", "classement des pistes", "pente", "LiDAR HD", "OpenStreetMap", "MNT", "neige", "S2M", "La Foux d'Allos"],
-  "notes": "Données d'origine : © contributeurs OpenStreetMap (ODbL 1.0) ; IGN (LiDAR HD, RGE ALTI) et Météo-France (réanalyse S2M), Licence Ouverte Etalab 2.0."
+  "language": "fra",
+  "keywords": ["ski", "pistes de ski", "classement des pistes", "pente", "LiDAR", "modèle numérique de terrain", "OpenStreetMap", "neige", "S2M"],
+  "related_identifiers": [{"identifier": "https://s-geffroy.github.io/txr-methode/", "relation": "isSupplementedBy", "scheme": "url"}],
+  "notes": "Résultats agrégés calculés à partir de données © contributeurs OpenStreetMap (ODbL 1.0), IGN (LiDAR HD, RGE ALTI) et Météo-France (réanalyse S2M), Licence Ouverte Etalab 2.0. Aucune base de données n'est diffusée."
 }

@@ -1,158 +1,110 @@
 ---
-title: Méthode de calcul TxR (v0.4.0)
+title: Méthode
 ---
 
-> Ce document décrit la méthode telle qu'elle est implémentée dans TxR v0.4.0 (code non publié à ce stade). Les noms de fonctions et de fichiers renvoient à cette implémentation.
+# Méthode de calcul
 
-# Méthode de calcul TxR (v0.4.0)
+Ce document décrit le calcul complet, dans l'ordre où il se fait. Il vaut pour n'importe quelle station : ce qui dépend du lieu (sources de relief, altitudes des relevés de neige, largeur par défaut…) est rassemblé dans [Appliquer TxR à une station](STATIONS.md). Les choix discutables et leurs variantes sont dans [Hypothèses](HYPOTHESES.md). La version décrite est celle du programme de calcul 0.4, qui n'est pas publié à ce jour ; le numéro 0.4.1 désigne la révision de ces textes.
 
-## Glossaire
+## Ce que la méthode produit
 
-- **Piste** : une entrée du plan officiel (nom + couleur), identifiant `piste_id`. Unité du contrôle par les couleurs.
-- **Trace** (ou composante) : une ligne continue calculée pour une piste, `trace_id` ; une piste peut en avoir plusieurs, elle prend alors la classe la plus haute.
-- **Tronçon** : un way OSM (`troncon_id = W<osm_id>`), brique d'une trace.
-- **Fenêtre** : portion de W m (10, 30 ou 100) sur laquelle on mesure une pente.
-- **Classe T « provisoire »** : borne inférieure (« T3 » = « au moins T3 »).
-- **Convention trajectoire** : pente de la trajectoire skiée en zigzag à θ = 30° de l'axe (hypothèse).
-- **Convention ligne de pente** : pente de la piste dans sa propre direction, sans zigzag. À ne pas confondre avec le drapeau `axe_ligne_de_pente` (affiché « axe face à la pente »), qui signale un pic où l'axe OSM suit la ligne de plus grande pente du **terrain**.
+Pour chaque piste du plan, TxR donne deux notes indépendantes.
 
+- **T**, de T0 à T6, mesure la difficulté technique : elle dépend de la pente des passages les plus raides.
+- **R**, de R0 à R5, mesure l'exigence physique : elle dépend du dénivelé de la piste.
 
-## Géométrie
+L'exposition (E) et les conditions du jour (C : glace, visibilité, affluence) restent en dehors des notes. Elles ne sont pas calculées aujourd'hui.
 
-- **Source.** OpenStreetMap, ways `piste:type=downhill`. Les lignes sont projetées en Lambert-93 (EPSG:2154) ; toutes les distances sont planimétriques.
-- **Assemblage.** Deux ways d'une même entrée ne sont joints que s'ils partagent un **nœud OSM** de degré 2 dans cette entrée. Un nœud de degré supérieur à 2 (embranchement) coupe la chaîne. Des extrémités à moins de 5 m sans nœud commun sont consignées dans `raccords` et ne sont pas assemblées. Les composantes disjointes gardent des profils distincts.
-- **Orientation.**
-  - La trace est orientée vers l'aval d'après les altitudes de ses extrémités (IGN, ou MNT LiDAR à défaut).
-  - Le sens de numérisation OSM (`sens_osm`) est comparé à ce résultat ; un désaccord est signalé par `desaccord_sens_osm`.
-  - Égalité ou altitude manquante : orientation indéterminée, aucune pente calculée.
+Chaque note porte un statut. Tant que les seuils ne sont pas validés, T est une *borne basse provisoire* : « T3 » se lit « au moins T3, sous les hypothèses du modèle ». Une note manque (*non déterminée*) quand les données ne permettent pas de la calculer. Le statut *définitif* demanderait des seuils validés, des pentes stables d'un pas de profil à l'autre, et la largeur, le dévers et les obstacles connus. Aucune piste ne l'atteint pour l'instant.
 
-## Profils (D15-B)
+## Les tracés
 
-- **Pas de référence.** IGN RGE ALTI au pas de 5 m (lots de 120 points, cache par empreinte de l'URL exacte). Les deux extrémités sont toujours conservées.
-- **Affinage.**
-  - Il se fait sur le MNT LiDAR HD (dalles de 1 km à 0,5 m, WMS-R de la Géoplateforme), aux pas de 5, 2 et 1 m.
-  - Il est déclenché si l'orientation est déterminée, si les dalles couvrent au moins 99 % des points et si la maille est inférieure ou égale au pas.
-  - Les valeurs échantillonnées sont mises en cache par empreinte des points et des dalles : le rejeu hors ligne n'a pas besoin des dalles.
-- **Altitude absente.** Elle reste nulle, avec son motif (`erreur`).
+Les pistes viennent d'OpenStreetMap : les lignes marquées `piste:type=downhill`, rattachées une à une aux pistes du plan officiel de la station. Toutes les distances sont mesurées à plat, dans une projection conforme (Lambert-93 en France).
 
-## Pentes (D14-B)
+Deux lignes d'une même piste ne sont mises bout à bout que si elles partagent un point OpenStreetMap, et seulement si ce point ne sert pas aussi d'embranchement. Des extrémités proches (moins de 5 m) sans point commun ne sont pas raccordées : on les signale. Une piste peut donc compter plusieurs morceaux indépendants, chacun avec son profil, et elle prend alors la note de son morceau le plus difficile.
 
-- **Définition.** La pente descendante signée sur la fenêtre [s, s+W] vaut 100 · (z(s) − z(s+W)) / W. L'altitude en s+W est interpolée linéairement entre deux échantillons valides.
-- **Fenêtres écartées** :
-  - celles qui dépassent l'extrémité du tracé ;
-  - celles qui contiennent une altitude nulle ;
-  - celles qui ne respectent pas le **critère de résolution** : W ≥ 3 × max(pas, maille nominale).
+Chaque morceau est orienté vers l'aval d'après l'altitude de ses deux extrémités. On compare ce sens à celui dans lequel la ligne a été dessinée dans OpenStreetMap et on signale les désaccords. Si les deux extrémités sont à la même altitude, ou si l'une manque, on ne calcule aucune pente.
 
-  La maille nominale (1 m pour RGE ALTI, 0,5 m pour le LiDAR) n'est **pas** une précision locale. La v0.1.0 n'appliquait le critère qu'à la maille, ce qui laissait passer des fenêtres de 10 m au pas de 5 m.
-- **Statistiques par profil et par échelle** : n, Gmax, P50, P90, P95. S'y ajoutent la position du Gmax et la pente maximale du terrain au même endroit (gradient du MNT sur W, en x et en y).
+## Le profil en long
 
-  `axe_ligne_de_pente` est vrai si la pente de l'axe atteint au moins 90 % de cette pente maximale. C'est une condition d'artefact possible (axe imprécis, talus), **pas une preuve** : le maximum se trouve naturellement là où l'axe s'aligne sur la pente.
+Le long de chaque tracé, on lit l'altitude du terrain sur un modèle numérique de terrain (MNT) de **sol nu**, c'est-à-dire sans arbres ni bâtiments. Un modèle de surface, qui garde la végétation, produirait de fausses pentes en lisière de forêt : il ne convient pas.
 
-## Convergence
+On lit un premier profil tous les 5 m sur le MNT de référence, puis, là où un MNT plus fin couvre au moins 99 % des points, des profils tous les 5, 2 et 1 m. En France, le MNT de référence est le RGE ALTI de l'IGN (maille de 1 m) et le MNT fin est issu du LiDAR HD de l'IGN (maille de 50 cm). L'altitude est aujourd'hui lue au centre de la maille la plus proche. Une altitude introuvable reste vide, avec son motif.
 
-- **Principe.** Pour une même source, les indicateurs Gmax, P90 et P95 sont comparés entre pas successifs (5 → 2 → 1 m).
-- **Tolérance.** Elle vaut 400 · u / W points, pour une borne verticale déterministe u.
-- **Sans borne u.** Si aucune source primaire ne documente u, le statut est « incertitude inconnue ».
-- **Hypothèse de sensibilité.** La colonne `statut_hypothese` applique u = 0,10 m au LiDAR HD. Cette valeur cible du programme n'a été relevée que dans des sources secondaires.
-- **Comparaison inter-sources.** IGN 5 m contre LiDAR 5 m, à titre informatif.
-- **Limites.** Ce contrôle ne couvre ni l'erreur de position de l'axe, ni l'effet de la méthode d'échantillonnage, ni la surface sous la neige.
+## Les pentes
 
-## Indicateurs retenus
+La pente d'un passage de longueur W, qui commence au point s, vaut 100 × (z(s) − z(s + W)) / W, en pour cent. Elle est positive quand on descend. L'altitude en s + W est interpolée entre les deux points de profil voisins. On fait glisser ce passage tout le long du tracé, pour trois longueurs : 10 m (murs courts), 30 m (passages) et 100 m (sections).
 
-- **Choix du profil.** Pour chaque échelle, on retient le pas le plus fin de la meilleure source (LiDAR si son profil est complet) qui donne au moins une fenêtre.
-- **Indicateurs de la trace** :
-  - `longueur_m` (horizontale) ;
-  - `denivele_m` (différence d'altitude des extrémités) ;
-  - `pente_moyenne_pct` = 100 · Δz / L ;
-  - `longueur_3d_m` ;
-  - longueurs, fractions et continuités au-dessus des seuils `seuils_effort_pct` ;
-  - `histogramme_30m` (classes de 5 %).
-- **Fiabilité.** Chaque indicateur porte sa source, son pas et sa fiabilité (table `indicateurs`).
+Un passage n'est pas retenu s'il dépasse la fin du tracé, s'il contient une altitude manquante, ou si le profil est trop grossier pour lui. Il faut W ≥ 3 × max(pas, maille) : avec un profil tous les 5 m, le passage de 10 m n'existe donc pas. La maille nominale d'un MNT n'est pas sa précision réelle, et ce critère est un minimum.
 
-## Classement (D13-C, D12-B)
+Pour chaque tracé et chaque longueur, on garde la pente maximale (Gmax), les centiles P50, P90 et P95, et l'endroit du maximum. On y note aussi la pente maximale du terrain. Si la pente du tracé atteint 90 % de celle du terrain, le tracé descend face à la pente à cet endroit, ce qui peut venir d'un tracé imprécis ou d'un talus : on le signale, sans corriger.
 
-- **T.** Deux familles de règles, critiques et soutenues, combinées par `T = max(T_critique, T_soutenu)` : une règle déclenchée ne peut pas être compensée.
-  - `définitif` exige toutes les règles évaluables, des indicateurs convergés, aucune règle expérimentale, aucun pic à confirmer, et une largeur, un dévers et des obstacles connus. **Aucune trace ne peut l'atteindre aujourd'hui.**
-  - Sinon : `borne_provisoire` (T ≥ borne) ou `non_déterminé`.
-  - Pic à confirmer : une règle critique déclenchée sur une étendue inférieure à 2 × W.
-- **R.** Somme de composantes `poids × valeur / échelle`. Une composante manquante rend le score non déterminé.
-- **Configuration réelle** (`regles/regles-0.2.0.json`) : aucun seuil, aucun poids. Les seuils du fil sont isolés dans `regles/proposition-fil.json` (expérimental).
-- **E et C** restent nuls, avec leur motif.
+## La stabilité des mesures
+
+Pour une même source, on compare Gmax, P90 et P95 d'un pas au suivant (5, puis 2, puis 1 m). L'écart toléré est de 400 × u / W points de pente, où u est l'erreur verticale maximale du MNT. Quand aucune documentation du producteur ne donne u, le statut reste « incertitude inconnue ». Une valeur de u = 0,10 m pour le LiDAR HD sert de test de sensibilité ; elle vient de sources secondaires. Ce contrôle ne dit rien de la position du tracé ni de la surface sous la neige.
+
+## Du sol nu à la piste damée
+
+Le relief est mesuré sans neige, alors que l'on skie sur une piste damée, large, où chacun choisit son passage. Trois corrections, toutes expérimentales, ramènent la mesure vers cette piste.
+
+**La largeur.** On mesure la largeur de la piste perpendiculairement au tracé, sur les surfaces de piste dessinées dans OpenStreetMap. Il faut au moins 5 mesures couvrant 30 % du tracé ; sinon on prend la largeur médiane mesurée dans la station. On trace ensuite des lignes parallèles au tracé, tous les 2 m, jusqu'à 1 m des bords et au plus à 20 m de part et d'autre. Chaque point d'une parallèle est pris en face du point correspondant du tracé. Les parallèles vides, coupées ou de longueur anormale (hors de 0,7 à 1,3 fois le tracé) sont écartées. Pour chaque passage, on retient la parallèle la moins raide.
+
+**Le zigzag.** Un skieur ne descend pas droit dans l'axe : on suppose qu'il s'en écarte d'un angle θ, en zigzag régulier, sans sortir de la piste. Sur un trajet de W m, il n'avance que de W × cos θ le long de la piste, et la pente de son trajet vaut le dénivelé divisé par W. Sur une pente régulière, cela revient à multiplier la pente par cos θ : 0,87 à 30°, 0,71 à 45°. La valeur de référence est θ = 30°. Multiplier toutes les pentes par cos θ revient à multiplier tous les seuils par 1 / cos θ. θ joue donc le rôle d'un réglage des seuils, et il a été fixé après avoir vu les résultats (voir [Hypothèses](HYPOTHESES.md)).
+
+**La neige.** La neige damée comble les creux et arrondit les bosses. On la représente par une moyenne glissante du profil sur une longueur L = L0 + k × h, où h est la hauteur de neige en mètres, L0 = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
+
+Ces corrections ne valent pas toutes autant. Sur 30 m, la neige change peu la pente, car L reste plus court que le passage. Sur 10 m, elle peut faire baisser un mur d'une classe : c'est donc surtout par la règle du mur court que l'enneigement change la note.
+
+## Deux façons de lire la pente
+
+On calcule la pente selon deux conventions, côte à côte :
+
+- **la trajectoire**, pente du trajet en zigzag à θ = 30°, qui sert de référence pour les essais ;
+- **la ligne de pente**, pente de la piste dans sa propre direction, sans zigzag (θ = 0).
+
+La ligne de pente suit la direction de la piste, pas la plus grande pente du versant : sinon un chemin tracé en travers d'un versant prendrait la note du versant. Tant que les mesures sur neige damée n'ont pas tranché, la note affichée est la plus prudente des deux, c'est-à-dire toujours celle de la ligne de pente, puisque le zigzag ne peut que réduire la pente. La trajectoire sert aux essais.
+
+## La note T
+
+T est la plus haute des classes données par trois règles. Aucune ne peut en compenser une autre.
+
+| Règle | Mesure | T1 | T2 | T3 | T4 | T5 | T6 |
+|---|---|---|---|---|---|---|---|
+| Passage | pente maximale sur 30 m | 10 % | 20 % | 25 % | 35 % | 45 % | 60 % |
+| Mur court | pente maximale sur 10 m | | | 40 % | 50 % | 60 % | 75 % |
+| Pente soutenue | 5 % de la piste au-dessus de 40 % sur 30 m | | | | oui | | |
+
+Une piste sans aucun passage à 10 % est T0. Avec les seuils actuels, la règle de pente soutenue ne change jamais la note : une piste dont 5 % dépasse 40 % a forcément un passage au-dessus de 35 %, donc est déjà T4. Elle est gardée pour le jour où les seuils seront recalibrés. Les seuils sur 30 m sont des conventions de travail, inspirées des repères habituels pour les pistes damées ; ceux du mur court sont les mêmes relevés de 15 points, sans calibration. Ils s'appliquent à la pente de la piste estimée, pas au sol nu. Quand un seuil n'est dépassé que sur une portion plus courte que deux fois la longueur du passage, la note est signalée « pic à confirmer ». Un tracé sur lequel aucun passage ne descend, même sur sol nu, n'est pas noté : son orientation est à vérifier.
+
+## La note R
+
+R est la classe du dénivelé de la piste, mesuré entre ses deux extrémités.
+
+| R0 | R1 | R2 | R3 | R4 | R5 |
+|---|---|---|---|---|---|
+| moins de 80 m | 80 m | 200 m | 400 m | 700 m | 1 100 m |
+
+R ne tient pas compte de la longueur, des replats où il faut pousser, ni de l'altitude. Ces seuils sont aussi des conventions de travail.
+
+## La neige du jour
+
+La station relève la hauteur totale de neige en des points fixes, au moins un en bas et un en haut du domaine. En chaque point de la piste, la hauteur vaut :
+
+h = [(1 − t) × h_bas + t × h_haut] × f
+
+où t est la position en altitude entre les deux points de relevé (0 en bas, 1 en haut, sans aller au-delà), et f un facteur d'orientation : le rapport, dans la climatologie du massif et pour le mois du relevé, entre la neige à cette orientation et cette pente et la neige sur le plat, à la même altitude. f est borné entre 0 et 3. Le reste du calcul ne change pas. [L'abaque d'enneigement](ABAQUE.md) permet de faire ce calcul à la main pour un passage donné.
+
+La hauteur relevée sur piste comprend la neige de culture et le tassement, alors que la climatologie ne décrit que la neige naturelle : celle-ci ne sert qu'à répartir la neige entre les orientations.
 
 ## Reproductibilité
 
-- **Une exécution par répertoire.** Chaque exécution écrit dans un nouveau répertoire, avec `config.json` et `provenance.json` (empreintes des sources, de l'inventaire et des règles, lots de cache utilisés, dalles).
-- **Reprise.** Une exécution interrompue (`EN_COURS`) reprend trace par trace avec la même configuration. Une exécution terminée (`TERMINE`) n'est jamais réécrite.
-- **Rejeu hors ligne.** Il relit uniquement les caches et doit redonner des tables identiques : contrôle `comparaison_execution.json`.
-- **Rejeu compatible v0.1.0** (`python -m txr compat`). Il reproduit les chiffres publiés et les valeurs de la v0.1.0 : contrôle `controle_v010.json`.
+Chaque calcul écrit dans un dossier neuf, avec ses paramètres et l'empreinte de toutes ses sources (extrait OpenStreetMap daté, réponses du service d'altitude, dalles du MNT, climatologie, règles). Un calcul interrompu reprend là où il s'était arrêté, avec les mêmes paramètres. Un second calcul, fait sans réseau à partir des seules données conservées, doit redonner des tables identiques : c'est vérifié à chaque fois.
 
-## Pente skiable estimée (expérimental, v0.3.0, corrigée en v0.4.0)
+## Limites connues
 
-`python -m txr correction` (étapes 5 et 6 du pilote). Elle ramène la mesure faite sur le sol nu vers la pente de la piste damée, pour lui appliquer les repères des normes (`regles/normes-damees-corrige.json`, échelle T du fil). Les seuils ne sont **pas** calés sur les couleurs : celles-ci ne servent qu'au contrôle (`validation.json`).
-
-- **Couloir.** Largeur mesurée perpendiculairement à l'axe sur les polygones de surface de piste OSM (`piste:type=downhill`, `area=yes`, hors freeride). Il faut au moins 5 mesures et 30 % de la trace couverte ; sinon, on prend la médiane des largeurs mesurées.
-  - Des lignes parallèles sont tracées tous les 2 m, jusqu'à 1 m du bord, puis échantillonnées au pas de 1 m sur le LiDAR.
-  - Chaque point d'une parallèle est pris **en face** du point de l'axe, par projection perpendiculaire locale (v0.4). La v0.3 appliquait un rapport de longueur global, qui faisait dériver les parallèles dans les virages (15 m en médiane à ±16 m).
-  - Une fenêtre fait W m **le long de chaque ligne** ; elle est écartée si elle dépasse la fin de la ligne ou contient une lacune (pas d'extrapolation).
-  - Pour chaque fenêtre, on retient la ligne la moins raide.
-  - Ces lignes parallèles corrigent la position de l'axe, pas sa direction.
-  - Publié : `largeur_m` (largeur retenue), `largeur_effective_m` (couloir réellement échantillonné, au plus 40 m) et `paralleles_ecartees` (lignes vides, en plusieurs morceaux ou de longueur hors de [0,7 ; 1,3] × axe).
-  - Une trace dont aucune fenêtre ne descend sur sol nu (Gmax30 ≤ 0) n'est pas classée : statut « orientation à confirmer ».
-- **Descente en biais.** La trajectoire skiée s'écarte de l'axe d'un angle θ, en zigzag symétrique, sans sortir du couloir. La référence est θ = 30°, avec 0° et 45° en sensibilité.
-  - Sur une fenêtre de W m de trajectoire (longueur horizontale), le skieur avance de W·cos θ le long de l'axe et revient à son décalage de départ.
-  - Pente = (z départ − z arrivée)/W sur une même ligne parallèle ; on garde la plus faible du couloir. Pour θ = 0, on retrouve les lignes parallèles.
-  - Sur un plan, la pente est multipliée par cos θ (0,87 à 30°, 0,71 à 45°). Un mur court pèse davantage, car l'avance sur l'axe est plus courte.
-  - Le dévers n'est pas exploité. Un premier essai laissait la trajectoire finir chaque fenêtre plus haut sur le côté ; il donnait des pentes nulles ou négatives (médiane des vertes 1,9 %), ce qui revenait à traverser à plat d'une fenêtre à l'autre. Il a été abandonné.
-- **Deux conventions de mesure**, calculées côte à côte (choix de l'utilisateur du 14/11/2026 : « les deux ») :
-  - **trajectoire** (`t_borne`) : pente de la trajectoire skiée, avec un biais de 30° ;
-  - **ligne de pente** (`t_borne_ligne_pente`) : pente de la piste dans sa direction, sans biais. Ce sont les lignes parallèles lissées, indicateurs `*_paralleles`.
-  - La ligne de pente suit la direction de la piste, pas la ligne de plus grande pente du terrain : celle-ci classerait un chemin tracé en travers d'un versant comme le versant lui-même.
-- **Règle expérimentale « mur court »** (`nd-M10-*`) : Gmax10 skiable ≥ 40 / 50 / 60 / 75 % ⇒ T ≥ 3 / 4 / 5 / 6.
-  - Ce sont les seuils de Gmax30 relevés de 15 points, pour un passage de 10 m. Ils sont proposés sans calibration.
-  - C'est par cette règle que l'enneigement agit sur T, car le lissage (5 à 15 m) est du même ordre que la fenêtre.
-- **Neige.** L'abaque `data/neige/abaque-s2m-massif22.json` est construite avec `python -m txr abaque` sur la réanalyse S2M de Météo-France (massif 22, saisons 1996–2026). Elle donne les centiles P20/P50/P80 de la hauteur de neige naturelle par mois, altitude (pas de 300 m), exposition et pente.
-  - Au point considéré, h est interpolée en altitude ; l'exposition et la pente du terrain sont calculées sur le LiDAR à ±5 m.
-  - Le profil est lissé par une moyenne glissante de longueur L = L0 + k·h, où L0 représente le pontage de la dameuse et k le comblement par la neige. Près d'une extrémité ou d'une lacune, la fenêtre rétrécit pour rester centrée : une pente constante n'est pas aplatie aux bords.
-  - Une épaisseur uniforme ne change pas la pente.
-  - La neige de culture et le tassement ne sont pas représentés.
-- **Scénarios de sensibilité** :
-
-  | Paramètre | Valeur de référence | Variantes testées |
-  |---|---|---|
-  | Saison et centile | février P50 | décembre P20, mars P80 |
-  | Lissage (L0, k) | (5, 5) | sans neige, (10, 10) |
-  | Couloir | largeur OSM | axe seul, 20 m, 40 m |
-  | Biais θ | 30° | 0°, 45° |
-- **Indicateurs** : `gmax{10,30,100}_{brut,neige,couloir,paralleles,skiable}` et `p95_*` correspondants.
-  - `brut` est identique à la mesure du pipeline principal (contrôle).
-  - `couloir` : lignes parallèles sur sol nu.
-  - `paralleles` : lignes parallèles lissées par la neige (θ = 0).
-  - `skiable` : couloir lissé, avec descente en biais.
-
-## Abaque fonction du relevé de neige (expérimental, v0.3.0)
-
-Le relevé à fournir est la **hauteur totale** de neige en bas et en haut de station, comme dans les bulletins quotidiens. Les deux points sont à 1 800 m et 2 600 m (`STATION` dans `correction.py`), altitudes confirmées par l'utilisateur le 14/11/2026.
-
-- **Hauteur en chaque point de l'axe** : h = [(1 − t)·h_bas + t·h_haut] × f.
-  - t est la position en altitude entre les deux points, bornée à [0, 1].
-  - f vaut S2M(z, exposition, pente, mois) / S2M(z, plat, mois), borné à [0, 3]. Il reporte l'effet de l'exposition et de la pente vu dans la climatologie.
-  - Le mois est celui de la date du relevé.
-- **Suite du calcul** : identique à la référence (L = 5 + 5·h, couloir), pour les deux conventions. T se déduit de Gmax30, P95₃₀ et Gmax10 par `regles/normes-damees-corrige.json`.
-- **Sorties** :
-  - `abaque_releve_1d` : par trace, T selon h_bas de 0 à 150 cm par pas de 10 cm, avec h_haut = h_bas × gradient S2M de février. Le rapport en tire, pour chaque piste, le seuil en cm où la classe change.
-  - `abaque_releve_2d` : grille complète h_bas (0–300 cm, pas de 50) × h_haut (0–500 cm, pas de 50). La page visuelle l'interpole.
-  - `python -m txr cotation --bas CM --haut CM [--date AAAA-MM-JJ]` : calcul exact pour un relevé, sans réseau, à partir du cache d'échantillonnage. Il écrit `/state/cotations/<date>-bas<b>-haut<h>/cotation.{json,parquet}`.
-- **Limites** :
-  - La hauteur relevée sur piste comprend la neige de culture et le tassement ; S2M ne sert qu'aux rapports entre points.
-  - Sur des fenêtres de 30 m, la neige agit peu, car le lissage reste plus court que la fenêtre. L'abaque varie donc surtout sur les pistes proches d'un seuil.
-
-## Contrôle par les couleurs du plan (v0.4.0)
-
-Ce n'est **pas une validation**. Les corrections réduisent toutes la pente et, sur sol nu, aucune piste n'est « plus facile » que sa couleur : la conformité augmente donc mécaniquement avec l'ampleur de la correction (θ, largeur). Les hypothèses V3-1 à V3-6 ([hypothèses](HYPOTHESES.html)) ont été fixées pendant l'analyse.
-
-- Unité : la **piste** (classe la plus haute de ses composantes) ; variantes sans couleur exclues ; classes attendues verte T0–1, bleue T1–2, rouge T3–4, noire T4–6 (les noires sont conformes par construction dès T4).
-- Publié dans `validation.json` (`pistes`, `scenarios`) et au §8 bis du rapport :
-  - conformité observée et **attendue au hasard** (même répartition des classes, indépendante de la couleur), accord corrigé du hasard, intervalle bootstrap à 95 % ;
-  - **τ-b de Kendall** entre le rang des couleurs et la classe : concordance d'ordre, indépendante du niveau absolu des seuils ;
-  - conformité pour chaque scénario de sensibilité, dans les deux conventions.
-- Validation à faire : mesures de pente sur neige damée (GNSS RTK ou inclinomètre), 100 à 120 fenêtres stratifiées par couleur et par T prédit, accord par Bland-Altman et κ pondéré, θ estimé sur des traces GPS de skieurs, paramètres figés avant la mesure (voir le [protocole de validation](VALIDATION.html)).
+- Les seuils de T et de R, l'angle θ, L0 et k ne sont pas calibrés.
+- La largeur réelle damée, le dévers, les obstacles, la glace et les bosses ne sont pas pris en compte.
+- L'altitude est lue au centre de la maille la plus proche, ce qui peut gonfler légèrement les pentes maximales sur 10 m.
+- Les pistes saisies dans OpenStreetMap sous forme de relations ne sont pas encore lues.
+- L'orientation d'un tracé presque plat n'a pas de marge de tolérance.
+- Le zigzag est appliqué même aux pistes étroites, où il est peu réaliste.

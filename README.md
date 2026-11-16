@@ -1,42 +1,35 @@
-# TxR — méthode (Technical × Resistance)
+# TxR, méthode de classement des pistes de ski
 
-TxR est une méthode de classement des pistes de ski qui remplace la couleur
-unique par **deux notes indépendantes** :
+TxR note une piste de ski avec deux chiffres plutôt qu'une couleur : **T**, de T0 à T6, pour la difficulté technique du passage le plus raide, et **R**, de R0 à R5, pour l'effort que demande le dénivelé. La méthode vaut pour n'importe quelle station ; elle a été essayée pour la première fois à La Foux d'Allos (Alpes-de-Haute-Provence).
 
-- **T, technique** (T0 à T6) : difficulté du passage le plus raide, mesurée sur
-  des fenêtres de 30 m (et de 10 m pour les murs courts) ;
-- **R, résistance** (R0 à R5) : exigence physique, d'après le dénivelé.
+C'est un travail de recherche : les seuils et les corrections n'ont pas encore été vérifiés sur le terrain, et les notes ne remplacent pas le classement ni le balisage des stations.
 
-L'exposition (E) et les conditions du jour (C) restent des indicateurs à part.
-La méthode a été mise au point sur La Foux d'Allos (Val d'Allos) à partir de
-données publiques : OpenStreetMap, IGN LiDAR HD et RGE ALTI, Météo-France S2M.
-
-> **Statut : recherche, provisoire.** Les seuils sont expérimentaux et les
-> hypothèses de correction (couloir, neige, zigzag à 30°) n'ont pas été
-> vérifiées sur le terrain. Les classes produites sont des bornes inférieures
-> et ne remplacent en aucun cas le balisage des stations.
-
-![Mesure de la pente : fenêtre de 30 m, zigzag dans le couloir, neige qui lisse le profil](figures/schemas-mesure.png)
+Site : https://s-geffroy.github.io/txr-methode/
 
 ## Contenu
 
-| fichier | contenu |
+| Fichier | Contenu |
 |---|---|
-| `fiches/methode-grand-public.pdf` | la méthode en une page, pour les skieurs |
-| `fiches/methode-exploitants.pdf` | la méthode et l'usage quotidien, pour une station |
-| `fiches/methode-technique.pdf` | la méthode en une page, version technique |
-| `fiches/*.md` | sources des fiches (les `{{…}}` sont remplacés par les chiffres d'une exécution) |
-| `METHODE.md` | description complète : géométrie, profils, pentes, convergence, correction, contrôle |
-| `HYPOTHESES.md` | choix de méthode et hypothèses, avec leur source et les variantes essayées |
-| `VALIDATION.md` | protocole proposé pour valider la méthode sur neige damée |
+| [index.md](index.md) | page d'accueil du site |
+| [METHODE.md](METHODE.md) | le calcul complet |
+| [GRILLE.md](GRILLE.md) | la grille T × R, avec une description de piste par case |
+| [ABAQUE.md](ABAQUE.md) | ajuster la note T à l'enneigement, à la main |
+| [STATIONS.md](STATIONS.md) | appliquer TxR à une station : paramètres, données, contrôles |
+| [HYPOTHESES.md](HYPOTHESES.md) | principes et hypothèses, avec les variantes essayées |
+| [PILOTE.md](PILOTE.md) | l'essai à La Foux d'Allos, chiffres agrégés |
+| [VALIDATION.md](VALIDATION.md) | le protocole de validation proposé |
+| [fiches/](fiches/) | fiches PDF : skieurs, services des pistes (avec l'abaque), technique, grille |
+| [fiches/sources/](fiches/sources/) | textes des fiches |
+| [outils/construire.py](outils/construire.py) | régénère les figures et les fiches (numpy, matplotlib, reportlab) |
 
-Site : https://s-geffroy.github.io/txr-methode/ · Pour citer : `CITATION.cff` (bouton « Cite this repository » sur GitHub).
+## Citer
 
-## Licence
+Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.4.1. https://s-geffroy.github.io/txr-methode/
 
-Textes, fiches et figures : **Creative Commons Attribution 4.0 International**
-(CC BY 4.0, voir `LICENSE`). Citer : « TxR — méthode, S. Geffroy, 2026 ».
+Le fichier [CITATION.cff](CITATION.cff) donne les mêmes informations sous forme lisible par les logiciels (bouton « Cite this repository » sur GitHub).
 
-Les fiches citent des résultats agrégés obtenus à partir de données
-© contributeurs OpenStreetMap (ODbL 1.0), IGN et Météo-France (Licence Ouverte
-Etalab 2.0). L'implémentation (code sous EUPL-1.2) n'est pas publiée à ce stade.
+## Licences
+
+Les textes, fiches et figures sont sous licence Creative Commons Attribution 4.0 International ([LICENSE](LICENSE)). Le script `outils/construire.py` est sous licence EUPL-1.2 ([outils/LICENSE-EUPL-1.2.txt](outils/LICENSE-EUPL-1.2.txt)). L'implémentation complète de TxR n'est pas publiée à ce jour.
+
+Aucune base de données n'est diffusée ici. Les chiffres de l'essai sont des résultats agrégés calculés à partir de données © contributeurs OpenStreetMap (ODbL 1.0), de l'IGN et de Météo-France (Licence Ouverte Etalab 2.0). Ce travail est indépendant des exploitants des stations citées.

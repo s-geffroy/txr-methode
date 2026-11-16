@@ -1,11 +1,17 @@
 # Site GitHub Pages de la méthode TxR (Jekyll, thème par défaut de GitHub Pages).
-title: "TxR — méthode"
-description: "Classer les pistes de ski avec deux notes indépendantes : technique (T) et résistance (R). Travail de recherche, résultats provisoires."
+title: "TxR, méthode"
+description: "Noter une piste de ski en technique (T) et résistance (R). Travail de recherche."
 lang: fr
 theme: jekyll-theme-primer
-# Sources des fiches (gabarits avec des {{…}}) et README (remplacé par index.md) : hors du site.
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+# Le README est remplacé par index.md ; les sources des fiches et l'outil ne sont pas des pages.
 exclude:
   - README.md
-  - fiches/*.md
+  - fiches/sources/
+  - outils/
   - CITATION.cff
   - .zenodo.json

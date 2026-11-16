@@ -1,43 +1,51 @@
 ---
-title: TxR — méthode
+title: Accueil
 ---
 
-# TxR — *Technical × Resistance*
+# TxR, noter une piste de ski avec deux chiffres
 
-**Une méthode pour classer les pistes de ski avec deux notes indépendantes plutôt qu'une couleur.**
+Une couleur de piste mélange deux choses : la difficulté du passage le plus raide et la longueur de la descente. TxR les sépare. La note **T**, de T0 à T6, dit à quel point le passage le plus raide est technique. La note **R**, de R0 à R5, dit l'effort que demande la descente, d'après son dénivelé. Une piste courte avec un mur peut ainsi valoir T5·R1, et une longue piste facile T1·R4. Un long tronçon facile ne rattrape pas un mur, et un mur ne rend pas une piste longue.
 
-- **T, technique** (T0 à T6) : la difficulté du passage le plus raide, mesurée sur des fenêtres de 30 m (et de 10 m pour les murs courts).
-- **R, résistance** (R0 à R5) : l'exigence physique, d'après le dénivelé.
+TxR est un travail de recherche. Ses seuils n'ont pas encore été vérifiés sur le terrain et ses notes ne remplacent pas le classement d'une station : sur les pistes, seul le balisage fait foi.
 
-Une piste courte mais raide peut être **T5·R1** ; une longue piste facile, **T1·R4**. Les deux notes ne se compensent pas. L'exposition et les conditions du jour restent des indicateurs à part.
+![Trois schémas : la pente d'un passage de 30 m, le zigzag dans la largeur de la piste, la neige qui comble les creux](figures/schemas-mesure.png)
 
-> **Statut : recherche, provisoire.** Les seuils sont expérimentaux et les hypothèses de correction (couloir, neige, zigzag à 30°) n'ont pas été vérifiées sur le terrain. Les classes produites sont des bornes inférieures et ne remplacent en aucun cas le balisage des stations.
+## Ce que veulent dire T et R
 
-![Mesure de la pente : fenêtre de 30 m, zigzag dans le couloir, neige qui lisse le profil](figures/schemas-mesure.png)
+Le tableau se lit en choisissant d'abord sa colonne (ce qu'on sait skier), puis sa ligne (la forme du jour). Les descriptions sont des repères provisoires. [La grille complète](GRILLE.md) détaille les sept colonnes et les six lignes.
 
-## Comment on mesure
+| | T0–T1, moins de 20 % | T2, 20 à 25 % | T3–T4, 25 à 45 % | T5–T6, 45 % et plus |
+|---|---|---|---|---|
+| **R0–R1**, moins de 200 m de dénivelé | Pente d'apprentissage, liaison | Bleue courte | Rouge courte, passage raide | Mur court |
+| **R2–R3**, 200 à 700 m | Verte de retour, longue verte | Bleue classique, longue bleue | Rouge classique, noire soutenue | Noire avec un mur |
+| **R4–R5**, 700 m et plus | Route de vallée (rare) | Grande bleue de vallée | Grande descente sportive | Noire longue et engagée (rare) |
 
-1. Le relief vient du **LiDAR HD de l'IGN** (sol nu, un point tous les 50 cm) ; les tracés viennent d'**OpenStreetMap**.
-2. La pente est calculée tous les mètres sur des fenêtres de **10, 30 et 100 m** ; T vient de la fenêtre la plus raide.
-3. Une correction **expérimentale** estime la piste damée : couloir de la largeur de la piste, zigzag, neige qui comble les creux (réanalyse **Météo-France S2M**). Une hauteur de neige relevée en bas et en haut de station permet de recalculer la note du jour.
+Les pourcentages sont ceux de la pente sur un passage de 30 m. Une pente de 25 % fait environ 14°, une pente de 45 % environ 24°.
 
-## Ce qu'on sait, ce qu'on ne sait pas encore
+## Comment on obtient les notes
 
-Testée sur les 42 pistes de La Foux d'Allos, la méthode classe les pistes **dans le même ordre** que leurs couleurs officielles (τ-b de Kendall ≈ 0,74). En revanche, le **niveau absolu** des classes dépend des hypothèses de correction : la part de pistes « conformes » à leur couleur passe de 10 à 32 sur 42 selon l'angle de zigzag supposé. Ce n'est donc pas une validation ; le [protocole de validation](VALIDATION.html) propose des mesures sur neige damée.
+On part du relief sans neige, mesuré par laser aéroporté avec un point au moins tous les mètres, et du tracé des pistes dans OpenStreetMap. On calcule la pente de chaque passage de 30 m, et de 10 m pour repérer les murs courts. On estime ensuite la piste réelle : on peut choisir son passage dans la largeur, et la neige comble les creux. T vient du passage le plus raide de cette piste estimée, R de son dénivelé. On calcule aussi la note d'un skieur qui descend en zigzag, mais la note affichée reste celle, plus prudente, de la descente dans l'axe.
+
+La hauteur de neige change un peu la note, surtout sur les murs courts. Avec deux relevés, en bas et en haut du domaine, une station peut recalculer T à la main grâce à [l'abaque d'enneigement](ABAQUE.md).
+
+## Où en est-on
+
+La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y sortent dans un ordre proche de celui de leurs couleurs. C'est encourageant, mais la pente moyenne seule donne déjà un ordre assez proche, et le niveau des notes dépend de nos hypothèses : selon l'angle de zigzag supposé, de 10 à 32 pistes tombent dans la classe de leur couleur. Le [compte rendu de l'essai](PILOTE.md) donne le détail, et le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
 
 ## Documents
 
 | Pour qui | Document |
 |---|---|
-| Skieurs | [Fiche grand public (PDF, 1 page)](fiches/methode-grand-public.pdf) |
-| Stations | [Fiche exploitants (PDF, 1 page)](fiches/methode-exploitants.pdf) |
-| Technique | [Fiche technique (PDF, 1 page)](fiches/methode-technique.pdf) |
-| Tous | [Méthode complète](METHODE.html) · [Hypothèses et choix](HYPOTHESES.html) · [Protocole de validation](VALIDATION.html) |
+| Skieurs, moniteurs | [Fiche skieurs (PDF, 2 pages)](fiches/grand-public.pdf) · [Grille T × R (PDF, 1 page)](fiches/grille.pdf) |
+| Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) |
+| Spécialistes | [Fiche technique (PDF)](fiches/technique.pdf) · [Méthode complète](METHODE.md) · [Hypothèses](HYPOTHESES.md) |
+| Autres stations | [Appliquer TxR à une station](STATIONS.md) |
+| Tous | [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) |
 
 ## Citer, réutiliser
 
-Textes, fiches et figures sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : réutilisation libre, avec citation de la source. Citer : *Geffroy, S. (2026). TxR — méthode. https://github.com/s-geffroy/txr-methode*.
+Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.4.1. https://s-geffroy.github.io/txr-methode/
 
-Données d'origine : © contributeurs [OpenStreetMap](https://www.openstreetmap.org/copyright) (ODbL 1.0) ; IGN et Météo-France (Licence Ouverte Etalab 2.0). Les noms et couleurs des pistes sont relevés sur le plan officiel de Val d'Allos.
+Les chiffres de l'essai sont des résultats agrégés, calculés à partir de données © contributeurs [OpenStreetMap](https://www.openstreetmap.org/copyright) (ODbL 1.0), de l'IGN et de Météo-France (Licence Ouverte Etalab 2.0). Aucune base de données n'est diffusée ici. Ce travail est indépendant des exploitants des stations citées.
 
-[Dépôt source sur GitHub](https://github.com/s-geffroy/txr-methode)
+[Sources sur GitHub](https://github.com/s-geffroy/txr-methode)
