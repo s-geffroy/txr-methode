@@ -26,11 +26,13 @@ SEUILS_MUR = {3: 40, 4: 50, 5: 60, 6: 75}       # pente maximale sur 10 m, % -> 
 SEUILS_R = [80, 200, 400, 700, 1100]            # dénivelé, m -> R1..R5
 L0, K = 5.0, 5.0                                # lissage : L = L0 + K * h (h en m)
 
-GRILLE_T = [("T0", "moins de 10 %", "presque plat"), ("T1", "10 à 20 %", "pente douce"),
+GRILLE_T = [("T0", "< 10 %", "presque plat"), ("T1", "10 à 20 %", "pente douce"),
             ("T2", "20 à 25 %", "pente modérée"), ("T3", "25 à 35 %", "pente marquée"),
-            ("T4", "35 à 45 %", "raide"), ("T5", "45 à 60 %", "très raide"), ("T6", "60 % et plus", "extrême")]
-GRILLE_R = [("R0", "moins de 80 m"), ("R1", "80 à 200 m"), ("R2", "200 à 400 m"), ("R3", "400 à 700 m"),
-            ("R4", "700 à 1 100 m"), ("R5", "1 100 m et plus")]
+            ("T4", "35 à 45 %", "raide"), ("T5", "45 à 60 %", "très raide"), ("T6", "≥ 60 %", "extrême")]
+GRILLE_R = [("R0", "< 80 m"), ("R1", "80 à 200 m"), ("R2", "200 à 400 m"), ("R3", "400 à 700 m"),
+            ("R4", "700 à 1 100 m"), ("R5", "≥ 1 100 m")]
+# couleurs des classes T (même palette que la carte : sans rouge ni vert, lisible en daltonisme)
+PALETTE_T = ["#fff3b0", "#ffd166", "#f4a259", "#d4789a", "#9b5de5", "#6a2c91", "#2e0f4f"]
 # Descriptifs génériques, provisoires. Le préfixe « ~ » marque une combinaison rare.
 GRILLE = [
     ["Front de neige, jardin d'enfants", "Petite pente pour débuter", "Raidillon court sur une liaison",
@@ -161,6 +163,22 @@ def figure_abaque():
     a2.grid(color="#dddddd", lw=0.4)
     fig.tight_layout(pad=0.5)
     return _png(fig, plt)
+
+
+def formule(tex, taille_pt):
+    """Formule LaTeX (sous-ensemble mathtext de matplotlib) -> (png, largeur_pt, hauteur_pt)."""
+    import struct
+    plt = _plt()
+    fig = plt.figure(figsize=(0.01, 0.01))
+    tex = tex.replace("\\frac", "\\dfrac")   # fractions en taille normale
+    fig.text(0, 0, f"${tex}$", fontsize=taille_pt * 1.15, color=ENCRE)
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi=300, bbox_inches="tight", pad_inches=0.03, transparent=True,
+                metadata={"Software": None})
+    plt.close(fig)
+    png = buf.getvalue()
+    w, h = struct.unpack(">II", png[16:24])
+    return png, w / 300 * 72, h / 300 * 72
 
 
 def _png(fig, plt):
@@ -300,6 +318,14 @@ def _histoire(md, taille, images):
         if not l:
             flush(); continue
         m = re.match(r"^\[\[(\w+)(?::(.+?))?\]\]$", l.strip())
+        fm = re.match(r"^\$\$(.+)\$\$$", l.strip())
+        if fm:
+            flush()
+            png, w, h = formule(fm.group(1).strip(), taille)
+            img = Image(io.BytesIO(png), width=w, height=h)
+            img.hAlign = "CENTER"
+            out.append(Spacer(1, taille * 0.15)); out.append(img); out.append(Spacer(1, taille * 0.35))
+            continue
         if l.startswith("# "):
             flush(); out.append(Paragraph(_inline(l[2:]), st["h1"]))
         elif l.startswith("> "):
@@ -342,6 +368,87 @@ def _histoire(md, taille, images):
     return out
 
 
+# --- Panneau de bord de piste (demi-page A4 = A5 paysage) ---------------------
+T_PANNEAU = [("T0", "< 10 %", "presque plat"), ("T1", "10 à 20 %", "pente douce"),
+             ("T2", "20 à 25 %", "pente modérée"), ("T3", "25 à 35 %", "pente marquée"),
+             ("T4", "35 à 45 %", "raide"), ("T5", "45 à 60 %", "très raide"), ("T6", "≥ 60 %", "extrême")]
+R_PANNEAU = [("R0", "< 80 m", "quelques virages"), ("R1", "80 à 200 m", "courte"),
+             ("R2", "200 à 400 m", "moyenne"), ("R3", "400 à 700 m", "longue, avec des pauses"),
+             ("R4", "700 à 1 100 m", "très longue"), ("R5", "≥ 1 100 m", "du sommet à la vallée")]
+
+
+def panneau(chemin):
+    """Panneau A5 paysage à afficher au départ des pistes : lire la note T·R."""
+    from reportlab.lib.colors import HexColor, white
+    from reportlab.lib.pagesizes import A5, landscape
+    from reportlab.lib.units import mm
+    from reportlab.pdfgen import canvas
+
+    W, H = landscape(A5)
+    c = canvas.Canvas(str(chemin), pagesize=(W, H), invariant=1)
+    c.setTitle("TxR, panneau de bord de piste"); c.setAuthor(AUTEUR); c.setSubject("Méthode TxR, CC BY 4.0")
+    ink, acc = HexColor(ENCRE), HexColor(ACCENT)
+    m = 9 * mm
+    # bandeau
+    c.setFillColor(ink); c.rect(0, H - 22 * mm, W, 22 * mm, stroke=0, fill=1)
+    c.setFillColor(white); c.setFont("DejaVu-Bold", 19)
+    c.drawString(m, H - 12.5 * mm, "Lire la note T·R d'une piste")
+    c.setFont("DejaVu", 9.5)
+    c.drawString(m, H - 18.5 * mm, "Deux chiffres plutôt qu'une couleur : la technique (T) et l'effort (R). L'un ne rattrape pas l'autre.")
+    haut = H - 28 * mm
+    # colonne T
+    xT, lT = m, 92 * mm
+    c.setFillColor(acc); c.setFont("DejaVu-Bold", 11.5)
+    c.drawString(xT, haut, "T  la technique")
+    c.setFillColor(ink); c.setFont("DejaVu", 7.8)
+    c.drawString(xT, haut - 4.3 * mm, "pente du passage le plus raide, sur 30 m (ou un mur de 10 m)")
+    y, hl = haut - 9.5 * mm, 7.6 * mm
+    for i, (code_, pente, mot) in enumerate(T_PANNEAU):
+        c.setFillColor(HexColor(PALETTE_T[i])); c.roundRect(xT, y - hl + 1.2 * mm, 13 * mm, hl - 1.2 * mm, 1.2 * mm, stroke=0, fill=1)
+        c.setFillColor(white if i >= 4 else ink); c.setFont("DejaVu-Bold", 12)
+        c.drawCentredString(xT + 6.5 * mm, y - hl + 3.0 * mm, code_)
+        c.setFillColor(ink); c.setFont("DejaVu-Bold", 10.5)
+        c.drawString(xT + 16 * mm, y - hl + 3.0 * mm, pente)
+        c.setFont("DejaVu", 10.5)
+        c.drawString(xT + 40 * mm, y - hl + 3.0 * mm, mot)
+        y -= hl
+    # colonne R
+    xR = xT + lT + 6 * mm
+    c.setFillColor(acc); c.setFont("DejaVu-Bold", 11.5)
+    c.drawString(xR, haut, "R  l'effort")
+    c.setFillColor(ink); c.setFont("DejaVu", 7.8)
+    c.drawString(xR, haut - 4.3 * mm, "d'après le dénivelé de la piste")
+    y = haut - 9.5 * mm
+    for i, (code_, dz, mot) in enumerate(R_PANNEAU):
+        c.setStrokeColor(ink); c.setLineWidth(0.8)
+        c.roundRect(xR, y - hl + 1.2 * mm, 13 * mm, hl - 1.2 * mm, 1.2 * mm, stroke=1, fill=0)
+        c.setFillColor(ink); c.setFont("DejaVu-Bold", 12)
+        c.drawCentredString(xR + 6.5 * mm, y - hl + 3.0 * mm, code_)
+        c.setFont("DejaVu-Bold", 10.5); c.drawString(xR + 16 * mm, y - hl + 3.0 * mm, dz)
+        c.setFont("DejaVu", 9); c.drawString(xR + 47 * mm, y - hl + 3.0 * mm, mot)
+        y -= hl
+    # cette piste + exemple
+    yb = 33 * mm
+    c.setStrokeColor(acc); c.setLineWidth(1.6)
+    c.roundRect(xR, yb - 4 * mm, W - xR - m, 15 * mm, 2 * mm, stroke=1, fill=0)
+    c.setFillColor(ink); c.setFont("DejaVu-Bold", 15)
+    c.drawString(xR + 4 * mm, yb + 3 * mm, "Cette piste :  T ____ · R ____")
+    c.setFont("DejaVu", 8.2)
+    c.drawString(xT, yb + 6.5 * mm, "Exemple : T3·R2, une piste dont le passage le plus raide fait")
+    c.drawString(xT, yb + 2.6 * mm, "25 à 35 % (14 à 19°), pour 200 à 400 m de dénivelé.")
+    c.drawString(xT, yb - 1.3 * mm, "T5·R1 : un mur sur une piste courte. T1·R4 : longue et facile.")
+    # mises en garde
+    c.setStrokeColor(HexColor("#c8cdd3")); c.setLineWidth(0.6); c.line(m, 24 * mm, W - m, 24 * mm)
+    c.setFillColor(ink); c.setFont("DejaVu-Bold", 8.4)
+    c.drawString(m, 19.5 * mm, "La note ne tient pas compte de la glace, de la neige dure, des bosses, de la visibilité ni de l'affluence.")
+    c.setFont("DejaVu", 8.2)
+    c.drawString(m, 15.6 * mm, "Notes de recherche, provisoires : les seuils n'ont pas encore été vérifiés sur le terrain.")
+    c.drawString(m, 11.9 * mm, "Sur les pistes, le balisage et les consignes de la station font foi.")
+    c.setFillColor(HexColor("#666666")); c.setFont("DejaVu", 6.6)
+    c.drawString(m, 6 * mm, f"TxR, méthode v{VERSION} · {AUTEUR} · CC BY 4.0 · https://s-geffroy.github.io/txr-methode/")
+    c.showPage(); c.save()
+
+
 FICHES = {  # nom -> (titre du PDF, nombre de pages attendu)
     "grand-public": ("TxR, la méthode pour les skieurs", 3),
     "exploitants": ("TxR, la méthode pour les services des pistes", 3),
@@ -381,6 +488,8 @@ def construire():
             raise ValueError(f"{nom} : plus de {pages} page(s) même en {taille} pt")
         (RACINE / "fiches" / f"{nom}.pdf").write_bytes(buf.getvalue())
         print(f"{nom}.pdf : {doc.page} page(s), {taille:g} pt")
+    panneau(RACINE / "fiches" / "panneau.pdf")
+    print("panneau.pdf : A5 paysage")
 
 
 if __name__ == "__main__":

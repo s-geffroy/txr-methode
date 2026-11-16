@@ -23,7 +23,8 @@ Correction vers la piste damée : parallèles tous les 2 m dans la largeur ski
 R : 80, 200, 400, 700 et 1 100 m de dénivelé donnent R1 à R5. Statuts : non déterminé, borne basse provisoire, définitif (jamais atteint aujourd'hui). Pic à confirmer : règle déclenchée sur moins de 2 W.
 
 ## Neige du jour
-h = [(1 − t) · h_bas + t · h_haut] · f, t position en altitude entre les deux relevés bornée à [0, 1], f = rapport climatologique orientation / plat à la même altitude, borné à [0, 3]. Abaque manuel pour un mur court : voir la fiche exploitants.
+$$h = \left[(1 - t)\,h_{\mathrm{bas}} + t\,h_{\mathrm{haut}}\right] f \qquad L = L_0 + k\,h \qquad g_{\mathrm{trajet}} = g\,\frac{\sin\varphi}{\varphi}$$
+t position en altitude entre les deux relevés encadrants, bornée à [0, 1], f = rapport climatologique orientation / plat à la même altitude, borné à [0, 3]. Abaque manuel pour un mur court : voir la fiche exploitants.
 
 ## Essai pilote (exploratoire)
 42 pistes d'une station des Alpes du Sud. Pistes conformes à leur couleur : 8 sur sol nu, 10 en ligne de pente, 19 en trajectoire (14,3 attendues au hasard ; accord corrigé 0,17), 32 avec θ = 45°. τ-b de rang couleur / T : 0,75 [0,66 ; 0,82] en trajectoire, contre 0,59 pour la pente moyenne seule. θ, L0, k et la largeur par défaut ont été fixés pendant l'analyse : ces chiffres ne valident rien.

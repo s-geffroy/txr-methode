@@ -14,11 +14,11 @@ TxR est un travail de recherche. Ses seuils n'ont pas encore été vérifiés su
 
 Le tableau se lit en choisissant d'abord sa colonne (ce qu'on sait skier), puis sa ligne (la forme du jour). Les descriptions sont des repères provisoires. [La grille complète](GRILLE.md) détaille les sept colonnes et les six lignes.
 
-| | T0–T1, moins de 20 % | T2, 20 à 25 % | T3–T4, 25 à 45 % | T5–T6, 45 % et plus |
+| | T0–T1, < 20 % | T2, 20 à 25 % | T3–T4, 25 à 45 % | T5–T6, ≥ 45 % |
 |---|---|---|---|---|
-| **R0–R1**, moins de 200 m de dénivelé | Pente d'apprentissage, liaison | Bleue courte | Rouge courte, passage raide | Mur court |
+| **R0–R1**, < 200 m de dénivelé | Pente d'apprentissage, liaison | Bleue courte | Rouge courte, passage raide | Mur court |
 | **R2–R3**, 200 à 700 m | Verte de retour, longue verte | Bleue classique, longue bleue | Rouge classique, noire soutenue | Noire avec un mur |
-| **R4–R5**, 700 m et plus | Route de vallée (rare) | Grande bleue de vallée | Grande descente sportive | Noire longue et engagée (rare) |
+| **R4–R5**, ≥ 700 m | Route de vallée (rare) | Grande bleue de vallée | Grande descente sportive | Noire longue et engagée (rare) |
 
 Les pourcentages sont ceux de la pente sur un passage de 30 m. Une pente de 25 % fait environ 14°, une pente de 45 % environ 24°.
 
@@ -37,7 +37,7 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 | Pour qui | Document |
 |---|---|
 | Skieurs, moniteurs | [Fiche skieurs (PDF, 3 pages)](fiches/grand-public.pdf) · [Grille T × R (PDF, 1 page)](fiches/grille.pdf) · [Virages et rayon des skis](VIRAGES.md) |
-| Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) |
+| Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) · [Panneau de bord de piste (PDF, demi-page A4)](fiches/panneau.pdf) |
 | Spécialistes | [Fiche technique (PDF)](fiches/technique.pdf) · [Méthode complète](METHODE.md) · [Hypothèses](HYPOTHESES.md) |
 | Autres stations | [Appliquer TxR à une station](STATIONS.md) |
 | Tous | [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) |

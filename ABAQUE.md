@@ -17,7 +17,7 @@ L'abaque ne parle que de la forme de la piste. La glace, la neige dure, les boss
 
 On répartit d'abord la neige selon l'altitude, en ligne droite entre les deux relevés :
 
-h = h_bas + (h_haut − h_bas) × (z − z_bas) / (z_haut − z_bas)
+$$h = h_{\mathrm{bas}} + \left(h_{\mathrm{haut}} - h_{\mathrm{bas}}\right) \frac{z - z_{\mathrm{bas}}}{z_{\mathrm{haut}} - z_{\mathrm{bas}}}$$
 
 Au-dessous du point bas, on prend h_bas ; au-dessus du point haut, h_haut. On multiplie ensuite par le facteur d'orientation f, qui dit si ce versant garde plus ou moins de neige que le plat à la même altitude. Ce facteur se calcule pour chaque massif à partir de la climatologie de la neige. Voici, à titre d'exemple, celui du massif Haut-Var/Haut-Verdon (Alpes du Sud) en février, pour une pente de 20° environ :
 
@@ -33,7 +33,9 @@ Au-dessous du point bas, on prend h_bas ; au-dessus du point haut, h_haut. On 
 
 La neige agit comme une moyenne du profil sur une longueur L qui grandit avec la hauteur h :
 
-L = 5 m + 5 × h (h en mètres)
+$$L = 5 + 5\,h$$
+
+L et h sont en mètres.
 
 Sans neige, L vaut déjà 5 m : c'est l'effet de la dameuse. Avec 1 m de neige, L = 10 m ; avec 2 m, L = 15 m.
 
@@ -41,7 +43,9 @@ Sans neige, L vaut déjà 5 m : c'est l'effet de la dameuse. Avec 1 m de neig
 
 La note du mur court regarde la pente sur 10 m. Après lissage, elle vaut :
 
-**pente sur 10 m = pente autour + (pente du mur − pente autour) × C**
+$$p_{10} = p_{\mathrm{autour}} + \left(p_{\mathrm{mur}} - p_{\mathrm{autour}}\right) \times C$$
+
+où p₁₀ est la pente sur 10 m après neige, p_mur la pente du mur sans neige et p_autour celle de la piste juste avant et après.
 
 C dépend de la hauteur de neige et de la longueur du mur. Il tient compte à la fois du lissage et du fait qu'un mur de moins de 10 m ne remplit pas tout le passage de 10 m. Prendre la ligne qui correspond à la hauteur juste inférieure : c'est le côté prudent.
 
@@ -65,7 +69,7 @@ Sur les passages de 30 m, la neige change très peu la pente : pour un mur de 
 
 On compare la pente obtenue aux seuils du mur court, en ligne de pente (sans zigzag), ce qui est la lecture prudente :
 
-| Pente sur 10 m | moins de 40 % | 40 % | 50 % | 60 % | 75 % |
+| Pente sur 10 m | < 40 % | ≥ 40 % | ≥ 50 % | ≥ 60 % | ≥ 75 % |
 |---|---|---|---|---|---|
 | Classe | pas de règle | au moins T3 | au moins T4 | au moins T5 | au moins T6 |
 

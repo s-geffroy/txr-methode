@@ -8,14 +8,14 @@ Chaque case décrit le genre de piste que donne une combinaison des deux notes. 
 
 Ces descriptions sont des repères provisoires, écrits à partir des seuils. Elles seront revues quand on aura observé, sur plusieurs stations, les pistes qui tombent réellement dans chaque case. Les cases en italique sont des combinaisons rares, parfois impossibles en pratique : pour un dénivelé de 700 m sans jamais dépasser 10 % de pente, il faudrait par exemple plus de 7 km de piste.
 
-| R ↓ · T → | **T0** moins de 10 %, presque plat | **T1** 10 à 20 %, pente douce | **T2** 20 à 25 %, pente modérée | **T3** 25 à 35 %, pente marquée | **T4** 35 à 45 %, raide | **T5** 45 à 60 %, très raide | **T6** 60 % et plus, extrême |
+| R ↓ · T → | **T0** < 10 %, presque plat | **T1** 10 à 20 %, pente douce | **T2** 20 à 25 %, pente modérée | **T3** 25 à 35 %, pente marquée | **T4** 35 à 45 %, raide | **T5** 45 à 60 %, très raide | **T6** ≥ 60 %, extrême |
 |---|---|---|---|---|---|---|---|
-| **R0** moins de 80 m | Front de neige, jardin d'enfants | Petite pente pour débuter | Raidillon court sur une liaison | Court passage soutenu | Ressaut raide très court | *Mur isolé, quelques virages* | *Ressaut extrême isolé* |
+| **R0** < 80 m | Front de neige, jardin d'enfants | Petite pente pour débuter | Raidillon court sur une liaison | Court passage soutenu | Ressaut raide très court | *Mur isolé, quelques virages* | *Ressaut extrême isolé* |
 | **R1** 80 à 200 m | Chemin de liaison, on pousse sur les bâtons | Verte courte, premiers virages | Bleue courte | Rouge courte | Piste courte avec un passage raide | Noire courte, un mur | *Rare* |
 | **R2** 200 à 400 m | *Long chemin presque plat* | Verte de retour, fatigante pour un débutant | Bleue classique | Rouge classique | Rouge raide ou noire | Noire avec un mur | *Rare* |
 | **R3** 400 à 700 m | *Très rare* | Longue verte, prévoir des pauses | Longue bleue, les cuisses chauffent | Grande rouge | Noire soutenue | Grande noire | *Rare* |
 | **R4** 700 à 1 100 m | *Quasi inexistant* | *Route de vallée* | Grande bleue de vallée | Rouge de vallée, il faut être en forme | Grande noire, de l'endurance | *Noire longue et engagée* | *Exceptionnel* |
-| **R5** 1 100 m et plus | *Inexistant* | *Très rare* | *Rare* | Descente du sommet à la vallée | Du sommet à la vallée, bon skieur | *Expert endurant* | *Exceptionnel* |
+| **R5** ≥ 1 100 m | *Inexistant* | *Très rare* | *Rare* | Descente du sommet à la vallée | Du sommet à la vallée, bon skieur | *Expert endurant* | *Exceptionnel* |
 
 ## Comment lire les pentes
 

@@ -19,7 +19,7 @@ Site : https://s-geffroy.github.io/txr-methode/
 | [HYPOTHESES.md](HYPOTHESES.md) | principes et hypothèses, avec les variantes essayées |
 | [PILOTE.md](PILOTE.md) | l'essai à La Foux d'Allos, chiffres agrégés |
 | [VALIDATION.md](VALIDATION.md) | le protocole de validation proposé |
-| [fiches/](fiches/) | fiches PDF : skieurs, services des pistes (avec l'abaque), technique, grille |
+| [fiches/](fiches/) | fiches PDF : skieurs, services des pistes (avec l'abaque), technique, grille, panneau de bord de piste (A5) |
 | [fiches/sources/](fiches/sources/) | textes des fiches |
 | [outils/construire.py](outils/construire.py) | régénère les figures et les fiches (numpy, matplotlib, reportlab) |
 

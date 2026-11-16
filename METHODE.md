@@ -33,15 +33,27 @@ On lit un premier profil tous les 5 m sur le MNT de référence, puis, là où 
 
 ## Les pentes
 
-La pente d'un passage de longueur W, qui commence au point s, vaut 100 × (z(s) − z(s + W)) / W, en pour cent. Elle est positive quand on descend. L'altitude en s + W est interpolée entre les deux points de profil voisins. On fait glisser ce passage tout le long du tracé, pour trois longueurs : 10 m (murs courts), 30 m (passages) et 100 m (sections).
+La pente d'un passage de longueur W, qui commence au point s, vaut en pour cent :
 
-Un passage n'est pas retenu s'il dépasse la fin du tracé, s'il contient une altitude manquante, ou si le profil est trop grossier pour lui. Il faut W ≥ 3 × max(pas, maille) : avec un profil tous les 5 m, le passage de 10 m n'existe donc pas. La maille nominale d'un MNT n'est pas sa précision réelle, et ce critère est un minimum.
+$$g_W(s) = 100 \times \frac{z(s) - z(s+W)}{W}$$
+
+Elle est positive quand on descend. L'altitude en s + W est interpolée entre les deux points de profil voisins. On fait glisser ce passage tout le long du tracé, pour trois longueurs : 10 m (murs courts), 30 m (passages) et 100 m (sections).
+
+Un passage n'est pas retenu s'il dépasse la fin du tracé, s'il contient une altitude manquante, ou si le profil est trop grossier pour lui. Il faut que le passage soit au moins trois fois plus long que le pas du profil ou que la maille du MNT, le plus grand des deux :
+
+$$W \geq 3 \times \max(\mathrm{pas},\ \mathrm{maille})$$
+
+Avec un profil tous les 5 m, le passage de 10 m n'existe donc pas. La maille nominale d'un MNT n'est pas sa précision réelle, et ce critère est un minimum.
 
 Pour chaque tracé et chaque longueur, on garde la pente maximale (Gmax), les centiles P50, P90 et P95, et l'endroit du maximum. On y note aussi la pente maximale du terrain. Si la pente du tracé atteint 90 % de celle du terrain, le tracé descend face à la pente à cet endroit, ce qui peut venir d'un tracé imprécis ou d'un talus : on le signale, sans corriger.
 
 ## La stabilité des mesures
 
-Pour une même source, on compare Gmax, P90 et P95 d'un pas au suivant (5, puis 2, puis 1 m). L'écart toléré est de 400 × u / W points de pente, où u est l'erreur verticale maximale du MNT. Quand aucune documentation du producteur ne donne u, le statut reste « incertitude inconnue ». Une valeur de u = 0,10 m pour le LiDAR HD sert de test de sensibilité ; elle vient de sources secondaires. Ce contrôle ne dit rien de la position du tracé ni de la surface sous la neige.
+Pour une même source, on compare Gmax, P90 et P95 d'un pas au suivant (5, puis 2, puis 1 m). L'écart toléré, en points de pente, vaut
+
+$$\Delta g_{\max} = \frac{400\,u}{W}$$
+
+où u est l'erreur verticale maximale du MNT, en mètres. Quand aucune documentation du producteur ne donne u, le statut reste « incertitude inconnue ». Une valeur de u = 0,10 m pour le LiDAR HD sert de test de sensibilité ; elle vient de sources secondaires. Ce contrôle ne dit rien de la position du tracé ni de la surface sous la neige.
 
 ## Du sol nu à la piste damée
 
@@ -49,9 +61,17 @@ Le relief est mesuré sans neige, alors que l'on skie sur une piste damée, larg
 
 **La largeur.** On mesure la largeur de la piste perpendiculairement au tracé, sur les surfaces de piste dessinées dans OpenStreetMap. Il faut au moins 5 mesures couvrant 30 % du tracé ; sinon on prend la largeur médiane mesurée dans la station. On trace ensuite des lignes parallèles au tracé, tous les 2 m, jusqu'à 1 m des bords et au plus à 20 m de part et d'autre. Chaque point d'une parallèle est pris en face du point correspondant du tracé. Les parallèles vides, coupées ou de longueur anormale (hors de 0,7 à 1,3 fois le tracé) sont écartées. Pour chaque passage, on retient la parallèle la moins raide.
 
-**Le zigzag.** Un skieur ne descend pas droit dans l'axe : on suppose qu'il s'en écarte d'un angle θ, en zigzag régulier, sans sortir de la piste. Sur un trajet de W m, il n'avance que de W × cos θ le long de la piste, et la pente de son trajet vaut le dénivelé divisé par W. Sur une pente régulière, cela revient à multiplier la pente par cos θ : 0,87 à 30°, 0,71 à 45°. La valeur de référence est θ = 30°. Sur une piste de moins de 10 m de large, on ne descend pas en traversées : θ vaut 0. Multiplier toutes les pentes par cos θ revient à multiplier tous les seuils par 1 / cos θ. θ joue donc le rôle d'un réglage des seuils, et il a été fixé après avoir vu les résultats (voir [Hypothèses](HYPOTHESES.md)).
+**Le zigzag.** Un skieur ne descend pas droit dans l'axe : on suppose qu'il s'en écarte d'un angle θ, en zigzag régulier, sans sortir de la piste. Sur un trajet de W m, il n'avance que de W × cos θ le long de la piste, et la pente de son trajet vaut le dénivelé divisé par W. Sur une pente régulière g, cela revient à multiplier la pente par cos θ, soit 0,87 à 30° et 0,71 à 45° :
 
-**La neige.** La neige damée comble les creux et arrondit les bosses. On la représente par une moyenne glissante du profil sur une longueur L = L0 + k × h, où h est la hauteur de neige en mètres, L0 = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
+$$g_{\mathrm{trajet}} = g \cos\theta$$
+
+La valeur de référence est θ = 30°. Sur une piste de moins de 10 m de large, on ne descend pas en traversées : θ vaut 0. Multiplier toutes les pentes par cos θ revient à multiplier tous les seuils par 1 / cos θ. θ joue donc le rôle d'un réglage des seuils, et il a été fixé après avoir vu les résultats (voir [Hypothèses](HYPOTHESES.md)).
+
+**La neige.** La neige damée comble les creux et arrondit les bosses. On la représente par une moyenne glissante du profil sur une longueur
+
+$$L = L_0 + k\,h$$
+
+où h est la hauteur de neige en mètres, L0 = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
 
 Ces corrections ne valent pas toutes autant. Sur 30 m, la neige change peu la pente, car L reste plus court que le passage. Sur 10 m, elle peut faire baisser un mur d'une classe : c'est donc surtout par la règle du mur court que l'enneigement change la note.
 
@@ -86,7 +106,7 @@ R est la classe du dénivelé de la piste, mesuré entre ses deux extrémités.
 
 | R0 | R1 | R2 | R3 | R4 | R5 |
 |---|---|---|---|---|---|
-| moins de 80 m | 80 m | 200 m | 400 m | 700 m | 1 100 m |
+| < 80 m | ≥ 80 m | ≥ 200 m | ≥ 400 m | ≥ 700 m | ≥ 1 100 m |
 
 R ne tient pas compte de la longueur, des replats où il faut pousser, ni de l'altitude. Ces seuils sont aussi des conventions de travail.
 
@@ -94,9 +114,9 @@ R ne tient pas compte de la longueur, des replats où il faut pousser, ni de l'a
 
 La station relève la hauteur totale de neige en des points fixes, au moins un en bas et un en haut du domaine. En chaque point de la piste, la hauteur vaut :
 
-h = [(1 − t) × h_bas + t × h_haut] × f
+$$h = \left[(1 - t)\,h_{\mathrm{bas}} + t\,h_{\mathrm{haut}}\right] f \qquad t = \frac{z - z_{\mathrm{bas}}}{z_{\mathrm{haut}} - z_{\mathrm{bas}}}$$
 
-où t est la position en altitude entre les deux points de relevé (0 en bas, 1 en haut, sans aller au-delà), et f un facteur d'orientation : le rapport, dans la climatologie du massif et pour le mois du relevé, entre la neige à cette orientation et cette pente et la neige sur le plat, à la même altitude. f est borné entre 0 et 3. Le reste du calcul ne change pas. [L'abaque d'enneigement](ABAQUE.md) permet de faire ce calcul à la main pour un passage donné.
+où t est la position en altitude entre les deux points de relevé qui encadrent le point (0 en bas, 1 en haut, sans aller au-delà), et f un facteur d'orientation : le rapport, dans la climatologie du massif et pour le mois du relevé, entre la neige à cette orientation et cette pente et la neige sur le plat, à la même altitude. f est borné entre 0 et 3. Le reste du calcul ne change pas. [L'abaque d'enneigement](ABAQUE.md) permet de faire ce calcul à la main pour un passage donné.
 
 La hauteur relevée sur piste comprend la neige de culture et le tassement, alors que la climatologie ne décrit que la neige naturelle : celle-ci ne sert qu'à répartir la neige entre les orientations.
 

@@ -8,13 +8,21 @@ Personne ne descend une piste tout droit. Selon sa façon de tourner, un skieur 
 
 ## Des virages en arcs de cercle
 
-On représente la trajectoire par des arcs de cercle de rayon R, enchaînés d'un côté puis de l'autre. Au fil de chaque arc, la direction du skieur passe d'un angle φ à droite de l'axe de la piste à un angle φ à gauche. Trois relations suffisent :
+On représente la trajectoire par des arcs de cercle de rayon R, enchaînés d'un côté puis de l'autre. Au fil de chaque arc, la direction du skieur passe d'un angle φ à droite de l'axe de la piste à un angle φ à gauche. La largeur balayée a, d'un bord de la trajectoire à l'autre, vaut
 
-- la largeur balayée, d'un bord de la trajectoire à l'autre, vaut a = 2 R (1 − cos φ) ;
-- sur une pente régulière, la pente moyenne de la trajectoire vaut celle de la piste multipliée par sin φ / φ (φ en radians) ;
-- la pente au moment où le skieur coupe la ligne de pente, au milieu de chaque virage, reste celle de la piste.
+$$a = 2R\,(1 - \cos\varphi)$$
 
-Le skieur ne peut pas balayer plus que la largeur de la piste. Pour un rayon donné, φ est donc le plus grand angle, jusqu'à 90°, dont la largeur balayée tient dans la piste (moins un mètre de chaque côté).
+Sur une pente régulière g, la pente moyenne de la trajectoire vaut, avec φ en radians :
+
+$$g_{\mathrm{trajet}} = g\,\frac{\sin\varphi}{\varphi}$$
+
+La pente au moment où le skieur coupe la ligne de pente, au milieu de chaque virage, reste celle de la piste.
+
+Le skieur ne peut pas balayer plus que la largeur de la piste. Pour un rayon donné, φ est donc le plus grand angle, jusqu'à 90°, dont la largeur balayée tient dans la piste, moins un mètre de chaque côté :
+
+$$\cos\varphi = 1 - \frac{\min(a_{\mathrm{type}},\ \ell - 2)}{2R}$$
+
+où ℓ est la largeur de la piste en mètres et a_type la largeur que balaie habituellement ce type de virage.
 
 ## Quatre façons de tourner
 
@@ -31,7 +39,11 @@ Sur une piste de 10 m de large, les grands virages ne passent plus : φ tombe 
 
 ## Le rayon des skis
 
-Un ski taillé a un rayon de cotes, inscrit sur le ski : environ 11 à 13 m pour un ski de slalom, 14 à 18 m pour un ski polyvalent, 20 m et plus pour un ski de géant. Quand le skieur coupe son virage, sans déraper, le rayon du virage vaut à peu près le rayon de cotes multiplié par le cosinus de l'angle de carre (l'inclinaison du ski sur la neige). Avec un angle de 45°, celui d'un bon skieur, un ski de 15 m trace un virage d'environ 10,6 m.
+Un ski taillé a un rayon de cotes, inscrit sur le ski : environ 11 à 13 m pour un ski de slalom, 14 à 18 m pour un ski polyvalent, 20 m et plus pour un ski de géant. Quand le skieur coupe son virage, sans déraper, le rayon du virage vaut à peu près le rayon de cotes multiplié par le cosinus de l'angle de carre α, l'inclinaison du ski sur la neige :
+
+$$R_{\mathrm{virage}} \approx R_{\mathrm{ski}} \cos\alpha$$
+
+Avec un angle de 45°, celui d'un bon skieur, un ski de 15 m trace un virage d'environ 10,6 m.
 
 Pour garder sa vitesse en main, un skieur qui coupe ses virages cherche à les finir en travers de la pente. Il lui faut pour cela une largeur d'environ deux fois le rayon de son virage, plus les marges. Le tableau donne, pour chaque rayon de ski et chaque largeur de piste, le rapport entre la pente moyenne de sa trajectoire et la pente de la piste. Plus le chiffre est proche de 1, plus le skieur subit la pente de la piste.
 
