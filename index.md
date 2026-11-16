@@ -32,7 +32,7 @@ La hauteur de neige change un peu la note, surtout sur les murs courts. Avec deu
 
 ## Où en est-on
 
-La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y sortent dans un ordre proche de celui de leurs couleurs. C'est encourageant, mais la pente moyenne seule donne déjà un ordre assez proche, et le niveau des notes dépend de nos hypothèses : selon l'angle de zigzag supposé, de 10 à 32 pistes tombent dans la classe de leur couleur. Le [compte rendu de l'essai](PILOTE.md) donne le détail. La même méthode, sans aucun réglage nouveau, a ensuite été appliquée à Pra-Loup et au Grand Tourmalet, avec des résultats proches ([résultats par station](RESULTATS.md)). Le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
+La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y sortent dans un ordre proche de celui de leurs couleurs. C'est encourageant, mais la pente moyenne seule donne déjà un ordre assez proche, et le niveau des notes dépend de nos hypothèses : selon l'angle de zigzag supposé, de 10 à 32 pistes tombent dans la classe de leur couleur. Le [compte rendu de l'essai](PILOTE.md) donne le détail. La même méthode, sans aucun réglage nouveau, a ensuite été appliquée à Pra-Loup, au Grand Tourmalet et à Val d'Isère–Tignes ([résultats par station](RESULTATS.md)). L'ordre des notes y suit encore celui des couleurs, mais de moins près sur le grand domaine de Val d'Isère–Tignes. Le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
 
 ## Documents
 
