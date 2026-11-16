@@ -19,7 +19,7 @@ On répartit d'abord la neige selon l'altitude, en ligne droite entre les deux r
 
 $$h = h_{\mathrm{bas}} + \left(h_{\mathrm{haut}} - h_{\mathrm{bas}}\right) \frac{z - z_{\mathrm{bas}}}{z_{\mathrm{haut}} - z_{\mathrm{bas}}}$$
 
-Au-dessous du point bas, on prend h_bas ; au-dessus du point haut, h_haut. On multiplie ensuite par le facteur d'orientation f, qui dit si ce versant garde plus ou moins de neige que le plat à la même altitude. Ce facteur se calcule pour chaque massif à partir de la climatologie de la neige. Voici, à titre d'exemple, celui du massif Haut-Var/Haut-Verdon (Alpes du Sud) en février, pour une pente de 20° environ :
+Au-dessous du point bas, on prend h<sub>bas</sub> ; au-dessus du point haut, h<sub>haut</sub>. On multiplie ensuite par le facteur d'orientation f, qui dit si ce versant garde plus ou moins de neige que le plat à la même altitude. Ce facteur se calcule pour chaque massif à partir de la climatologie de la neige. Voici, à titre d'exemple, celui du massif Haut-Var/Haut-Verdon (Alpes du Sud) en février, pour une pente de 20° environ :
 
 | Altitude | N | NE | E | SE | S | SO | O | NO |
 |---|---|---|---|---|---|---|---|---|
@@ -45,7 +45,7 @@ La note du mur court regarde la pente sur 10 m. Après lissage, elle vaut :
 
 $$p_{10} = p_{\mathrm{autour}} + \left(p_{\mathrm{mur}} - p_{\mathrm{autour}}\right) \times C$$
 
-où p₁₀ est la pente sur 10 m après neige, p_mur la pente du mur sans neige et p_autour celle de la piste juste avant et après.
+où p<sub>10</sub> est la pente sur 10 m après neige, p<sub>mur</sub> la pente du mur sans neige et p<sub>autour</sub> celle de la piste juste avant et après.
 
 C dépend de la hauteur de neige et de la longueur du mur. Il tient compte à la fois du lissage et du fait qu'un mur de moins de 10 m ne remplit pas tout le passage de 10 m. Prendre la ligne qui correspond à la hauteur juste inférieure : c'est le côté prudent.
 

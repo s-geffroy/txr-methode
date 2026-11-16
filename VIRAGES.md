@@ -22,7 +22,7 @@ Le skieur ne peut pas balayer plus que la largeur de la piste. Pour un rayon don
 
 $$\cos\varphi = 1 - \frac{\min(a_{\mathrm{type}},\ \ell - 2)}{2R}$$
 
-où ℓ est la largeur de la piste en mètres et a_type la largeur que balaie habituellement ce type de virage.
+où ℓ est la largeur de la piste en mètres et a<sub>type</sub> la largeur que balaie habituellement ce type de virage.
 
 ## Quatre façons de tourner
 

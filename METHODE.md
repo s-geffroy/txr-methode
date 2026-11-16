@@ -71,7 +71,7 @@ La valeur de référence est θ = 30°. Sur une piste de moins de 10 m de large
 
 $$L = L_0 + k\,h$$
 
-où h est la hauteur de neige en mètres, L0 = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
+où h est la hauteur de neige en mètres, L<sub>0</sub> = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
 
 Ces corrections ne valent pas toutes autant. Sur 30 m, la neige change peu la pente, car L reste plus court que le passage. Sur 10 m, elle peut faire baisser un mur d'une classe : c'est donc surtout par la règle du mur court que l'enneigement change la note.
 
