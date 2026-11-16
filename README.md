@@ -1,5 +1,7 @@
 # TxR, méthode de classement des pistes de ski
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24280550.svg)](https://doi.org/10.5281/zenodo.24280550)
+
 TxR note une piste de ski avec deux chiffres plutôt qu'une couleur : **T**, de T0 à T6, pour la difficulté technique du passage le plus raide, et **R**, de R0 à R5, pour l'effort que demande le dénivelé. La méthode vaut pour n'importe quelle station ; elle a été essayée pour la première fois à La Foux d'Allos (Alpes-de-Haute-Provence).
 
 C'est un travail de recherche : les seuils et les corrections n'ont pas encore été vérifiés sur le terrain, et les notes ne remplacent pas le classement ni le balisage des stations.
@@ -25,7 +27,9 @@ Site : https://s-geffroy.github.io/txr-methode/
 
 ## Citer
 
-Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.1. https://s-geffroy.github.io/txr-methode/
+Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.1. Zenodo. https://doi.org/10.5281/zenodo.24280550
+
+Le DOI 10.5281/zenodo.24280550 désigne toujours la dernière version ; la version 0.5.1 a son propre DOI, 10.5281/zenodo.24280551.
 
 Le fichier [CITATION.cff](CITATION.cff) donne les mêmes informations sous forme lisible par les logiciels (bouton « Cite this repository » sur GitHub).
 
