@@ -4,7 +4,7 @@ title: Méthode
 
 # Méthode de calcul
 
-Ce document décrit le calcul complet, dans l'ordre où il se fait. Il vaut pour n'importe quelle station : ce qui dépend du lieu (sources de relief, altitudes des relevés de neige, largeur par défaut…) est rassemblé dans [Appliquer TxR à une station](STATIONS.md). Les choix discutables et leurs variantes sont dans [Hypothèses](HYPOTHESES.md). La version décrite est celle du programme de calcul 0.4, qui n'est pas publié à ce jour ; le numéro 0.4.1 désigne la révision de ces textes.
+Ce document décrit le calcul complet, dans l'ordre où il se fait. Il vaut pour n'importe quelle station : ce qui dépend du lieu (sources de relief, altitudes des relevés de neige, largeur par défaut…) est rassemblé dans [Appliquer TxR à une station](STATIONS.md). Les choix discutables et leurs variantes sont dans [Hypothèses](HYPOTHESES.md). La version décrite est celle du programme de calcul 0.5, qui n'est pas publié à ce jour.
 
 ## Ce que la méthode produit
 
@@ -19,17 +19,17 @@ Chaque note porte un statut. Tant que les seuils ne sont pas validés, T est une
 
 ## Les tracés
 
-Les pistes viennent d'OpenStreetMap : les lignes marquées `piste:type=downhill`, rattachées une à une aux pistes du plan officiel de la station. Toutes les distances sont mesurées à plat, dans une projection conforme (Lambert-93 en France).
+Les pistes viennent d'OpenStreetMap : les lignes marquées `piste:type=downhill`, et celles qui appartiennent à une relation de piste, rattachées une à une aux pistes du plan officiel de la station. Toutes les distances sont mesurées à plat, dans une projection conforme (Lambert-93 en France).
 
 Deux lignes d'une même piste ne sont mises bout à bout que si elles partagent un point OpenStreetMap, et seulement si ce point ne sert pas aussi d'embranchement. Des extrémités proches (moins de 5 m) sans point commun ne sont pas raccordées : on les signale. Une piste peut donc compter plusieurs morceaux indépendants, chacun avec son profil, et elle prend alors la note de son morceau le plus difficile.
 
-Chaque morceau est orienté vers l'aval d'après l'altitude de ses deux extrémités. On compare ce sens à celui dans lequel la ligne a été dessinée dans OpenStreetMap et on signale les désaccords. Si les deux extrémités sont à la même altitude, ou si l'une manque, on ne calcule aucune pente.
+Chaque morceau est orienté vers l'aval d'après l'altitude de ses deux extrémités. On compare ce sens à celui dans lequel la ligne a été dessinée dans OpenStreetMap et on signale les désaccords. Si les deux extrémités sont à moins de 0,5 m d'écart, l'altitude ne tranche pas : on garde le sens dans lequel la piste a été dessinée, puisque les pistes y sont dessinées vers l'aval. Si une altitude manque, on ne calcule aucune pente.
 
 ## Le profil en long
 
 Le long de chaque tracé, on lit l'altitude du terrain sur un modèle numérique de terrain (MNT) de **sol nu**, c'est-à-dire sans arbres ni bâtiments. Un modèle de surface, qui garde la végétation, produirait de fausses pentes en lisière de forêt : il ne convient pas.
 
-On lit un premier profil tous les 5 m sur le MNT de référence, puis, là où un MNT plus fin couvre au moins 99 % des points, des profils tous les 5, 2 et 1 m. En France, le MNT de référence est le RGE ALTI de l'IGN (maille de 1 m) et le MNT fin est issu du LiDAR HD de l'IGN (maille de 50 cm). L'altitude est aujourd'hui lue au centre de la maille la plus proche. Une altitude introuvable reste vide, avec son motif.
+On lit un premier profil tous les 5 m sur le MNT de référence, puis, là où un MNT plus fin couvre au moins 99 % des points, des profils tous les 5, 2 et 1 m. En France, le MNT de référence est le RGE ALTI de l'IGN (maille de 1 m) et le MNT fin est issu du LiDAR HD de l'IGN (maille de 50 cm). L'altitude est interpolée entre les quatre mailles voisines (interpolation bilinéaire). Une altitude introuvable reste vide, avec son motif.
 
 ## Les pentes
 
@@ -49,7 +49,7 @@ Le relief est mesuré sans neige, alors que l'on skie sur une piste damée, larg
 
 **La largeur.** On mesure la largeur de la piste perpendiculairement au tracé, sur les surfaces de piste dessinées dans OpenStreetMap. Il faut au moins 5 mesures couvrant 30 % du tracé ; sinon on prend la largeur médiane mesurée dans la station. On trace ensuite des lignes parallèles au tracé, tous les 2 m, jusqu'à 1 m des bords et au plus à 20 m de part et d'autre. Chaque point d'une parallèle est pris en face du point correspondant du tracé. Les parallèles vides, coupées ou de longueur anormale (hors de 0,7 à 1,3 fois le tracé) sont écartées. Pour chaque passage, on retient la parallèle la moins raide.
 
-**Le zigzag.** Un skieur ne descend pas droit dans l'axe : on suppose qu'il s'en écarte d'un angle θ, en zigzag régulier, sans sortir de la piste. Sur un trajet de W m, il n'avance que de W × cos θ le long de la piste, et la pente de son trajet vaut le dénivelé divisé par W. Sur une pente régulière, cela revient à multiplier la pente par cos θ : 0,87 à 30°, 0,71 à 45°. La valeur de référence est θ = 30°. Multiplier toutes les pentes par cos θ revient à multiplier tous les seuils par 1 / cos θ. θ joue donc le rôle d'un réglage des seuils, et il a été fixé après avoir vu les résultats (voir [Hypothèses](HYPOTHESES.md)).
+**Le zigzag.** Un skieur ne descend pas droit dans l'axe : on suppose qu'il s'en écarte d'un angle θ, en zigzag régulier, sans sortir de la piste. Sur un trajet de W m, il n'avance que de W × cos θ le long de la piste, et la pente de son trajet vaut le dénivelé divisé par W. Sur une pente régulière, cela revient à multiplier la pente par cos θ : 0,87 à 30°, 0,71 à 45°. La valeur de référence est θ = 30°. Sur une piste de moins de 10 m de large, on ne descend pas en traversées : θ vaut 0. Multiplier toutes les pentes par cos θ revient à multiplier tous les seuils par 1 / cos θ. θ joue donc le rôle d'un réglage des seuils, et il a été fixé après avoir vu les résultats (voir [Hypothèses](HYPOTHESES.md)).
 
 **La neige.** La neige damée comble les creux et arrondit les bosses. On la représente par une moyenne glissante du profil sur une longueur L = L0 + k × h, où h est la hauteur de neige en mètres, L0 = 5 m représente l'effet de la dameuse et k = 5 le comblement par la neige. Près d'une extrémité ou d'un trou, la moyenne se fait sur moins de points pour rester centrée. Ajouter une couche d'épaisseur égale ne change rien en soi : c'est le lissage, plus long sous une neige épaisse, qui adoucit les murs. Par défaut, h vient d'une climatologie de la neige naturelle (en France, la réanalyse S2M de Météo-France : hauteur médiane de février selon l'altitude, l'orientation et la pente). La neige de culture et le tassement ne sont pas représentés.
 
@@ -63,6 +63,10 @@ On calcule la pente selon deux conventions, côte à côte :
 - **la ligne de pente**, pente de la piste dans sa propre direction, sans zigzag (θ = 0).
 
 La ligne de pente suit la direction de la piste, pas la plus grande pente du versant : sinon un chemin tracé en travers d'un versant prendrait la note du versant. Tant que les mesures sur neige damée n'ont pas tranché, la note affichée est la plus prudente des deux, c'est-à-dire toujours celle de la ligne de pente, puisque le zigzag ne peut que réduire la pente. La trajectoire sert aux essais.
+
+## Les virages
+
+Le zigzag droit est une simplification. Un calcul complémentaire représente la trajectoire par des arcs de cercle : godille, virages courts, moyens ou grands, et virage coupé dont le rayon dépend du rayon de cotes des skis. Sur une pente régulière, la pente moyenne de la trajectoire vaut celle de la piste multipliée par sin φ / φ, où φ est l'angle de fin de virage que permet la largeur de la piste. Ces notes complémentaires ne changent pas la note affichée ; le détail est dans [Virages et rayon des skis](VIRAGES.md).
 
 ## La note T
 
@@ -104,7 +108,5 @@ Chaque calcul écrit dans un dossier neuf, avec ses paramètres et l'empreinte d
 
 - Les seuils de T et de R, l'angle θ, L0 et k ne sont pas calibrés.
 - La largeur réelle damée, le dévers, les obstacles, la glace et les bosses ne sont pas pris en compte.
-- L'altitude est lue au centre de la maille la plus proche, ce qui peut gonfler légèrement les pentes maximales sur 10 m.
-- Les pistes saisies dans OpenStreetMap sous forme de relations ne sont pas encore lues.
-- L'orientation d'un tracé presque plat n'a pas de marge de tolérance.
-- Le zigzag est appliqué même aux pistes étroites, où il est peu réaliste.
+- Les types de virages et le lien avec le rayon des skis reposent sur des rayons et des largeurs balayées supposés.
+- La neige de culture et le damage réel ne sont pas représentés.

@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 RACINE = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent)
-VERSION = "0.4.1"
+VERSION = "0.5.0"
 AUTEUR = "Sylvain Geffroy"
 ENCRE, ACCENT, NEIGE, SOL = "#1d2733", "#b4470b", "#7fb3e6", "#e9e2d6"
 
@@ -343,7 +343,7 @@ def _histoire(md, taille, images):
 
 
 FICHES = {  # nom -> (titre du PDF, nombre de pages attendu)
-    "grand-public": ("TxR, la méthode pour les skieurs", 2),
+    "grand-public": ("TxR, la méthode pour les skieurs", 3),
     "exploitants": ("TxR, la méthode pour les services des pistes", 3),
     "technique": ("TxR, fiche technique", 1),
     "grille": ("TxR, la grille T × R", 1),

@@ -18,6 +18,8 @@ La méthode est la même partout. Ce qui change d'une station à l'autre, ce son
 | Climatologie de la neige | facteur d'orientation | S2M, massif Haut-Var/Haut-Verdon | massif ou massifs qui couvrent le domaine |
 | Points de relevé de neige | neige du jour | 1 800 m et 2 600 m | points du relevé quotidien, avec leur altitude ; un couple par secteur si le domaine en a plusieurs |
 | Largeur par défaut | pistes sans surface dessinée | 35 m (médiane mesurée) | médiane des largeurs mesurées dans la station |
+| Largeur minimale de zigzag | pas de traversées en dessous | 10 m | constante conseillée, à ne changer qu'avec une raison |
+| Tolérance d'orientation | tracés presque plats | 0,5 m | environ deux fois l'erreur verticale du MNT |
 | Date des données | reproductibilité | extrait OpenStreetMap du 14/11/2026 | date de l'extraction |
 
 ## Le relief
@@ -43,7 +45,7 @@ Avant de calculer, on contrôle que la station est bien dessinée dans OpenStree
 - des surfaces de piste couvrant au moins 30 % de la longueur pour au moins la moitié des pistes ; sinon la largeur par défaut s'applique et c'est signalé ;
 - des géométries valides, sans boucle.
 
-Quand un contrôle échoue, on corrige d'abord les données dans OpenStreetMap, ce qui profite à tout le monde. L'implémentation actuelle ne lit que les pistes dessinées comme de simples lignes ; les pistes saisies sous forme de relations, fréquentes dans certains pays, ne sont pas encore prises en compte.
+Quand un contrôle échoue, on corrige d'abord les données dans OpenStreetMap, ce qui profite à tout le monde. Les pistes saisies sous forme de relations, fréquentes dans certains pays, sont lues comme les autres : leurs lignes reprennent les étiquettes de la relation. Les surfaces de piste saisies en plusieurs morceaux (multipolygones) servent aussi à mesurer la largeur, toujours sur la surface de la piste concernée et non sur l'ensemble des surfaces voisines.
 
 ## La neige
 

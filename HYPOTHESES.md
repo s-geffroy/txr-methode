@@ -32,6 +32,9 @@ Le nom TxR vient de *Technical × Resistance* : la technique et la résistance 
 | H7 | La neige du jour se répartit en ligne droite entre deux relevés, en bas et en haut du domaine, modulée par l'orientation | Choix de l'auteur ; le facteur d'orientation vient de la climatologie | aucune |
 | H8 | Les parallèles sont prises en face du tracé, point par point | Correction d'un défaut : une version antérieure les faisait dériver dans les virages | rapport de longueur global (abandonné) |
 | H9 | L'accord avec les couleurs se compte par piste, comparé au hasard | Révision méthodologique | comptage par morceau de tracé (abandonné) |
+| H10 | Pas de zigzag sur une piste de moins de 10 m de large | Revue de la méthode | zigzag partout (abandonné) |
+| H11 | Les virages sont des arcs de cercle : godille (4 m), courts (8 m), moyens (15 m), grands (25 m), avec une largeur balayée limitée par la piste | Demande de l'auteur ; rayons supposés, sans mesure | aucune |
+| H12 | Un virage coupé a un rayon égal au rayon de cotes du ski multiplié par le cosinus de l'angle de carre, pris à 45° | Relation géométrique du ski taillé, flexion et dérapage négligés | 30° et 60° à calculer |
 
 ## Ce qui reste ouvert
 

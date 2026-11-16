@@ -14,6 +14,7 @@ Site : https://s-geffroy.github.io/txr-methode/
 | [METHODE.md](METHODE.md) | le calcul complet |
 | [GRILLE.md](GRILLE.md) | la grille T × R, avec une description de piste par case |
 | [ABAQUE.md](ABAQUE.md) | ajuster la note T à l'enneigement, à la main |
+| [VIRAGES.md](VIRAGES.md) | types de virages et rayon des skis |
 | [STATIONS.md](STATIONS.md) | appliquer TxR à une station : paramètres, données, contrôles |
 | [HYPOTHESES.md](HYPOTHESES.md) | principes et hypothèses, avec les variantes essayées |
 | [PILOTE.md](PILOTE.md) | l'essai à La Foux d'Allos, chiffres agrégés |
@@ -24,7 +25,7 @@ Site : https://s-geffroy.github.io/txr-methode/
 
 ## Citer
 
-Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.4.1. https://s-geffroy.github.io/txr-methode/
+Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.0. https://s-geffroy.github.io/txr-methode/
 
 Le fichier [CITATION.cff](CITATION.cff) donne les mêmes informations sous forme lisible par les logiciels (bouton « Cite this repository » sur GitHub).
 

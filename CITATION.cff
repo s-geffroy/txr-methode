@@ -5,7 +5,7 @@ type: dataset
 authors:
   - family-names: Geffroy
     given-names: Sylvain
-version: 0.4.1
+version: 0.5.0
 date-released: 2026-11-16
 license: CC-BY-4.0
 repository-code: "https://github.com/s-geffroy/txr-methode"
@@ -27,5 +27,5 @@ preferred-citation:
     - family-names: Geffroy
       given-names: Sylvain
   year: 2026
-  version: 0.4.1
+  version: 0.5.0
   url: "https://s-geffroy.github.io/txr-methode/"

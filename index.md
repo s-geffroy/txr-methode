@@ -26,7 +26,7 @@ Les pourcentages sont ceux de la pente sur un passage de 30 m. Une pente de 25�
 
 On part du relief sans neige, mesuré par laser aéroporté avec un point au moins tous les mètres, et du tracé des pistes dans OpenStreetMap. On calcule la pente de chaque passage de 30 m, et de 10 m pour repérer les murs courts. On estime ensuite la piste réelle : on peut choisir son passage dans la largeur, et la neige comble les creux. T vient du passage le plus raide de cette piste estimée, R de son dénivelé. On calcule aussi la note d'un skieur qui descend en zigzag, mais la note affichée reste celle, plus prudente, de la descente dans l'axe.
 
-La hauteur de neige change un peu la note, surtout sur les murs courts. Avec deux relevés, en bas et en haut du domaine, une station peut recalculer T à la main grâce à [l'abaque d'enneigement](ABAQUE.md).
+La hauteur de neige change un peu la note, surtout sur les murs courts. Avec deux relevés, en bas et en haut du domaine, une station peut recalculer T à la main grâce à [l'abaque d'enneigement](ABAQUE.md). La façon de tourner et le rayon des skis changent aussi la pente que l'on suit réellement : la page [Virages et rayon des skis](VIRAGES.md) l'explique.
 
 ## Où en est-on
 
@@ -36,7 +36,7 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 
 | Pour qui | Document |
 |---|---|
-| Skieurs, moniteurs | [Fiche skieurs (PDF, 2 pages)](fiches/grand-public.pdf) · [Grille T × R (PDF, 1 page)](fiches/grille.pdf) |
+| Skieurs, moniteurs | [Fiche skieurs (PDF, 3 pages)](fiches/grand-public.pdf) · [Grille T × R (PDF, 1 page)](fiches/grille.pdf) · [Virages et rayon des skis](VIRAGES.md) |
 | Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) |
 | Spécialistes | [Fiche technique (PDF)](fiches/technique.pdf) · [Méthode complète](METHODE.md) · [Hypothèses](HYPOTHESES.md) |
 | Autres stations | [Appliquer TxR à une station](STATIONS.md) |
@@ -44,7 +44,7 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 
 ## Citer, réutiliser
 
-Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.4.1. https://s-geffroy.github.io/txr-methode/
+Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.0. https://s-geffroy.github.io/txr-methode/
 
 Les chiffres de l'essai sont des résultats agrégés, calculés à partir de données © contributeurs [OpenStreetMap](https://www.openstreetmap.org/copyright) (ODbL 1.0), de l'IGN et de Météo-France (Licence Ouverte Etalab 2.0). Aucune base de données n'est diffusée ici. Ce travail est indépendant des exploitants des stations citées.
 
