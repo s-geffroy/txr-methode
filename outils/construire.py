@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 RACINE = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent)
-VERSION = "0.5.0"
+VERSION = "0.5.1"
 AUTEUR = "Sylvain Geffroy"
 ENCRE, ACCENT, NEIGE, SOL = "#1d2733", "#b4470b", "#7fb3e6", "#e9e2d6"
 

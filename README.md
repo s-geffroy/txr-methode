@@ -25,7 +25,7 @@ Site : https://s-geffroy.github.io/txr-methode/
 
 ## Citer
 
-Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.0. https://s-geffroy.github.io/txr-methode/
+Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.5.1. https://s-geffroy.github.io/txr-methode/
 
 Le fichier [CITATION.cff](CITATION.cff) donne les mêmes informations sous forme lisible par les logiciels (bouton « Cite this repository » sur GitHub).
 
