@@ -5,6 +5,14 @@ description: "Versions successives de la méthode TxR et ce qui a changé."
 
 # Versions
 
+## 0.7.0 (17/11/2026)
+
+- Couloir : une parallèle repliée ou coupée dans un lacet est gardée morceau par morceau ; seuls ses points mal placés sont écartés. Trois traces changent de classe sur 442, aucune parmi les pistes comparées aux couleurs.
+- Virages : la largeur balayée est bornée au couloir réellement échantillonné (38 m) ; cette largeur est publiée à côté de celle de la piste.
+- Le programme refuse une projection qui déforme les distances de plus de 0,5 %.
+- Préenregistrement de la validation (projet, à déposer avant toute mesure).
+- Site : description de chaque page, plan du site, métadonnées citables.
+
 ## 0.6.2 (17/11/2026)
 
 - Les couleurs ne sont plus la référence : TxR cherche à les dépasser. La comparaison avec elles est présentée comme un contrôle (erreurs grossières, réglage déguisé), avec un vocabulaire neutre (« dans la plage », « au-dessus ») au lieu de « conforme ». Les résultats disent d'abord ce que TxR dit des pistes : la plupart des bleues ont au moins un passage de niveau rouge. Nouvelle section « Les couleurs des pistes » dans la méthode.

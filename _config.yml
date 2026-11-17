@@ -2,7 +2,7 @@
 title: "TxR, méthode"
 url: "https://s-geffroy.github.io"
 baseurl: "/txr-methode"
-txr_version: "0.6.2"
+txr_version: "0.7.0"
 description: "Noter une piste de ski en technique (T) et résistance (R). Travail de recherche."
 lang: fr
 theme: jekyll-theme-primer

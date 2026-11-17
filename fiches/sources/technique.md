@@ -1,5 +1,5 @@
 # TxR : fiche technique
-> Méthode de recherche · seuils et corrections non calibrés · version 0.6.2, programme de calcul non publié
+> Méthode de recherche · seuils et corrections non calibrés · version 0.7.0, programme de calcul non publié
 
 ## Principe
 Deux notes qui ne se compensent pas. **T** (T0 à T6) est la plus haute des classes données par trois règles sur la pente. **R** (R0 à R5) est la classe du dénivelé net de la piste. L'exposition E et les conditions C restent à part et ne sont pas calculées.
