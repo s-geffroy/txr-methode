@@ -39,11 +39,11 @@ Pour chaque piste, on regarde si sa note T tombe dans la plage attendue pour sa 
 | Mesure de la pente | Pistes conformes sur 42 | Attendu au hasard | Accord corrigé du hasard |
 |---|---|---|---|
 | Sol nu, sans correction | 8 | 9,2 | −0,04 |
-| Ligne de pente (θ = 0°) | 10 | 10,7 | −0,02 |
+| Ligne de pente (θ = 0°), note affichée | 10 | 10,7 | −0,02 |
 | Trajectoire (θ = 30°) | 19 | 14,3 | 0,17 |
 | Trajectoire (θ = 45°) | 32 | 19,2 | 0,56 |
 
-L'intervalle de confiance à 95 % de la conformité en trajectoire va de 31 à 60 % (rééchantillonnage des pistes). La conformité augmente mécaniquement avec θ : toutes les corrections réduisent la pente, et sur sol nu aucune piste ne sort plus facile que sa couleur. Comme le zigzag revient à diviser les seuils par cos θ (voir la [méthode](METHODE.md)), ce tableau mesure surtout l'effet de ce réglage. Quand une piste n'est pas conforme, c'est presque toujours parce que TxR la trouve plus difficile que sa couleur. Cela peut venir de seuils trop sévères, d'une correction trop faible, ou du fait que la couleur tient compte d'autres critères. On ne peut pas trancher avec ces données.
+Pour la note affichée, celle de la ligne de pente, l'accord ne se distingue pas du hasard : accord corrigé de −0,02, avec un intervalle à 95 % de −0,14 à 0,12. En trajectoire, il est de 0,17 (−0,01 à 0,38) et la conformité va de 31 à 60 % (rééchantillonnage des pistes). La conformité augmente mécaniquement avec θ : toutes les corrections réduisent la pente, et sur sol nu aucune piste ne sort plus facile que sa couleur. Comme le zigzag revient à diviser les seuils par cos θ (voir la [méthode](METHODE.md)), ce tableau mesure surtout l'effet de ce réglage. Quand une piste n'est pas conforme, c'est presque toujours parce que TxR la trouve plus difficile que sa couleur. Cela peut venir de seuils trop sévères, d'une correction trop faible, ou du fait que la couleur tient compte d'autres critères. On ne peut pas trancher avec ces données.
 
 ## Ordre des pistes
 

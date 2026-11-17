@@ -53,9 +53,13 @@ Une piste balisée et sécurisée mais non damée se déclare de deux façons :
 
 OpenStreetMap indique parfois qu'une piste n'est pas damée (étiquette `piste:grooming`). Cette information, souvent posée sur un seul tronçon, est seulement signalée comme à vérifier : elle ne change pas la note.
 
+## Les tracés incomplets
+
+Il arrive qu'OpenStreetMap ne dessine qu'une partie d'une piste. Noter ce morceau comme s'il s'agissait de toute la piste fausserait la comparaison avec sa couleur. La station peut donc déclarer une piste « tracé incomplet » : elle reste notée sur le tronçon dessiné, avec cette mention, mais sort de l'accord avec les couleurs. Une longueur minimale automatique a été écartée, car de vraies liaisons ne font que 120 à 150 m. Une piste dont aucun passage ne descend (tronçon mal orienté) ne reçoit pas de note et sort elle aussi de l'accord.
+
 ## La neige
 
-En France, la réanalyse S2M de Météo-France couvre les Alpes, les Pyrénées et la Corse, à notre connaissance. Ailleurs, et dans les massifs qu'elle ne couvre pas (Vosges, Jura, Massif central), on peut utiliser une autre climatologie de la neige par altitude et orientation, ou, à défaut, faire le calcul sans facteur d'orientation (f = 1). La climatologie doit couvrir toutes les altitudes du domaine. Un domaine sur plusieurs versants ou plusieurs massifs utilise une climatologie et un couple de points de relevé par secteur.
+En France, la réanalyse S2M de Météo-France couvre les Alpes, les Pyrénées et la Corse, à notre connaissance. Ailleurs, et dans les massifs qu'elle ne couvre pas (Vosges, Jura, Massif central), on peut utiliser une autre climatologie de la neige par altitude et orientation, ou, à défaut, faire le calcul sans facteur d'orientation (f = 1). La climatologie doit couvrir toutes les altitudes du domaine. Un domaine sur plusieurs versants utilise un couple de points de relevé par secteur, avec la même climatologie ; un domaine à cheval sur deux massifs prend, à ce jour, la climatologie du massif principal.
 
 ## Les couleurs
 

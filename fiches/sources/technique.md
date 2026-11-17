@@ -1,5 +1,5 @@
 # TxR : fiche technique
-> Méthode de recherche · seuils et corrections non calibrés · version 0.5.0, programme de calcul non publié
+> Méthode de recherche · seuils et corrections non calibrés · version 0.6.1, programme de calcul non publié
 
 ## Principe
 Deux notes qui ne se compensent pas. **T** (T0 à T6) est la plus haute des classes données par trois règles sur la pente. **R** (R0 à R5) est la classe du dénivelé net de la piste. L'exposition E et les conditions C restent à part et ne sont pas calculées.
@@ -27,7 +27,7 @@ $$h = \left[(1 - t)\,h_{\mathrm{bas}} + t\,h_{\mathrm{haut}}\right] f \qquad L =
 t position en altitude entre les deux relevés encadrants, bornée à [0, 1], f = rapport climatologique orientation / plat à la même altitude, borné à [0, 3]. Abaque manuel pour un mur court : voir la fiche exploitants.
 
 ## Essai pilote (exploratoire)
-42 pistes d'une station des Alpes du Sud. Pistes conformes à leur couleur : 8 sur sol nu, 10 en ligne de pente, 19 en trajectoire (14,3 attendues au hasard ; accord corrigé 0,17), 32 avec θ = 45°. τ-b de rang couleur / T : 0,75 [0,66 ; 0,82] en trajectoire, contre 0,59 pour la pente moyenne seule. θ, L0, k et la largeur par défaut ont été fixés pendant l'analyse : ces chiffres ne valident rien.
+42 pistes d'une station des Alpes du Sud. Pistes conformes à leur couleur : 10 avec la note affichée, en ligne de pente (10,7 attendues au hasard ; accord corrigé −0,02, de −0,14 à 0,12) ; 8 sur sol nu ; 19 en trajectoire (14,3 au hasard ; 0,17) ; 32 avec θ = 45°. Les quatre stations étudiées donnent le même constat (page Résultats). τ-b de rang couleur / T : 0,75 [0,66 ; 0,82] en trajectoire, contre 0,59 pour la pente moyenne seule. θ, L0, k et la largeur par défaut ont été fixés pendant l'analyse : ces chiffres ne valident rien.
 
 ## Limites
 Seuils, θ, L0, k et u non calibrés. Neige de culture, damage réel, dévers, obstacles, glace non modélisés. Types de virages et rayons supposés. Validation prévue : profils de neige damée (GNSS des dameuses, drone), plusieurs stations, paramètres figés et déposés avant la mesure.

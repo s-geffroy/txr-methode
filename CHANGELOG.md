@@ -4,6 +4,13 @@ title: Versions
 
 # Versions
 
+## 0.6.1 (17/11/2026)
+
+- Résultats : l'accord avec les couleurs est donné pour la note affichée (ligne de pente), comparé au hasard, avec l'intervalle de confiance de l'accord corrigé du hasard (κ). Avec cette note, l'accord ne dépasse le hasard dans aucune station ; la note avec zigzag est donnée pour comparaison. La Foux est signalée comme station de réglage ; la pente moyenne sert de référence pour l'ordre des couleurs.
+- Le programme de calcul affiche désormais partout la note de la ligne de pente, comme l'annonçait la méthode.
+- Tracés incomplets : une piste dont OpenStreetMap ne dessine qu'une partie sort de l'accord avec les couleurs (Appliquer TxR à une station).
+- Corrections de cohérence : version du programme, nombre de fiches, ordre des hypothèses, climatologie par secteur.
+
 ## 0.6.0 (16/11/2026)
 
 - Pistes non damées : lissage par la neige seule (L = k h), pente la plus forte des calculs avec et sans dameuse, mention « non damée » (hypothèse H13). Déclaration par le plan ou par la station ; l'étiquette OpenStreetMap est seulement signalée.

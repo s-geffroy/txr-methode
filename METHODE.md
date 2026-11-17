@@ -4,7 +4,7 @@ title: Méthode
 
 # Méthode de calcul
 
-Ce document décrit le calcul complet, dans l'ordre où il se fait. Il vaut pour n'importe quelle station : ce qui dépend du lieu (sources de relief, altitudes des relevés de neige, largeur par défaut…) est rassemblé dans [Appliquer TxR à une station](STATIONS.md). Les choix discutables et leurs variantes sont dans [Hypothèses](HYPOTHESES.md). La version décrite est celle du programme de calcul 0.5, qui n'est pas publié à ce jour.
+Ce document décrit le calcul complet, dans l'ordre où il se fait. Il vaut pour n'importe quelle station : ce qui dépend du lieu (sources de relief, altitudes des relevés de neige, largeur par défaut…) est rassemblé dans [Appliquer TxR à une station](STATIONS.md). Les choix discutables et leurs variantes sont dans [Hypothèses](HYPOTHESES.md). La version décrite est celle du programme de calcul 0.6, qui n'est pas publié à ce jour.
 
 ## Ce que la méthode produit
 
