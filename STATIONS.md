@@ -14,7 +14,7 @@ La méthode est la même partout. Ce qui change d'une station à l'autre, ce son
 | Projection de calcul | distances et pentes | Lambert-93 (EPSG:2154) | projection conforme nationale ou UTM ; jamais la projection « Web Mercator » des fonds de carte, qui fausse les distances |
 | MNT de référence et MNT fin | profils en long | RGE ALTI 1 m ; LiDAR HD 50 cm | voir plus bas |
 | Liste des pistes | unité de la note | 42 pistes du plan officiel | plan de la saison, rapproché des tracés OpenStreetMap |
-| Système de couleurs | contrôle par les couleurs | vert, bleu, rouge, noir | norme ou usage du pays |
+| Système de couleurs | comparaison avec les couleurs (contrôle) | vert, bleu, rouge, noir | norme ou usage du pays |
 | Climatologie de la neige | facteur d'orientation | S2M, massif Haut-Var/Haut-Verdon | massif ou massifs qui couvrent le domaine |
 | Points de relevé de neige | neige du jour | 1 800 m et 2 600 m | points du relevé quotidien, avec leur altitude ; un couple par secteur si le domaine en a plusieurs |
 | Largeur par défaut | pistes sans surface dessinée | 35 m (médiane mesurée) | médiane des largeurs mesurées dans la station |
@@ -63,7 +63,7 @@ En France, la réanalyse S2M de Météo-France couvre les Alpes, les Pyrénées 
 
 ## Les couleurs
 
-Le contrôle par les couleurs n'a de sens qu'à l'intérieur d'un même système. En France : verte, bleue, rouge, noire. En Suisse et en Autriche, il n'y a pas de verte, et il existe des itinéraires balisés autrement. En Amérique du Nord, les symboles sont différents. Pour chaque système, on écrit à l'avance quelles classes T on attend pour chaque couleur, avec la source.
+La comparaison avec les couleurs, qui sert de contrôle, n'a de sens qu'à l'intérieur d'un même système. En France : verte, bleue, rouge, noire. En Suisse et en Autriche, il n'y a pas de verte, et il existe des itinéraires balisés autrement. En Amérique du Nord, les symboles sont différents. Pour chaque système, on écrit à l'avance quelles classes T on attend pour chaque couleur, avec la source.
 
 ## Dans quel ordre
 

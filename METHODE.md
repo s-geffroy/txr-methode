@@ -126,6 +126,10 @@ où t est la position en altitude entre les deux points de relevé qui encadrent
 
 La hauteur relevée sur piste comprend la neige de culture et le tassement, alors que la climatologie ne décrit que la neige naturelle : celle-ci ne sert qu'à répartir la neige entre les orientations.
 
+## Les couleurs des pistes
+
+TxR ne cherche pas à retrouver les couleurs des pistes : il veut les dépasser, en disant où la pente est forte. Une couleur résume beaucoup de choses (pente, largeur, fréquentation, choix de la station), alors que T ne dit que la pente du passage le plus raide. Un écart avec la couleur est donc une information, pas une erreur. La comparaison avec les couleurs du plan sert seulement de contrôle, de deux façons. Elle repère une erreur grossière : une noire notée T1, ou un ordre des notes sans rapport avec celui des couleurs, signale un tracé ou un relief faux. Elle sert aussi de garde-fou contre le réglage déguisé : toutes les corrections réduisent la pente, si bien que la part des pistes dans la plage habituelle de leur couleur (verte T0–T1, bleue T1–T2, rouge T3–T4, noire T4 et au-delà) monte avec l'angle de zigzag ou la largeur supposés ; on la compare donc au hasard. La référence, ce sont des mesures de pente sur neige damée (voir [Validation](VALIDATION.md)).
+
 ## Reproductibilité
 
 Chaque calcul écrit dans un dossier neuf, avec ses paramètres et l'empreinte de toutes ses sources (extrait OpenStreetMap daté, réponses du service d'altitude, dalles du MNT, climatologie, règles). Un calcul interrompu reprend là où il s'était arrêté, avec les mêmes paramètres. Un second calcul, fait sans réseau à partir des seules données conservées, doit redonner des tables identiques : c'est vérifié à chaque fois.

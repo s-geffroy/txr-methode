@@ -4,7 +4,7 @@ title: Protocole de validation
 
 # Protocole de validation proposé
 
-L'accord avec les couleurs du plan ne valide pas TxR. Les corrections réduisent toutes la pente, si bien que l'accord augmente avec leur ampleur, et les couleurs elles-mêmes ont été données en grande partie d'après la pente (voir [l'essai à La Foux d'Allos](PILOTE.md)). Pour savoir si les notes sont justes, il faut mesurer la pente là où l'on skie : sur la neige damée.
+Les couleurs du plan ne sont pas la référence de TxR, qui cherche justement à les dépasser ; l'accord avec elles ne valide donc rien. Les corrections réduisent toutes la pente, si bien que l'accord augmente avec leur ampleur, et les couleurs elles-mêmes ont été données en grande partie d'après la pente (voir [l'essai à La Foux d'Allos](PILOTE.md)). Pour savoir si les notes sont justes, il faut mesurer la pente là où l'on skie : sur la neige damée.
 
 ## Deux questions distinctes
 

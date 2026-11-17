@@ -4,6 +4,10 @@ title: Versions
 
 # Versions
 
+## 0.6.2 (17/11/2026)
+
+- Les couleurs ne sont plus la référence : TxR cherche à les dépasser. La comparaison avec elles est présentée comme un contrôle (erreurs grossières, réglage déguisé), avec un vocabulaire neutre (« dans la plage », « au-dessus ») au lieu de « conforme ». Les résultats disent d'abord ce que TxR dit des pistes : la plupart des bleues ont au moins un passage de niveau rouge. Nouvelle section « Les couleurs des pistes » dans la méthode.
+
 ## 0.6.1 (17/11/2026)
 
 - Résultats : l'accord avec les couleurs est donné pour la note affichée (ligne de pente), comparé au hasard, avec l'intervalle de confiance de l'accord corrigé du hasard (κ). Avec cette note, l'accord ne dépasse le hasard dans aucune station ; la note avec zigzag est donnée pour comparaison. La Foux est signalée comme station de réglage ; la pente moyenne sert de référence pour l'ordre des couleurs.

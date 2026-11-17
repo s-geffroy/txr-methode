@@ -32,18 +32,18 @@ Le tableau rassemble, couleur par couleur, les principales caractéristiques des
 
 « T3 : 5 » se lit « cinq pistes notées T3 ». Toutes les grandeurs montent avec la couleur, mais les plages se recouvrent largement : des bleues sont plus raides que certaines rouges, sur sol nu comme sur la piste estimée. Les notes T sortent le plus souvent au-dessus de la classe attendue pour la couleur, surtout sans zigzag. Les pentes du plus raide passage des bleues (37 % en médiane) dépassent nettement les repères habituels des bleues damées : c'est soit le signe que la correction vers la piste damée reste trop faible, soit que les couleurs tiennent compte d'autres critères que le passage le plus raide. Seules des mesures sur neige damée permettront de trancher.
 
-## Accord avec les couleurs
+## Comparaison avec les couleurs : un contrôle
 
-Pour chaque piste, on regarde si sa note T tombe dans la plage attendue pour sa couleur : verte T0–T1, bleue T1–T2, rouge T3–T4, noire T4 et au-delà. Les plages se chevauchent, et une noire est conforme dès T4 : ce contrôle est donc indulgent par construction.
+TxR ne cherche pas à retrouver les couleurs ; la comparaison sert à repérer une erreur grossière et à voir ce qui revient aux réglages. Pour chaque piste, on regarde si sa note T tombe dans la plage habituelle de sa couleur : verte T0–T1, bleue T1–T2, rouge T3–T4, noire T4 et au-delà. Les plages se chevauchent, et une noire y est dès T4 : ce contrôle est donc indulgent par construction.
 
-| Mesure de la pente | Pistes conformes sur 42 | Attendu au hasard | Accord corrigé du hasard |
+| Mesure de la pente | Pistes dans la plage sur 42 | Au hasard | Accord corrigé du hasard |
 |---|---|---|---|
 | Sol nu, sans correction | 8 | 9,2 | −0,04 |
 | Ligne de pente (θ = 0°), note affichée | 10 | 10,7 | −0,02 |
 | Trajectoire (θ = 30°) | 19 | 14,3 | 0,17 |
 | Trajectoire (θ = 45°) | 32 | 19,2 | 0,56 |
 
-Pour la note affichée, celle de la ligne de pente, l'accord ne se distingue pas du hasard : accord corrigé de −0,02, avec un intervalle à 95 % de −0,14 à 0,12. En trajectoire, il est de 0,17 (−0,01 à 0,38) et la conformité va de 31 à 60 % (rééchantillonnage des pistes). La conformité augmente mécaniquement avec θ : toutes les corrections réduisent la pente, et sur sol nu aucune piste ne sort plus facile que sa couleur. Comme le zigzag revient à diviser les seuils par cos θ (voir la [méthode](METHODE.md)), ce tableau mesure surtout l'effet de ce réglage. Quand une piste n'est pas conforme, c'est presque toujours parce que TxR la trouve plus difficile que sa couleur. Cela peut venir de seuils trop sévères, d'une correction trop faible, ou du fait que la couleur tient compte d'autres critères. On ne peut pas trancher avec ces données.
+Pour la note affichée, celle de la ligne de pente, l'accord ne se distingue pas du hasard : accord corrigé de −0,02, avec un intervalle à 95 % de −0,14 à 0,12. En trajectoire, il est de 0,17 (−0,01 à 0,38) et la part dans la plage va de 31 à 60 % (rééchantillonnage des pistes). Cette part augmente mécaniquement avec θ : toutes les corrections réduisent la pente, et sur sol nu aucune piste ne sort plus facile que sa couleur. Comme le zigzag revient à diviser les seuils par cos θ (voir la [méthode](METHODE.md)), ce tableau mesure surtout l'effet de ce réglage. Quand une piste sort de la plage, c'est presque toujours parce que TxR lui trouve un passage plus raide que sa couleur ne le laisse attendre. C'est l'information que TxR veut donner, à condition qu'elle soit juste : cela peut aussi venir de seuils trop sévères ou d'une correction trop faible. Seules des mesures sur neige damée trancheront.
 
 ## Ordre des pistes
 

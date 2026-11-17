@@ -32,7 +32,7 @@ La hauteur de neige change un peu la note, surtout sur les murs courts. Avec deu
 
 ## Où en est-on
 
-La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y sortent dans un ordre proche de celui de leurs couleurs. C'est encourageant, mais la pente moyenne seule donne déjà un ordre assez proche, et le niveau des notes dépend de nos hypothèses : selon l'angle de zigzag supposé, de 10 à 32 pistes tombent dans la classe de leur couleur. Le [compte rendu de l'essai](PILOTE.md) donne le détail. La même méthode, sans aucun réglage nouveau, a ensuite été appliquée à Pra-Loup, au Grand Tourmalet et à Val d'Isère–Tignes ([résultats par station](RESULTATS.md)). L'ordre des notes y suit encore celui des couleurs, mais de moins près sur le grand domaine de Val d'Isère–Tignes. Le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
+TxR ne cherche pas à retrouver les couleurs des pistes : il veut les dépasser, en disant où la pente est forte. La méthode a été essayée sur les 42 pistes de La Foux d'Allos, puis appliquée sans aucun réglage nouveau à Pra-Loup, au Grand Tourmalet et à Val d'Isère–Tignes ([résultats par station](RESULTATS.md)). Dans les quatre stations, la plupart des bleues ont au moins un passage que TxR classe comme une rouge. Les couleurs servent seulement de contrôle : l'ordre des notes suit le leur, ce qui écarte une erreur grossière, et la comparaison au hasard montre ce qui revient à nos réglages. Le [compte rendu de l'essai](PILOTE.md) donne le détail. Le [protocole de validation](VALIDATION.md) décrit les mesures sur neige damée qui permettront de trancher.
 
 ## Documents
 
@@ -46,7 +46,7 @@ La méthode a été essayée sur les 42 pistes de La Foux d'Allos. Les pistes y
 
 ## Citer, réutiliser
 
-Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.6.1. Zenodo. [https://doi.org/10.5281/zenodo.24280550](https://doi.org/10.5281/zenodo.24280550)
+Les textes, fiches et figures sont sous licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr) : on peut les reprendre librement en citant la source. Pour citer : Geffroy, S. (2026). *TxR, méthode de classement des pistes de ski en technique et résistance*, version 0.6.2. Zenodo. [https://doi.org/10.5281/zenodo.24280550](https://doi.org/10.5281/zenodo.24280550)
 
 Archive et DOI : [Zenodo](https://doi.org/10.5281/zenodo.24280550) (toutes versions) · [version 0.6.0](https://doi.org/10.5281/zenodo.24308019) · [version 0.5.2](https://doi.org/10.5281/zenodo.24280769) · [version 0.5.1](https://doi.org/10.5281/zenodo.24280551).
 

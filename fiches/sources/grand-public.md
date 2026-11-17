@@ -17,7 +17,7 @@ La station relève chaque matin la hauteur de neige en bas et en haut du domaine
 - Une piste balisée mais non damée est notée sans l'effet de la dameuse et porte la mention « non damée » : attendez-vous à des bosses et à une neige non travaillée.
 - Les seuils viennent de repères habituels pour les pistes damées et n'ont pas encore été vérifiés sur le terrain. Le calcul peut sous-estimer un passage court et très raide : sur place, ce peut être un peu plus dur.
 - TxR ne tient pas compte de la glace, de la neige dure, des bosses, de la visibilité ni de l'affluence.
-- Le premier essai, sur une station des Alpes du Sud, range les pistes dans un ordre proche de celui de leurs couleurs. Le niveau exact des notes reste à confirmer par des mesures sur neige damée.
+- TxR ne cherche pas à retrouver les couleurs : il dit où la pente est forte. Dans les stations étudiées, la plupart des bleues ont au moins un passage que TxR classe comme une rouge. L'ordre des notes suit celui des couleurs, ce qui écarte une erreur grossière ; le niveau exact des notes reste à confirmer par des mesures sur neige damée.
 
 ## La grille au verso
 Au dos, chaque case décrit le genre de piste que donne une combinaison de T et de R. Choisissez d'abord votre colonne, selon ce que vous savez skier, puis votre ligne, selon votre forme du jour.

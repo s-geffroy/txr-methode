@@ -6,27 +6,40 @@ title: Résultats par station
 
 TxR a été appliqué à plusieurs stations avec exactement les mêmes réglages : seuils, zigzag, lissage par la neige et longueurs des passages. Seules changent les données propres à chaque station : relief, tracés, climatologie de la neige, points de relevé. Les résultats ci-dessous sont agrégés par couleur. Aucune note n'est publiée piste par piste.
 
-Ces résultats sont exploratoires. Les réglages ont été fixés sur la première station, La Foux d'Allos, qui est donc la station de réglage : ses chiffres sont sans doute optimistes. Les stations suivantes ne valident pas non plus la méthode, car elles ne sont comparées qu'aux couleurs du plan. Seules des mesures sur neige damée le permettront (voir le [protocole de validation](VALIDATION.md)).
+Ces résultats sont exploratoires. Les réglages ont été fixés sur la première station, La Foux d'Allos, qui est donc la station de réglage : ses chiffres sont sans doute optimistes. Les stations suivantes ne valident pas non plus la méthode : les couleurs du plan ne sont pas une référence, seulement un contrôle. Seules des mesures sur neige damée le permettront (voir le [protocole de validation](VALIDATION.md)).
 
-La note affichée est celle de la ligne de pente, sans zigzag : c'est la plus prudente (voir [la méthode](METHODE.md)). La note avec un zigzag à 30° sert aux essais ; elle est donnée pour comparaison, mais son accord avec les couleurs dépend directement de l'angle choisi, fixé après avoir vu les résultats.
+La note affichée est celle de la ligne de pente, sans zigzag : c'est la plus prudente (voir [la méthode](METHODE.md)). La note avec un zigzag à 30° sert aux essais ; elle est donnée pour comparaison, mais sa proximité avec les couleurs dépend directement de l'angle choisi, fixé après avoir vu les résultats.
 
-## Vue d'ensemble
+## Ce que TxR dit des pistes
 
-| Station | Massif | Pistes contrôlées | Note affichée : conformes / au hasard | κ note affichée (IC 95 %) | Zigzag à 30° : conformes / au hasard | κ zigzag (IC 95 %) | τ-b couleur / note affichée (IC 95 %) | τ-b couleur / pente moyenne |
+TxR ne cherche pas à retrouver les couleurs : il les complète en disant où la pente est forte. Le tableau compte, pour chaque station, les pistes dont la note affichée (ligne de pente) dépasse ce que leur couleur laisse habituellement attendre : une verte avec un passage de niveau bleu ou plus (T2 et au-delà), une bleue avec un passage de niveau rouge (T3 et au-delà), une rouge avec un passage de niveau noir (T5 et au-delà).
+
+| Station | Pistes | Avec un passage au-dessus de leur couleur | Vertes au-dessus | Bleues au-dessus | Rouges au-dessus |
+|---|---|---|---|---|---|
+| [La Foux d'Allos](PILOTE.md) | 42 | 32 | 1 sur 2 | 14 sur 17 | 17 sur 19 |
+| Pra-Loup | 39 | 27 | — | 13 sur 14 | 14 sur 20 |
+| Grand Tourmalet | 42 | 31 | 2 sur 3 | 17 sur 20 | 12 sur 14 |
+| Val d'Isère–Tignes | 119 | 88 | 9 sur 10 | 56 sur 58 | 23 sur 38 |
+
+Sur les quatre stations, 100 bleues sur 109 ont au moins un passage que TxR classe comme une rouge, et 66 rouges sur 91 un passage de niveau noir. Ces notes sont des bornes provisoires : les seuils ne sont pas calibrés, et le passage qui fixe la note est à vérifier sur place dans 94 % des cas (tracé OpenStreetMap qui suit la ligne de plus grande pente, ou passage court). Elles disent où regarder, pas encore ce qu'il faut afficher. Seules des mesures de pente sur neige damée diront si ces passages sont aussi raides sur la piste que sur le relief d'été (voir le [protocole de validation](VALIDATION.md)).
+
+## Comparaison avec les couleurs : un contrôle, pas un objectif
+
+La comparaison avec les couleurs du plan ne sert qu'à deux choses. Elle permet de **repérer une erreur grossière** : une noire notée T1, ou un ordre des notes sans rapport avec celui des couleurs, signale un tracé ou un relief faux. Les relectures de ces notes ont fait trouver un tracé incomplet et deux tracés mal orientés. Elle sert aussi de **garde-fou contre le réglage déguisé** : toutes les corrections réduisent la pente, si bien que la part des pistes « dans la plage » de leur couleur monte mécaniquement avec l'angle de zigzag ou la largeur supposés. La comparer au hasard montre ce qui revient au réglage.
+
+| Station | Massif | Pistes comparées | Note affichée : dans la plage / au hasard | κ note affichée (IC 95 %) | Zigzag à 30° : dans la plage / au hasard | κ zigzag (IC 95 %) | τ-b couleur / note affichée (IC 95 %) | τ-b couleur / pente moyenne |
 |---|---|---|---|---|---|---|---|---|
 | [La Foux d'Allos](PILOTE.md) (réglage) | Haut-Var/Haut-Verdon | 42 | 10 / 10,7 | −0,02 (−0,14 à 0,12) | 19 / 14,3 | 0,17 (−0,01 à 0,38) | 0,76 (0,62–0,88) | 0,59 |
 | Pra-Loup | Ubaye | 39 | 11 / 12,8 | −0,07 (−0,18 à 0,06) | 24 / 18,9 | 0,25 (0,03 à 0,50) | 0,66 (0,49–0,80) | 0,65 |
 | Grand Tourmalet | Haute-Bigorre | 42 | 10 / 11,7 | −0,06 (−0,19 à 0,09) | 17 / 14,1 | 0,10 (−0,08 à 0,30) | 0,67 (0,48–0,80) | 0,58 |
 | Val d'Isère–Tignes | Haute-Tarentaise | 119 | 29 / 36,9 | −0,10 (−0,17 à −0,01) | 48 / 40,3 | 0,10 (0,01 à 0,20) | 0,56 (0,44–0,68) | 0,46 |
 
-« Pistes contrôlées » : pistes dont la couleur est vérifiée sur le plan, damées, au tracé complet et notées. « Conformes » : pistes dont la note T tombe dans la plage attendue pour leur couleur (verte T0–T1, bleue T1–T2, rouge T3–T4, noire T4 et au-delà ; les noires sont donc conformes presque par construction). « Au hasard » : nombre de conformes qu'on obtiendrait avec la même répartition des notes, sans lien avec la couleur. κ est l'accord corrigé du hasard : 0 pour un accord dû au hasard, 1 pour un accord parfait ; un intervalle qui contient 0 veut dire que l'accord ne se distingue pas du hasard. Les intervalles viennent d'un rééchantillonnage des pistes (bootstrap). Le τ-b de Kendall mesure si l'ordre des notes suit celui des couleurs : 1 pour un ordre identique, 0 pour aucun lien.
+« Pistes comparées » : pistes dont la couleur est vérifiée sur le plan, damées, au tracé complet et notées. « Dans la plage » : la note T tombe dans la plage habituelle de la couleur (verte T0–T1, bleue T1–T2, rouge T3–T4, noire T4 et au-delà ; les noires y sont presque par construction). « Au hasard » : nombre qu'on obtiendrait avec la même répartition des notes, sans lien avec la couleur. κ est l'accord corrigé du hasard : 0 pour un accord dû au hasard ; un intervalle qui contient 0 veut dire que l'accord ne se distingue pas du hasard. Les intervalles viennent d'un rééchantillonnage des pistes (bootstrap). Le τ-b de Kendall mesure si l'ordre des notes suit celui des couleurs : 1 pour un ordre identique, 0 pour aucun lien.
 
-Ce que montrent ces chiffres :
+Ce que montrent ces contrôles :
 
-- **Avec la note affichée, l'accord avec les couleurs n'est pas meilleur que le hasard**, dans aucune station ; à Val d'Isère–Tignes, il est même un peu en dessous. Quand la note sort de la plage attendue, elle est presque toujours plus haute que la couleur (178 pistes sur 182). La pente seule, mesurée sur le relief d'été, classe donc les pistes plus sévèrement que les couleurs.
-- Avec le zigzag à 30°, l'accord dépasse le hasard à Pra-Loup et à Val d'Isère–Tignes, mais pas à La Foux ni au Grand Tourmalet. C'est un réglage, pas une validation.
-- L'ordre des notes suit celui des couleurs, mais la pente moyenne seule (dénivelé divisé par la longueur) donne déjà un ordre proche : T ne fait mieux que de 0,09 à 0,17, et pas du tout à Pra-Loup ; l'écart le plus grand est à La Foux, la station de réglage.
-- Dans 94 % des pistes contrôlées, le passage qui fixe la note est marqué « à vérifier sur place » (tracé OpenStreetMap qui suit la ligne de plus grande pente, ou passage court). La note de ces pistes reste indicative.
+- **Pas d'erreur grossière visible.** L'ordre des notes suit celui des couleurs dans les quatre stations (τ-b de 0,56 à 0,76). La pente moyenne seule (dénivelé divisé par la longueur) donne déjà un ordre proche : T ne fait mieux que de 0,09 à 0,17, et pas du tout à Pra-Loup ; l'écart le plus grand est à La Foux, la station de réglage.
+- **Pas d'accord fabriqué pour la note affichée.** Sa part « dans la plage » ne dépasse le hasard dans aucune station ; quand elle sort de la plage, c'est presque toujours vers le haut (178 pistes sur 182). Avec le zigzag à 30°, choisi après avoir vu les résultats, la part dans la plage dépasse le hasard à Pra-Loup et à Val d'Isère–Tignes : c'est l'effet du réglage, et c'est pourquoi cette note n'est pas affichée.
 - Quatre pistes du secteur des Agneliers comptent à la fois pour La Foux et pour Pra-Loup, avec les mêmes notes. Les stations ne sont donc pas tout à fait indépendantes.
 
 ## Pra-Loup
@@ -67,7 +80,7 @@ Les pistes viennent d'OpenStreetMap. Leurs couleurs ont été vérifiées sur le
 | Note R | R0 : 2, R1 : 1 | R0 : 3, R1 : 7, R2 : 10 | R1 : 6, R2 : 7, R3 : 1 | R1 : 1, R2 : 2, R3 : 2 |
 | Classe T attendue pour la couleur | T0–T1 | T1–T2 | T3–T4 | T4–T6 |
 
-Le Grand Tourmalet suit le même schéma que les deux stations des Alpes du Sud : 10 pistes sur 42 dans leur classe avec la note affichée, pour 11,7 attendues au hasard. La largeur n'a pu être mesurée nulle part, ce qui ajoute une incertitude à toutes les notes. La seule rouge notée T2 est une piste de 10 % de pente moyenne, rouge sur le plan mais bleue dans OpenStreetMap : il s'agit peut-être d'un homonyme de plus, à vérifier sur place.
+Le Grand Tourmalet suit le même schéma que les deux stations des Alpes du Sud : 31 pistes sur 42 ont un passage au-dessus de leur couleur avec la note affichée ; 10 sont dans la plage de leur couleur, pour 11,7 au hasard. La largeur n'a pu être mesurée nulle part, ce qui ajoute une incertitude à toutes les notes. La seule rouge notée T2 est une piste de 10 % de pente moyenne, rouge sur le plan mais bleue dans OpenStreetMap : il s'agit peut-être d'un homonyme de plus, à vérifier sur place.
 
 ## Val d'Isère–Tignes
 
@@ -89,6 +102,6 @@ Quinze pistes noires sont marquées « Naturide » sur le plan : balisées et
 | Note R | R0 : 3, R1 : 1, R2 : 6 | R0 : 5, R1 : 34, R2 : 13, R3 : 6 | R0 : 2, R1 : 11, R2 : 17, R3 : 7, R4 : 1 | R1 : 5, R2 : 3, R3 : 3, R4 : 2 |
 | Classe T attendue pour la couleur | T0–T1 | T1–T2 | T3–T4 | T4–T6 |
 
-C'est le plus grand échantillon : 29 pistes sur 119 dans leur classe avec la note affichée, pour 36,9 attendues au hasard. Toutes les noires sont dans leur classe, ce qui tient surtout à la largeur de leur plage (T4 et au-delà). Les rouges le sont un peu plus d'une fois sur trois. Les bleues, qui font la moitié de l'échantillon, sortent presque toutes en T3 ou T4, et neuf vertes sur dix au-dessus de T1. Leurs pentes brutes sont du même ordre que dans les autres stations (42 % de pente maximale sur 30 m pour les bleues, 41 % au Grand Tourmalet), mais elles sont moins souvent dans leur classe qu'ailleurs. Il faudra des mesures sur place pour savoir si la grille est trop sévère pour ces pistes ou si leur couleur tient compte d'autre chose que la pente.
+C'est le plus grand échantillon : 88 pistes sur 119 ont un passage au-dessus de leur couleur avec la note affichée, et 29 sont dans la plage de leur couleur (36,9 au hasard). Toutes les noires sont dans leur plage, ce qui tient surtout à sa largeur (T4 et au-delà). Les rouges le sont un peu plus d'une fois sur trois. Les bleues, qui font la moitié de l'échantillon, sortent presque toutes en T3 ou T4, et neuf vertes sur dix au-dessus de T1. Leurs pentes brutes sont du même ordre que dans les autres stations (42 % de pente maximale sur 30 m pour les bleues, 41 % au Grand Tourmalet), mais elles dépassent plus souvent qu'ailleurs la plage de leur couleur. Il faudra des mesures sur place pour savoir si la grille est trop sévère pour ces pistes ou si leur couleur tient compte d'autre chose que la pente.
 
 <small>Chiffres agrégés calculés à partir de données © contributeurs OpenStreetMap (ODbL 1.0, œuvre produite au sens de l'article 4.3), IGN et Météo-France (Licence Ouverte Etalab 2.0). Couleurs des pistes : plans officiels des stations, non redistribués. Ce travail est indépendant des exploitants des stations.</small>
