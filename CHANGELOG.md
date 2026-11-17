@@ -5,6 +5,10 @@ description: "Versions successives de la méthode TxR et ce qui a changé."
 
 # Versions
 
+## Après 0.7.0 (sans nouvelle version citable)
+
+- Orientation : l'altitude des extrémités d'un morceau est lue sur le relief LiDAR quand il les couvre, et non plus d'abord sur le RGE ALTI, qui se trompait de sens sur trois tronçons courts et presque plats.
+
 ## 0.7.0 (17/11/2026)
 
 - Couloir : une parallèle repliée ou coupée dans un lacet est gardée morceau par morceau ; seuls ses points mal placés sont écartés. Trois traces changent de classe sur 442, aucune parmi les pistes comparées aux couleurs.

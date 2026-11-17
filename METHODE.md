@@ -24,7 +24,7 @@ Les pistes viennent d'OpenStreetMap : les lignes marquées `piste:type=downhill
 
 Deux lignes d'une même piste ne sont mises bout à bout que si elles partagent un point OpenStreetMap, et seulement si ce point ne sert pas aussi d'embranchement. Des extrémités proches (moins de 5 m) sans point commun ne sont pas raccordées : on les signale. Une piste peut donc compter plusieurs morceaux indépendants, chacun avec son profil, et elle prend alors la note de son morceau le plus difficile.
 
-Chaque morceau est orienté vers l'aval d'après l'altitude de ses deux extrémités. On compare ce sens à celui dans lequel la ligne a été dessinée dans OpenStreetMap et on signale les désaccords. Si les deux extrémités sont à moins de 0,5 m d'écart, l'altitude ne tranche pas : on garde le sens dans lequel la piste a été dessinée, puisque les pistes y sont dessinées vers l'aval. Si une altitude manque, on ne calcule aucune pente.
+Chaque morceau est orienté vers l'aval d'après l'altitude de ses deux extrémités, lue sur le relief LiDAR quand il les couvre, sinon sur le RGE ALTI. On compare ce sens à celui dans lequel la ligne a été dessinée dans OpenStreetMap et on signale les désaccords. Si les deux extrémités sont à moins de 0,5 m d'écart, l'altitude ne tranche pas : on garde le sens dans lequel la piste a été dessinée, puisque les pistes y sont dessinées vers l'aval. Si une altitude manque, on ne calcule aucune pente.
 
 ## Le profil en long
 
