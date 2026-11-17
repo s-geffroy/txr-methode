@@ -1,5 +1,6 @@
 ---
 title: Hypothèses
+description: "Principes et hypothèses de la méthode TxR, avec la façon dont chacune a été fixée et les variantes essayées."
 ---
 
 # Principes et hypothèses

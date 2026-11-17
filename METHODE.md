@@ -1,5 +1,6 @@
 ---
 title: Méthode
+description: "Calcul complet de TxR : tracés OpenStreetMap, relief LiDAR de sol nu, pentes sur 10, 30 et 100 m, correction vers la piste damée, notes T et R."
 ---
 
 # Méthode de calcul
@@ -59,7 +60,7 @@ où u est l'erreur verticale maximale du MNT, en mètres. Quand aucune documenta
 
 Le relief est mesuré sans neige, alors que l'on skie sur une piste damée, large, où chacun choisit son passage. Trois corrections, toutes expérimentales, ramènent la mesure vers cette piste.
 
-**La largeur.** On mesure la largeur de la piste perpendiculairement au tracé, sur les surfaces de piste dessinées dans OpenStreetMap. Il faut au moins 5 mesures couvrant 30 % du tracé ; sinon on prend la largeur médiane mesurée dans la station. On trace ensuite des lignes parallèles au tracé, tous les 2 m, jusqu'à 1 m des bords et au plus à 20 m de part et d'autre. Chaque point d'une parallèle est pris en face du point correspondant du tracé. Les parallèles vides, coupées ou de longueur anormale (hors de 0,7 à 1,3 fois le tracé) sont écartées. Pour chaque passage, on retient la parallèle la moins raide.
+**La largeur.** On mesure la largeur de la piste perpendiculairement au tracé, sur les surfaces de piste dessinées dans OpenStreetMap. Il faut au moins 5 mesures couvrant 30 % du tracé ; sinon on prend la largeur médiane mesurée dans la station. On trace ensuite des lignes parallèles au tracé, tous les 2 m, jusqu'à 1 m des bords et au plus à 20 m de part et d'autre. Chaque point d'une parallèle est pris en face du point correspondant du tracé. Dans un virage serré, une parallèle peut se replier ou se couper en morceaux : on garde chaque morceau, et on n'écarte que les points qui ne sont pas à la bonne distance du tracé (à plus de 50 % près), pas la parallèle entière. Pour chaque passage, on retient la parallèle la moins raide. Le couloir réellement échantillonné fait donc au plus 38 m, même sur une piste plus large ; sa largeur est publiée à côté de celle de la piste.
 
 **Le zigzag.** Un skieur ne descend pas droit dans l'axe : on suppose qu'il s'en écarte d'un angle θ, en zigzag régulier, sans sortir de la piste. Sur un trajet de W m, il n'avance que de W × cos θ le long de la piste, et la pente de son trajet vaut le dénivelé divisé par W. Sur une pente régulière g, cela revient à multiplier la pente par cos θ, soit 0,87 à 30° et 0,71 à 45° :
 
@@ -77,7 +78,7 @@ où h est la hauteur de neige en mètres, L<sub>0</sub> = 5 m représente l'eff
 
 $$L = k\,h$$
 
-au lieu de L<sub>0</sub> + k h. Ce lissage plus court ne rend pas toujours la piste plus raide, à cause des bords et des centiles. Par prudence, chaque pente retenue est donc la plus forte des deux calculs, avec et sans dameuse : une piste non damée ne sort jamais plus facile que si elle était damée. Les bosses ne se voient pas dans le relief et ne sont pas chiffrées. La note s'affiche avec la mention « non damée : bosses et neige non travaillée possibles », et ces pistes ne comptent pas dans l'accord avec les couleurs.
+au lieu de L<sub>0</sub> + k h. Ce lissage plus court ne rend pas toujours la piste plus raide, à cause des bords et des centiles. Par prudence, chaque pente retenue est donc la plus forte des deux calculs, avec et sans dameuse : une piste non damée ne sort jamais plus facile que si elle était damée. Dans les scénarios de sensibilité, on applique seulement L = k h, sans ce maximum : ils mesurent l'effet du lissage, pas la note. Les bosses ne se voient pas dans le relief et ne sont pas chiffrées. La note s'affiche avec la mention « non damée : bosses et neige non travaillée possibles », et ces pistes n'entrent pas dans la comparaison avec les couleurs.
 
 Ces corrections ne valent pas toutes autant. Sur 30 m, la neige change peu la pente, car L reste plus court que le passage. Sur 10 m, elle peut faire baisser un mur d'une classe : c'est donc surtout par la règle du mur court que l'enneigement change la note.
 

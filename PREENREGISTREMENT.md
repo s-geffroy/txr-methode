@@ -1,5 +1,6 @@
 ---
 title: Préenregistrement de la validation
+description: "Préenregistrement de la campagne de validation de TxR : critère principal, échantillon, règles d'analyse fixés avant toute mesure."
 ---
 
 # Préenregistrement de la validation (projet)

@@ -1,5 +1,6 @@
 ---
 title: Protocole de validation
+description: "Protocole de validation de TxR : mesurer la pente sur neige damée et comparer aux notes prédites."
 ---
 
 # Protocole de validation proposé

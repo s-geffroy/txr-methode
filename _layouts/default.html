@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 {% seo %}
+{% if page.url == "/" %}
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "CreativeWork",
+     "name": "TxR, méthode de classement des pistes de ski en technique et résistance",
+     "author": {"@type": "Person", "name": "Sylvain Geffroy"},
+     "inLanguage": "fr", "version": "{{ site.txr_version }}",
+     "license": "https://creativecommons.org/licenses/by/4.0/",
+     "identifier": "https://doi.org/10.5281/zenodo.24280550",
+     "sameAs": "https://doi.org/10.5281/zenodo.24280550",
+     "url": "{{ site.url }}{{ site.baseurl }}/",
+     "description": "{{ page.description }}"}
+    </script>
+{% endif %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <style>
       mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: 0.2em 0; }

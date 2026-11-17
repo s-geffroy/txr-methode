@@ -1,5 +1,6 @@
 ---
 title: La grille T × R
+description: "Grille T × R : ce que décrit chaque combinaison de difficulté technique et d'effort pour une piste de ski."
 ---
 
 # La grille T × R

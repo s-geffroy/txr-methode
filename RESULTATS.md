@@ -1,5 +1,6 @@
 ---
 title: Résultats par station
+description: "Résultats agrégés de TxR dans quatre stations de ski françaises : passages raides par couleur de piste et contrôles de cohérence."
 ---
 
 # Résultats par station

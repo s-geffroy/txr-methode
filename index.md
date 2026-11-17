@@ -1,5 +1,6 @@
 ---
-title: Accueil
+title: "TxR : noter les pistes de ski par la pente"
+description: "Méthode de recherche ouverte qui note chaque piste de ski avec deux chiffres : T, la difficulté technique du passage le plus raide, et R, l'effort lié au dénivelé."
 ---
 
 # TxR, noter une piste de ski avec deux chiffres

@@ -1,5 +1,6 @@
 ---
 title: Versions
+description: "Versions successives de la méthode TxR et ce qui a changé."
 ---
 
 # Versions

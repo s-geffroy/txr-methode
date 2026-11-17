@@ -1,5 +1,6 @@
 ---
 title: Virages et rayon des skis
+description: "Types de virages et rayon des skis : pente réellement suivie par le skieur selon sa trajectoire, dans la méthode TxR."
 ---
 
 # Virages et rayon des skis
@@ -18,7 +19,7 @@ $$g_{\mathrm{trajet}} = g\,\frac{\sin\varphi}{\varphi}$$
 
 La pente au moment où le skieur coupe la ligne de pente, au milieu de chaque virage, reste celle de la piste.
 
-Le skieur ne peut pas balayer plus que la largeur de la piste. Pour un rayon donné, φ est donc le plus grand angle, jusqu'à 90°, dont la largeur balayée tient dans la piste, moins un mètre de chaque côté :
+Le skieur ne peut pas balayer plus que la largeur de la piste, et le calcul ne va pas au-delà du couloir réellement échantillonné (38 m au plus). Pour un rayon donné, φ est donc le plus grand angle, jusqu'à 90°, dont la largeur balayée tient dans la piste, moins un mètre de chaque côté :
 
 $$\cos\varphi = 1 - \frac{\min(a_{\mathrm{type}},\ \ell - 2)}{2R}$$
 

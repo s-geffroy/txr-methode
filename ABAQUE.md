@@ -1,5 +1,6 @@
 ---
 title: Abaque d'enneigement
+description: "Abaque d'enneigement : comment la note T d'une piste de ski change selon la hauteur de neige relevée par la station."
 ---
 
 # Ajuster la note T à l'enneigement

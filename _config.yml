@@ -1,10 +1,15 @@
 # Site GitHub Pages de la méthode TxR (Jekyll, thème par défaut de GitHub Pages).
 title: "TxR, méthode"
+url: "https://s-geffroy.github.io"
+baseurl: "/txr-methode"
+txr_version: "0.6.2"
 description: "Noter une piste de ski en technique (T) et résistance (R). Travail de recherche."
 lang: fr
 theme: jekyll-theme-primer
 plugins:
   - jekyll-relative-links
+  - jekyll-sitemap
+  - jekyll-seo-tag
 relative_links:
   enabled: true
   collections: false

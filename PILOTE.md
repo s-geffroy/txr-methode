@@ -1,5 +1,6 @@
 ---
 title: Essai à La Foux d'Allos
+description: "Premier essai de TxR sur les 42 pistes de La Foux d'Allos : pentes, notes et contrôles."
 ---
 
 # Essai à La Foux d'Allos

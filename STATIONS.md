@@ -1,5 +1,6 @@
 ---
 title: Appliquer TxR à une station
+description: "Appliquer TxR à une station de ski : données nécessaires, paramètres, contrôles et cas particuliers (pistes non damées, tracés incomplets)."
 ---
 
 # Appliquer TxR à une station
@@ -11,7 +12,7 @@ La méthode est la même partout. Ce qui change d'une station à l'autre, ce son
 | Paramètre | À quoi il sert | Exemple : La Foux d'Allos | Comment le déterminer |
 |---|---|---|---|
 | Nom et emprise | en-têtes, extraction des données | La Foux d'Allos ; enveloppe des pistes | enveloppe des pistes du plan, plus 500 m |
-| Projection de calcul | distances et pentes | Lambert-93 (EPSG:2154) | projection conforme nationale ou UTM ; jamais la projection « Web Mercator » des fonds de carte, qui fausse les distances |
+| Projection de calcul | distances et pentes | Lambert-93 (EPSG:2154) | projection conforme nationale ou UTM ; jamais la projection « Web Mercator » des fonds de carte, qui fausse les distances ; le programme refuse une projection qui déforme les distances de plus de 0,5 % au centre du domaine |
 | MNT de référence et MNT fin | profils en long | RGE ALTI 1 m ; LiDAR HD 50 cm | voir plus bas |
 | Liste des pistes | unité de la note | 42 pistes du plan officiel | plan de la saison, rapproché des tracés OpenStreetMap |
 | Système de couleurs | comparaison avec les couleurs (contrôle) | vert, bleu, rouge, noir | norme ou usage du pays |
