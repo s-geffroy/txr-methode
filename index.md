@@ -42,7 +42,7 @@ TxR ne cherche pas à retrouver les couleurs des pistes : il veut les dépasser
 | Services des pistes | [Fiche exploitants (PDF, 3 pages, avec l'abaque)](fiches/exploitants.pdf) · [Abaque d'enneigement](ABAQUE.md) · [Panneau de bord de piste (PDF, demi-page A4)](fiches/panneau.pdf) |
 | Spécialistes | [Fiche technique (PDF)](fiches/technique.pdf) · [Méthode complète](METHODE.md) · [Hypothèses](HYPOTHESES.md) |
 | Autres stations | [Appliquer TxR à une station](STATIONS.md) |
-| Tous | [Résultats par station](RESULTATS.md) · [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) · [Versions](CHANGELOG.md) |
+| Tous | [Résultats par station](RESULTATS.md) · [Essai à La Foux d'Allos](PILOTE.md) · [Protocole de validation](VALIDATION.md) · [Préenregistrement](PREENREGISTREMENT.md) · [Versions](CHANGELOG.md) |
 
 ## Citer, réutiliser
 

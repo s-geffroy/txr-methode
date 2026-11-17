@@ -38,11 +38,6 @@ Sur une piste non damée, les mêmes levés de surface montrent ce que la neige 
 
 ## Enregistrer avant de mesurer
 
-Avant la campagne, on fige et on dépose publiquement (par exemple sur OSF) :
-
-- θ, L0, k, la largeur par défaut et les seuils ;
-- la pente de référence et le niveau de skieur retenus ;
-- les critères de réussite, par exemple : borne basse de l'intervalle du kappa au-dessus de 0,6, intervalle du biais compris entre −2 et +2 points de pente, limites d'accord à moins de 5 points ;
-- ce qu'on fera si ces critères ne sont pas atteints.
+Avant la campagne, tout est figé et déposé publiquement (OSF) : version de la méthode et paramètres, pente de référence (la ligne de pente), critère principal unique, critères secondaires, nombre de pistes et sa règle de calcul, règles d'exclusion, aveugle du jury, et ce qu'on fera si le critère n'est pas atteint. Le projet de ce dépôt est rédigé : [Préenregistrement](PREENREGISTREMENT.md).
 
 Les stations qui ont servi à régler la méthode ne servent pas à la valider : la confirmation se fait sur des stations nouvelles.
