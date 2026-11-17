@@ -11,7 +11,7 @@ Ce document fixe la campagne de validation **avant toute mesure**. Il complète 
 
 ## 1. Ce qui est figé
 
-- **Méthode** : TxR version 0.7.0, archivée sur Zenodo (DOI de version à reporter ici au dépôt). Le programme de calcul est celui de la même version, et chaque calcul garde l'empreinte de ses sources.
+- **Méthode** : TxR version 0.7.0, archivée sur Zenodo (DOI de version 10.5281/zenodo.24321747). Le programme de calcul est celui de la même version, et chaque calcul garde l'empreinte de ses sources.
 - **Paramètres** : L0 = 5 m, k = 5 (lissage L = L0 + k h ; piste non damée : L = k h, règle H13) ; largeur par défaut = médiane mesurée dans la station ; θ = 30° pour la trajectoire, qui n'est qu'une analyse secondaire ; règle « pas de zigzag sous 10 m de large ».
 - **Seuils de T** (pente maximale sur 30 m) : T1 ≥ 10 %, T2 ≥ 20 %, T3 ≥ 25 %, T4 ≥ 35 %, T5 ≥ 45 %, T6 ≥ 60 % ; au moins T4 si P95₃₀ ≥ 40 % ; murs courts sur 10 m : 40, 50, 60, 75 % donnent au moins T3, T4, T5, T6. **Seuils de R** (dénivelé) : 80, 200, 400, 700, 1 100 m.
 - **Convention de référence** : la **ligne de pente**, celle de la note affichée. La trajectoire est secondaire.
